@@ -1,0 +1,30 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "BACKEND_URL": true
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "semi": 0,
+    "indent": ["error", 4, {
+      "SwitchCase": 1
+    }],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
+    }],
+    "react/forbid-prop-types": [false],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/prefer-stateless-function": [1],
+    "jsx-a11y/no-autofocus": [false],
+    "jsx-a11y/no-static-element-interactions": [false],
+    "jsx-a11y/click-events-have-key-events": [false],
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "components": ["Link"],
+      "specialLink": ["to", "hrefLeft", "hrefRight"],
+      "aspects": ["noHref", "invalidHref", "preferButton"]
+    }]
+  }
+}

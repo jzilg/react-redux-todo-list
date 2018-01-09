@@ -1,0 +1,43 @@
+@import "../../style/color";
+
+.todo {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 2fr 1fr .4fr;
+    grid-column-gap: 10px;
+    align-items: center;
+    height: 100%;
+}
+
+.input {
+    height: 100%;
+    border: 0;
+    background-color: transparent;
+    text-overflow: ellipsis;
+}
+
+.last-event-input {
+    margin-left: 4px;
+    @extend .input;
+}
+
+.schedule-input {
+    width: 42px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    @extend .input;
+}
+
+.delete-btn {
+    height: 100%;
+    border-style: none;
+    background-color: transparent;
+    font-size: 24px;
+    color: $grey;
+    transition: background-color .2s, color .2s;
+
+    &:hover {
+        background-color: $red;
+        color: #fff;
+    }
+}
