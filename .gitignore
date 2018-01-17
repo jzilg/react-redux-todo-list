@@ -5,4 +5,5 @@ package-lock.json
 # build files
 dist/
 
-db.json
+# IDE
+.idea/
