@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Loading from '../components/Loading'
-import Error from '../components/Error'
 import List from '../components/List'
 import {
     fetchTodos,
@@ -52,37 +50,27 @@ class App extends React.Component {
     }
 
     render() {
-        const { error, isLoading } = this.props
-        const loader = isLoading ? <Loading /> : null
-
-        if (error.appears) {
-            return <Error obj={error.obj} />
-        }
+        const { isLoading } = this.props
 
         return (
-            <Fragment>
-                {loader}
-                <List
-                    todos={this.props.todos}
-                    addTodo={this.addTodo}
-                    saveTodo={this.saveTodo}
-                    removeTodo={this.removeTodo}
-                    isLoading={isLoading}
-                />
-            </Fragment>
+            <List
+                todos={this.props.todos}
+                addTodo={this.addTodo}
+                saveTodo={this.saveTodo}
+                removeTodo={this.removeTodo}
+                isLoading={isLoading}
+            />
         )
     }
 }
 
 App.propTypes = {
-    error: PropTypes.object.isRequired,
     isLoading: PropTypes.bool.isRequired,
     todos: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-    error: state.app.error,
     isLoading: state.app.isLoading,
     todos: state.todos,
 })
