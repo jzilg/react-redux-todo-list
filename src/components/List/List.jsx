@@ -30,18 +30,17 @@ class List extends React.Component {
                 const daysB = todoB.schedule - durationB
                 return daysA - daysB
             })
-            .map(todo =>
-                (
-                    <li key={todo.id} styleName="list-element">
-                        <Todo
-                            todo={todo}
-                            saveTodo={saveTodo}
-                            removeTodo={removeTodo}
-                            today={today}
-                            isLoading={isLoading}
-                        />
-                    </li>
-                ))
+            .map(todo => (
+                <li key={todo.id} styleName="list-element">
+                    <Todo
+                        todo={todo}
+                        saveTodo={saveTodo}
+                        removeTodo={removeTodo}
+                        today={today}
+                        isLoading={isLoading}
+                    />
+                </li>
+            ))
 
         return (
             <div className="container">
