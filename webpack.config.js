@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const globalStyleLoader = [
@@ -51,7 +51,7 @@ module.exports = {
         extensions: [
             '.js',
             '.jsx',
-        ]
+        ],
     },
 
     module: {
@@ -93,7 +93,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader',
-                    }
+                    },
                 ],
             },
         ],
@@ -102,14 +102,14 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin('./dist'),
         new ExtractTextPlugin({
-            filename: "[contenthash].css",
+            filename: '[contenthash].css',
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             /* TODO minify only while production build
             minify: {
                 collapseWhitespace: true,
-            },*/
+            }, */
         }),
         new webpack.DefinePlugin({
             'BACKEND_URL': '"http://localhost:3000"',
