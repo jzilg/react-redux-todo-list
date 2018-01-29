@@ -106,10 +106,6 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            /* TODO minify only while production build
-            minify: {
-                collapseWhitespace: true,
-            }, */
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
