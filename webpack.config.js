@@ -5,24 +5,27 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const isProductionBuild = process.argv.indexOf('-p') !== -1
+const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
+
 const globalStyleLoader = [
     {
         loader: 'css-loader',
         options: {
-            sourceMap: true,
+            sourceMap: !isProductionBuild,
             importLoaders: 2,
         },
     },
     {
         loader: 'postcss-loader',
         options: {
-            sourceMap: true,
+            sourceMap: !isProductionBuild,
         },
     },
     {
         loader: 'sass-loader',
         options: {
-            sourceMap: true,
+            sourceMap: !isProductionBuild,
         },
     },
 ];
@@ -32,7 +35,7 @@ const componentStyleLoader = [
 componentStyleLoader[0] = {
     loader: 'css-loader',
     options: {
-        sourceMap: true,
+        sourceMap: !isProductionBuild,
         modules: true,
         localIdentName: '[name]-[local]_[hash:base64:5]',
         importLoaders: 2,
@@ -100,7 +103,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin('./dist'),
+        !isDevServer ? new CleanWebpackPlugin('./dist') : { apply: () => {} },
         new ExtractTextPlugin({
             filename: '[contenthash].css',
         }),
@@ -121,7 +124,7 @@ module.exports = {
         new StyleLintPlugin(),
     ],
 
-    devtool: 'source-map',
+    devtool: isProductionBuild ? '' : 'source-map',
 
     devServer: {
         host: '0.0.0.0',
