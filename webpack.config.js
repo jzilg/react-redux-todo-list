@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isProductionBuild = process.argv.indexOf('-p') !== -1
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
+const styleNameSyntax = isProductionBuild ? '_[hash:base64:5]' : '[name]-[local]'
 
 const globalStyleLoader = [
     {
@@ -37,7 +38,7 @@ componentStyleLoader[0] = {
     options: {
         sourceMap: !isProductionBuild,
         modules: true,
-        localIdentName: '[name]-[local]_[hash:base64:5]',
+        localIdentName: styleNameSyntax,
         importLoaders: 2,
     },
 }
@@ -68,7 +69,21 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
-                    'babel-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            plugins: [
+                                ['react-css-modules', {
+                                    generateScopedName: styleNameSyntax,
+                                    filetypes: {
+                                        '.scss': {
+                                            syntax: 'postcss-scss',
+                                        },
+                                    },
+                                }],
+                            ],
+                        },
+                    },
                     'eslint-loader',
                 ],
             },
