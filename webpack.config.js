@@ -43,7 +43,7 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: path.resolve('dist'),
-        filename: '[hash].js',
+        filename: '[name]-[chunkhash].js',
         publicPath: '/',
     },
 
@@ -110,6 +110,14 @@ module.exports = {
             minify: {
                 collapseWhitespace: true,
             }, */
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: module => module.context && module.context.includes('node_modules'),
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest',
+            minChunks: Infinity,
         }),
         new webpack.DefinePlugin({
             'BACKEND_URL': '"http://localhost:3000"',
