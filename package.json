@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react / redux list for managing recurring todo's",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "build": "webpack",
     "build:prod": "webpack -p"
   },
