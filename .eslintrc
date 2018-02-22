@@ -7,6 +7,7 @@
     "browser": true
   },
   "rules": {
+    "curly": ["error", "all"],
     "semi": 0,
     "indent": ["error", 4, {
       "SwitchCase": 1
