@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "build:prod": "webpack -p"
+    "build:prod": "webpack -p",
+    "eslint": "eslint"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
