@@ -4,8 +4,8 @@
   "description": "react / redux list for managing recurring todo's",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack",
-    "build:prod": "webpack -p",
+    "build": "webpack --hide-modules",
+    "build:prod": "webpack -p --hide-modules",
     "eslint": "eslint"
   },
   "devDependencies": {
