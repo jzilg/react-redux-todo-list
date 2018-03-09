@@ -92,7 +92,6 @@ module.exports = {
                 include: path.resolve('src/style'),
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
                     use: globalStyleLoader,
                 }),
             },
@@ -101,7 +100,6 @@ module.exports = {
                 include: path.resolve('src/components'),
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
                     use: componentStyleLoader,
                 }),
             },
