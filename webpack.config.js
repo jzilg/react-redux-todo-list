@@ -38,7 +38,7 @@ module.exports = {
     output: {
         path: path.resolve('dist'),
         filename: '[name]-[chunkhash].js',
-        publicPath: '/',
+        publicPath: isDevServer ? '/' : './',
     },
 
     resolve: {
