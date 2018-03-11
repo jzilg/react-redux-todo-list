@@ -31,7 +31,7 @@ const getStyleLoaders = config => [
             sourceMap: !isProductionBuild,
         },
     },
-];
+]
 
 module.exports = {
     entry: './src/index.jsx',
