@@ -9,12 +9,14 @@ const isProductionBuild = process.argv.indexOf('-p') !== -1
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
 const styleNameSyntax = isProductionBuild ? '_[hash:base64:5]' : '[name]-[local]'
 
-const globalStyleLoader = [
+const getStyleLoaders = config => [
     {
         loader: 'css-loader',
         options: {
             sourceMap: !isProductionBuild,
             importLoaders: 2,
+            modules: config.modules,
+            localIdentName: styleNameSyntax,
         },
     },
     {
@@ -30,18 +32,6 @@ const globalStyleLoader = [
         },
     },
 ];
-const componentStyleLoader = [
-    ...globalStyleLoader,
-]
-componentStyleLoader[0] = {
-    loader: 'css-loader',
-    options: {
-        sourceMap: !isProductionBuild,
-        modules: true,
-        localIdentName: styleNameSyntax,
-        importLoaders: 2,
-    },
-}
 
 module.exports = {
     entry: './src/index.jsx',
@@ -92,7 +82,7 @@ module.exports = {
                 include: path.resolve('src/style'),
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    use: globalStyleLoader,
+                    use: getStyleLoaders({ modules: false }),
                 }),
             },
             {
@@ -100,7 +90,7 @@ module.exports = {
                 include: path.resolve('src/components'),
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    use: componentStyleLoader,
+                    use: getStyleLoaders({ modules: true }),
                 }),
             },
             {
