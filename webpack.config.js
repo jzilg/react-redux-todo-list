@@ -140,6 +140,7 @@ module.exports = {
             poll: 1000,
         },
         stats: {
+            children: false,
             modules: false,
         },
     },
