@@ -8,7 +8,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const isProductionBuild = process.argv.indexOf('-p') !== -1
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
 const styleNameSyntax = isProductionBuild ? '_[hash:base64:5]' : '[name]-[local]'
-
 const getStyleLoaders = config => [
     {
         loader: 'css-loader',
@@ -40,14 +39,12 @@ module.exports = {
         filename: '[name]-[chunkhash].js',
         publicPath: isDevServer ? '/' : './',
     },
-
     resolve: {
         extensions: [
             '.js',
             '.jsx',
         ],
     },
-
     module: {
         loaders: [
             {
@@ -104,7 +101,6 @@ module.exports = {
             },
         ],
     },
-
     plugins: [
         !isDevServer ? new CleanWebpackPlugin('./dist') : { apply: () => {} },
         new ExtractTextPlugin({
@@ -126,9 +122,7 @@ module.exports = {
         }),
         new StyleLintPlugin(),
     ],
-
     devtool: isProductionBuild ? '' : 'source-map',
-
     devServer: {
         host: '0.0.0.0',
         port: '8080',
