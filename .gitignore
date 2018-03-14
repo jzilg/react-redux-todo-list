@@ -1,4 +1,4 @@
-# OSX
+# macOS
 *.DS_Store
 .AppleDouble
 .LSOverride
@@ -8,7 +8,7 @@
 .project
 .settings/
 
-# Jetbrains
+# JetBrains
 *.iml
 .idea/
 
@@ -16,5 +16,5 @@
 node_modules/
 npm-debug.log*
 
-# build files
+# built files
 /dist/
