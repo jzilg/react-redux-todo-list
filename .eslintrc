@@ -8,7 +8,7 @@
   },
   "rules": {
     "curly": ["error", "all"],
-    "semi": 0,
+    "semi": ["error", "never"],
     "indent": ["error", 4, {
       "SwitchCase": 1
     }],
