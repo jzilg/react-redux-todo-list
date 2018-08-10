@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Todo from '../../components/Todo'
+import Todo from '../Todo'
 import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
 import './list.scss'
 
@@ -11,7 +11,8 @@ class List extends React.Component {
     }
 
     addNewTodo() {
-        this.props.addTodo(this.props.todos.length)
+        const { addTodo, todos } = this.props
+        addTodo(todos.length)
     }
 
     render() {
@@ -44,7 +45,9 @@ class List extends React.Component {
 
         return (
             <div className="container">
-                <h1>Todo List</h1>
+                <h1>
+                    Todo List
+                </h1>
                 <ul styleName="list">
                     {todoElements}
                 </ul>

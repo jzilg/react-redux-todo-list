@@ -4,7 +4,11 @@ import { getDurationBetweenDates } from '../../utils/helper'
 
 const Urgency = ({ today, lastEvent, schedule }) => {
     if (!lastEvent || !schedule) {
-        return <span>?</span>
+        return (
+            <span>
+                ?
+            </span>
+        )
     }
 
     function getUrgency(duration) {

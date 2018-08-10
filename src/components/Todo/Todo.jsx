@@ -23,12 +23,13 @@ class Todo extends React.Component {
     }
 
     setInputToday() {
-        if (this.state.lastEvent === this.props.today) {
+        const { state, props } = this
+        if (state.lastEvent === props.today) {
             return
         }
 
         this.setState({
-            lastEvent: this.props.today,
+            lastEvent: props.today,
         }, () => {
             this.saveTodo()
         })
@@ -48,19 +49,26 @@ class Todo extends React.Component {
     }
 
     saveTodo() {
-        this.props.saveTodo(this.state)
+        const { saveTodo } = this.props
+        saveTodo(this.state)
     }
 
     removeTodo() {
-        this.props.removeTodo(this.state)
+        const { removeTodo } = this.props
+        removeTodo(this.state)
     }
 
     render() {
-        const { isLoading } = this.props
-        const { name, schedule, lastEvent } = this.state
+        const { isLoading, today } = this.props
+        const {
+            id,
+            name,
+            schedule,
+            lastEvent,
+        } = this.state
 
         return (
-            <form key={this.state.id} styleName="todo" title={name}>
+            <form key={id} styleName="todo" title={name}>
                 <input
                     type="text"
                     name="name"
@@ -69,11 +77,13 @@ class Todo extends React.Component {
                     autoComplete="off"
                     onChange={this.inputChange}
                     onBlur={this.saveTodo}
-                    autoFocus={!this.state.name.length}
+                    autoFocus={!name.length}
                     styleName="input"
                 />
                 <div>
-                    <span>Every</span>
+                    <span>
+                        Every
+                    </span>
                     <input
                         type="number"
                         name="schedule"
@@ -84,10 +94,14 @@ class Todo extends React.Component {
                         onChange={this.inputChange}
                         onBlur={this.saveTodo}
                     />
-                    <span>{schedule === 1 ? 'Day' : 'Days'}</span>
+                    <span>
+                        {schedule === 1 ? 'Day' : 'Days'}
+                    </span>
                 </div>
                 <div>
-                    <span>Last done on</span>
+                    <span>
+                        Last done on
+                    </span>
                     <input
                         type="date"
                         name="lastEvent"
@@ -104,7 +118,7 @@ class Todo extends React.Component {
                     </button>
                 </div>
                 <Urgency
-                    today={this.props.today}
+                    today={today}
                     lastEvent={lastEvent}
                     schedule={schedule}
                 />

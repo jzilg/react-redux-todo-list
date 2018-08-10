@@ -5,8 +5,17 @@ import './error.scss'
 const Error = ({ obj }) => (
     <div className="container">
         <div className="error">
-            <h2>{obj.message}</h2>
-            <p>Is <a styleName="link" href={BACKEND_URL}>{BACKEND_URL}</a> active?</p>
+            <h2>
+                {obj.message}
+            </h2>
+            <p>
+                Is
+                <a styleName="link" href={BACKEND_URL}>
+                    {BACKEND_URL}
+                </a>
+                {' '}
+                active?
+            </p>
         </div>
     </div>
 )

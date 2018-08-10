@@ -18,20 +18,23 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchTodos())
+        const { props } = this
+        props.dispatch(fetchTodos())
             .then(() => {
-                if (!this.props.todos.length) {
+                if (!props.todos.length) {
                     this.addInitTodo()
                 }
             })
     }
 
     saveTodo(index, data) {
-        this.props.dispatch(saveTodo(index, data))
+        const { dispatch } = this.props
+        dispatch(saveTodo(index, data))
     }
 
     removeTodo(data) {
-        this.props.dispatch(removeTodo(data))
+        const { dispatch } = this.props
+        dispatch(removeTodo(data))
     }
 
     addInitTodo() {
@@ -39,6 +42,7 @@ class App extends React.Component {
     }
 
     addTodo(id) {
+        const { dispatch } = this.props
         const emptyTodo = {
             id,
             name: '',
@@ -46,15 +50,15 @@ class App extends React.Component {
             lastEvent: '',
         }
 
-        this.props.dispatch(addTodo(emptyTodo))
+        dispatch(addTodo(emptyTodo))
     }
 
     render() {
-        const { isLoading } = this.props
+        const { isLoading, todos } = this.props
 
         return (
             <List
-                todos={this.props.todos}
+                todos={todos}
                 addTodo={this.addTodo}
                 saveTodo={this.saveTodo}
                 removeTodo={this.removeTodo}
