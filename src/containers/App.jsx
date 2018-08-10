@@ -7,7 +7,7 @@ import {
     addTodo,
     saveTodo,
     removeTodo,
-} from '../store/actions'
+} from '../redux/actions'
 
 class App extends React.Component {
     constructor() {
