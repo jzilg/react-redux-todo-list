@@ -16,5 +16,8 @@
 node_modules/
 npm-debug.log*
 
+# Jest
+coverage/
+
 # built files
 /dist/

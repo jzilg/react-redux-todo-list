@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error should render correcty 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="error"
+  >
+    <h2 />
+    <p>
+      Is
+       
+      <a
+        href="http://example.com"
+        styleName="link"
+      >
+        http://example.com
+      </a>
+       
+      active?
+    </p>
+  </div>
+</div>
+`;
