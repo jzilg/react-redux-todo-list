@@ -10,9 +10,17 @@ class List extends React.Component {
         this.addNewTodo = this.addNewTodo.bind(this)
     }
 
+    createNewId() {
+        const { todos } = this.props
+        const ids = todos.map(todo => todo.id)
+        const highestId = Math.max(...ids)
+        return highestId + 1
+    }
+
     addNewTodo() {
-        const { addTodo, todos } = this.props
-        addTodo(todos.length)
+        const { addTodo } = this.props
+        const id = this.createNewId()
+        addTodo(id)
     }
 
     render() {
