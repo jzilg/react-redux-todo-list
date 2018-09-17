@@ -137,7 +137,12 @@ class Todo extends React.Component {
 }
 
 Todo.propTypes = {
-    todo: PropTypes.object.isRequired,
+    todo: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        schedule: PropTypes.number.isRequired,
+        lastEvent: PropTypes.string.isRequired,
+    }).isRequired,
     saveTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
     today: PropTypes.string.isRequired,
