@@ -8,13 +8,13 @@
   },
   "rules": {
     "curly": ["error", "all"],
-    "semi": ["error", "never"],
     "indent": ["error", 4, {
       "SwitchCase": 1
     }],
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
     }],
+    "semi": ["error", "never"],
     "react/forbid-prop-types": [false],
     "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": ["error", 4],
