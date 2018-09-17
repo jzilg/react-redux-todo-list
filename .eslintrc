@@ -4,7 +4,8 @@
     "BACKEND_URL": true
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "curly": ["error", "all"],
