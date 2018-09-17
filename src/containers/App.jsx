@@ -20,11 +20,6 @@ class App extends React.Component {
     componentDidMount() {
         const { props } = this
         props.dispatch(fetchTodos())
-            .then(() => {
-                if (!props.todos.length) {
-                    this.addInitTodo()
-                }
-            })
     }
 
     saveTodo(index, data) {
@@ -35,10 +30,6 @@ class App extends React.Component {
     removeTodo(data) {
         const { dispatch } = this.props
         dispatch(removeTodo(data))
-    }
-
-    addInitTodo() {
-        this.addTodo(0)
     }
 
     addTodo(id) {
