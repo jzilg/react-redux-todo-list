@@ -10,6 +10,7 @@ const Error = ({ obj }) => (
             </h2>
             <p>
                 Is
+                {' '}
                 <a styleName="link" href={BACKEND_URL}>
                     {BACKEND_URL}
                 </a>
