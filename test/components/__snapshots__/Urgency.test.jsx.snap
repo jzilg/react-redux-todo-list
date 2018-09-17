@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Urgency should render correcty if last event is not set 1`] = `
+<span>
+  ?
+</span>
+`;
+
+exports[`Urgency should render correcty if lastEvent was insde of schedule one day 1`] = `
+<span
+  className="font-green"
+>
+  3 Days left
+</span>
+`;
+
+exports[`Urgency should render correcty if lastEvent was inseide of schedule more days 1`] = `
+<span
+  className="font-green"
+>
+  1 Day left
+</span>
+`;
+
+exports[`Urgency should render correcty if lastEvent was outside of schedule 1`] = `
+<span
+  className="font-red"
+>
+  12 Days late
+</span>
+`;
+
+exports[`Urgency should render correcty if lastEvent was today 1`] = `
+<span
+  className="font-green"
+>
+  4 Days left
+</span>
+`;
