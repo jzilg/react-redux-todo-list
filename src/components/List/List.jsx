@@ -4,73 +4,64 @@ import Todo from '../Todo'
 import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
 import './list.scss'
 
-class List extends React.Component {
-    constructor() {
-        super()
-        this.addNewTodo = this.addNewTodo.bind(this)
-    }
-
-    createNewId() {
-        const { todos } = this.props
+const List = ({
+    todos,
+    addTodo,
+    saveTodo,
+    removeTodo,
+    isLoading,
+}) => {
+    const createNewId = () => {
         const ids = todos.map(todo => todo.id)
         const highestId = Math.max(...ids)
         return highestId + 1
     }
 
-    addNewTodo() {
-        const { addTodo } = this.props
-        const id = this.createNewId()
+    const addNewTodo = () => {
+        const id = createNewId()
         addTodo(id)
     }
 
-    render() {
-        const {
-            todos,
-            saveTodo,
-            removeTodo,
-            isLoading,
-        } = this.props
-        const today = getTodaysDate()
-        const todoElements = todos
-            .sort((todoA, todoB) => {
-                const durationA = getDurationBetweenDates(today, todoA.lastEvent)
-                const durationB = getDurationBetweenDates(today, todoB.lastEvent)
-                const daysA = todoA.schedule - durationA
-                const daysB = todoB.schedule - durationB
-                return daysA - daysB
-            })
-            .map(todo => (
-                <li key={todo.id} styleName="list-element">
-                    <Todo
-                        todo={todo}
-                        saveTodo={saveTodo}
-                        removeTodo={removeTodo}
-                        today={today}
-                        isLoading={isLoading}
-                    />
-                </li>
-            ))
+    const today = getTodaysDate()
+    const todoElements = todos
+        .sort((todoA, todoB) => {
+            const durationA = getDurationBetweenDates(today, todoA.lastEvent)
+            const durationB = getDurationBetweenDates(today, todoB.lastEvent)
+            const daysA = todoA.schedule - durationA
+            const daysB = todoB.schedule - durationB
+            return daysA - daysB
+        })
+        .map(todo => (
+            <li key={todo.id} styleName="list-element">
+                <Todo
+                    todo={todo}
+                    saveTodo={saveTodo}
+                    removeTodo={removeTodo}
+                    today={today}
+                    isLoading={isLoading}
+                />
+            </li>
+        ))
 
-        return (
-            <div className="container">
-                <h1>
-                    Todo List
-                </h1>
-                <ul styleName="list">
-                    {todoElements}
-                </ul>
-                <button
-                    type="button"
-                    styleName="add-todo-btn"
-                    title="Add Todo"
-                    onClick={this.addNewTodo}
-                    disabled={isLoading}
-                >
-                    +
-                </button>
-            </div>
-        )
-    }
+    return (
+        <div className="container">
+            <h1>
+                Todo List
+            </h1>
+            <ul styleName="list">
+                {todoElements}
+            </ul>
+            <button
+                type="button"
+                styleName="add-todo-btn"
+                title="Add Todo"
+                onClick={addNewTodo}
+                disabled={isLoading}
+            >
+                +
+            </button>
+        </div>
+    )
 }
 
 List.propTypes = {
