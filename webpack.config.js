@@ -6,10 +6,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const isProductionBuild = process.argv.indexOf('-p') !== -1
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
 const filename = '[name]-[contenthash]'
-const styleNameSyntax = isProductionBuild ? '_[hash:base64:5]' : '[name]-[local]'
+const styleNameSyntax = !isDevServer ? '_[hash:base64:5]' : '[name]-[local]'
 const getStyleLoaders = config => [
     {
         loader: MiniCssExtractPlugin.loader,
@@ -17,7 +16,7 @@ const getStyleLoaders = config => [
     {
         loader: 'css-loader',
         options: {
-            sourceMap: !isProductionBuild,
+            sourceMap: isDevServer,
             importLoaders: 3,
             modules: config.modules,
             localIdentName: styleNameSyntax,
@@ -26,26 +25,26 @@ const getStyleLoaders = config => [
     {
         loader: 'group-css-media-queries-loader',
         options: {
-            sourceMap: !isProductionBuild,
+            sourceMap: isDevServer,
         },
     },
     {
         loader: 'postcss-loader',
         options: {
-            sourceMap: !isProductionBuild,
+            sourceMap: isDevServer,
         },
     },
     {
         loader: 'sass-loader',
         options: {
-            sourceMap: !isProductionBuild,
+            sourceMap: isDevServer,
         },
     },
 ]
 
 module.exports = {
-    mode: isProductionBuild ? 'production' : 'development',
-    devtool: isProductionBuild ? '' : 'source-map',
+    mode: !isDevServer ? 'production' : 'development',
+    devtool: !isDevServer ? '' : 'source-map',
     entry: './src/index.jsx',
     output: {
         path: path.resolve('dist'),
@@ -123,7 +122,7 @@ module.exports = {
     },
     plugins: [
         !isDevServer ? new CleanWebpackPlugin('./dist') : null,
-        isProductionBuild ? new OptimizeCSSAssetsPlugin({}) : null,
+        !isDevServer ? new OptimizeCSSAssetsPlugin({}) : null,
         new StyleLintPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
