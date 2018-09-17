@@ -46,7 +46,7 @@ class App extends React.Component {
         const emptyTodo = {
             id,
             name: '',
-            schedule: '',
+            schedule: 0,
             lastEvent: '',
         }
 
@@ -78,6 +78,5 @@ const mapStateToProps = state => ({
     isLoading: state.app.isLoading,
     todos: state.todos,
 })
-
 
 export default connect(mapStateToProps)(App)
