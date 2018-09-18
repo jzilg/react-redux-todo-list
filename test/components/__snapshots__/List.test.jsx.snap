@@ -18,7 +18,7 @@ exports[`List should render correcty more todos right sorted 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-17"
+        today="2018-09-18"
         todo={
           Object {
             "id": 2,
@@ -37,7 +37,7 @@ exports[`List should render correcty more todos right sorted 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-17"
+        today="2018-09-18"
         todo={
           Object {
             "id": 3,
@@ -56,7 +56,7 @@ exports[`List should render correcty more todos right sorted 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-17"
+        today="2018-09-18"
         todo={
           Object {
             "id": 1,
@@ -98,7 +98,7 @@ exports[`List should render correcty one todo 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-17"
+        today="2018-09-18"
         todo={
           Object {
             "id": 1,
