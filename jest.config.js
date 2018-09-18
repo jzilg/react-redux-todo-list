@@ -3,7 +3,6 @@ module.exports = {
     collectCoverageFrom: [
         'src/**/*.{js,jsx}',
         '!src/**/index.{js,jsx}',
-        '!src/history.js',
     ],
     globals: {
         BACKEND_URL: 'http://example.com',
