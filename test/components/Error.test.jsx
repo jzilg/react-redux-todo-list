@@ -12,7 +12,8 @@ describe('Error', () => {
         const errorObj = {
             msg: 'An Error occurred',
         }
-        const output = shallow(<Error obj={errorObj} />)
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const component = shallow(<Error obj={errorObj} />)
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 })

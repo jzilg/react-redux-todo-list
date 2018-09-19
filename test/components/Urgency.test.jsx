@@ -14,46 +14,50 @@ describe('Urgency', () => {
     const schedule = 1
 
     it('should render "do it today" if lastEvent was one day ago and schedule is 1', () => {
-        const output = shallow((
+        const component = shallow((
             <Urgency
                 today={today}
                 lastEvent={pastOneDayAgo}
                 schedule={schedule}
             />
         ))
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
     it('should render "n Days left" if was n days ago', () => {
-        const output = shallow((
+        const component = shallow((
             <Urgency
                 today={today}
                 lastEvent={pastMoreDaysAgo}
                 schedule={schedule}
             />
         ))
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
     it('should render "1 day left" if lastEvent was today', () => {
-        const output = shallow((
+        const component = shallow((
             <Urgency
                 today={today}
                 lastEvent={today}
                 schedule={schedule}
             />
         ))
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
     it('should render "?" if last event is not set', () => {
-        const output = shallow((
+        const component = shallow((
             <Urgency
                 today={today}
                 lastEvent=""
                 schedule={schedule}
             />
         ))
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 })

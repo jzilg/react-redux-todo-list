@@ -8,7 +8,6 @@ import List from '../../src/components/List'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('List', () => {
-    const addTodo = jest.fn()
     const saveTodo = () => {}
     const removeTodo = () => {}
     const isLoading = false
@@ -34,9 +33,9 @@ describe('List', () => {
     ]
 
     it('should render correcty one todo', () => {
+        const addTodo = () => {}
         const todo = todos.slice().splice(0, 1)
-
-        const output = shallow((
+        const component = shallow((
             <List
                 todos={todo}
                 addTodo={addTodo}
@@ -45,12 +44,13 @@ describe('List', () => {
                 isLoading={isLoading}
             />
         ))
-
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
     it('should render correcty more todos right sorted', () => {
-        const output = shallow((
+        const addTodo = () => {}
+        const component = shallow((
             <List
                 todos={todos}
                 addTodo={addTodo}
@@ -59,12 +59,13 @@ describe('List', () => {
                 isLoading={isLoading}
             />
         ))
-
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
     it('should call add todo if button is clicked', () => {
-        const output = shallow((
+        const addTodo = jest.fn()
+        const component = shallow((
             <List
                 todos={todos}
                 addTodo={addTodo}
@@ -73,8 +74,7 @@ describe('List', () => {
                 isLoading={isLoading}
             />
         ))
-        output.find('button').simulate('click')
-
+        component.find('button').simulate('click')
         expect(addTodo.mock.calls.length).toBe(1)
     })
 })

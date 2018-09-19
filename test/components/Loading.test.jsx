@@ -9,7 +9,8 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('Loading', () => {
     it('should render correcty', () => {
-        const output = shallow(<Loading />)
-        expect(shallowToJson(output)).toMatchSnapshot()
+        const component = shallow(<Loading />)
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 })
