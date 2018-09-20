@@ -8,6 +8,8 @@ import List from '../../src/components/List'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('List', () => {
+    Date.now = () => '2018-09-18' // otherwise today is today
+
     const saveTodo = () => {}
     const removeTodo = () => {}
     const isLoading = false
