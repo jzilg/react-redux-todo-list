@@ -1,3 +1,4 @@
+import { Map, List } from 'immutable'
 import { combineReducers } from 'redux'
 import {
     REQUEST_TODOS,
@@ -12,13 +13,13 @@ import {
 } from './actions'
 
 function app(
-    state = {
+    state = Map({
         isLoading: false,
-        error: {
+        error: Map({
             appears: false,
             msg: null,
-        },
-    },
+        }),
+    }),
     action,
 ) {
     switch (action.type) {
@@ -26,29 +27,19 @@ function app(
         case SAVE_TODO_REQUEST:
         case REMOVE_TODO_REQUEST:
         case REQUEST_TODOS: {
-            return {
-                ...state,
-                isLoading: true,
-            }
+            return state.set('isLoading', true)
         }
         case ADD_TODO_SUCCESS:
         case SAVE_TODO_SUCCESS:
         case REMOVE_TODO_SUCCESS:
         case RECEIVE_TODOS: {
-            return {
-                ...state,
-                isLoading: false,
-            }
+            return state.set('isLoading', false)
         }
         case RECEIVE_ERROR: {
-            return {
-                ...state,
-                isLoading: false,
-                error: {
-                    appears: true,
-                    obj: action.error,
-                },
-            }
+            return state
+                .set('isLoading', false)
+                .set(['error', 'appears'], true)
+                .set(['error', 'obj'], action.error)
         }
         default: {
             return state
@@ -56,34 +47,23 @@ function app(
     }
 }
 
-function todos(state = [], action) {
+function todos(
+    state = List(),
+    action,
+) {
     switch (action.type) {
         case ADD_TODO_SUCCESS: {
-            const newState = [
-                ...state,
-                action.data,
-            ]
-            return newState
+            return state.push(action.data)
         }
         case REMOVE_TODO_SUCCESS: {
-            const newState = [...state]
-            return newState.filter(todo => todo.id !== action.data.id)
+            return state.filter(todo => todo.id !== action.data.id)
         }
         case SAVE_TODO_SUCCESS: {
-            const { data } = action
-            const newState = [...state]
-
-            newState.forEach((todo, index) => {
-                if (todo.id === data.id) {
-                    newState[index] = data
-                }
-            })
-
-            return newState
+            const index = state.findIndex(todo => todo.id === action.data.id)
+            return state.set(index, action.data)
         }
         case RECEIVE_TODOS: {
-            const newState = [...state]
-            return newState.concat(action.data)
+            return state.concat(action.data)
         }
         default: {
             return state

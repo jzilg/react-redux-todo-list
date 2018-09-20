@@ -26,8 +26,8 @@ Root.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    isLoading: state.app.isLoading,
-    error: state.app.error,
+    isLoading: state.app.get('isLoading'),
+    error: state.app.get('error'),
 })
 
 export default connect(mapStateToProps)(Root)

@@ -49,7 +49,7 @@ class App extends React.Component {
 
         return (
             <List
-                todos={todos}
+                todos={todos.toJS()}
                 addTodo={this.addTodo}
                 saveTodo={this.saveTodo}
                 removeTodo={this.removeTodo}
@@ -61,12 +61,12 @@ class App extends React.Component {
 
 App.propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    todos: PropTypes.array.isRequired,
+    todos: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-    isLoading: state.app.isLoading,
+    isLoading: state.app.get('isLoading'),
     todos: state.todos,
 })
 
