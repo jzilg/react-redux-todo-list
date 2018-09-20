@@ -12,6 +12,9 @@ const List = ({
     isLoading,
 }) => {
     const createNewId = () => {
+        if (!todos.length) {
+            return 0
+        }
         const ids = todos.map(todo => todo.id)
         const highestId = Math.max(...ids)
         return highestId + 1
