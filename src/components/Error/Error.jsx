@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './error.scss'
 
-const Error = ({ obj }) => (
+const Error = ({ message }) => (
     <div className="container">
         <div className="error">
             <h2>
-                {obj.message}
+                {message}
             </h2>
             <p>
                 Is
@@ -22,7 +22,7 @@ const Error = ({ obj }) => (
 )
 
 Error.propTypes = {
-    obj: PropTypes.object.isRequired,
+    message: PropTypes.string.isRequired,
 }
 
 export default Error

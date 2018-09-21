@@ -17,7 +17,7 @@ function app(
         isLoading: false,
         error: Map({
             appears: false,
-            msg: null,
+            message: '',
         }),
     }),
     action,
@@ -39,7 +39,7 @@ function app(
             return state
                 .set('isLoading', false)
                 .setIn(['error', 'appears'], true)
-                .setIn(['error', 'obj'], action.error)
+                .setIn(['error', 'message'], action.error.message)
         }
         default: {
             return state
