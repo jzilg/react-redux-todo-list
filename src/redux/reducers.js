@@ -38,8 +38,8 @@ function app(
         case RECEIVE_ERROR: {
             return state
                 .set('isLoading', false)
-                .set(['error', 'appears'], true)
-                .set(['error', 'obj'], action.error)
+                .setIn(['error', 'appears'], true)
+                .setIn(['error', 'obj'], action.error)
         }
         default: {
             return state
