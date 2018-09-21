@@ -1,4 +1,5 @@
 import React from 'react'
+import { List as ImmutableList } from 'immutable'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
@@ -13,7 +14,7 @@ describe('List', () => {
     const saveTodo = () => {}
     const removeTodo = () => {}
     const isLoading = false
-    const todos = [
+    const todos = ImmutableList([
         {
             id: 1,
             name: 'Papa anrufen',
@@ -32,14 +33,14 @@ describe('List', () => {
             schedule: 7,
             lastEvent: '2018-05-12',
         },
-    ]
+    ])
 
     it('should render correcty one todo', () => {
         const addTodo = () => {}
-        const todo = todos.slice().splice(0, 1)
+        const todosWithOneTodo = todos.filter(todo => todo.id === 1)
         const component = shallow((
             <List
-                todos={todo}
+                todos={todosWithOneTodo}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import List from '../components/List'
 import {
@@ -49,7 +50,7 @@ class App extends React.Component {
 
         return (
             <List
-                todos={todos.toJS()}
+                todos={todos}
                 addTodo={this.addTodo}
                 saveTodo={this.saveTodo}
                 removeTodo={this.removeTodo}
@@ -61,7 +62,7 @@ class App extends React.Component {
 
 App.propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    todos: PropTypes.object.isRequired,
+    todos: ImmutablePropTypes.list.isRequired,
     dispatch: PropTypes.func.isRequired,
 }
 

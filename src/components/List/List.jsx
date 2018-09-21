@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import Todo from '../Todo'
 import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
 import './list.scss'
@@ -12,7 +13,7 @@ const List = ({
     isLoading,
 }) => {
     const createNewId = () => {
-        if (!todos.length) {
+        if (!todos.size) {
             return 0
         }
         const ids = todos.map(todo => todo.id)
@@ -68,7 +69,7 @@ const List = ({
 }
 
 List.propTypes = {
-    todos: PropTypes.array.isRequired,
+    todos: ImmutablePropTypes.list.isRequired,
     addTodo: PropTypes.func.isRequired,
     saveTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
