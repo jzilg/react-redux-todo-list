@@ -16,7 +16,7 @@ function app(
     state = Map({
         isLoading: false,
         error: Map({
-            appears: false,
+            occurred: false,
             message: '',
         }),
     }),
@@ -38,7 +38,7 @@ function app(
         case RECEIVE_ERROR: {
             return state
                 .set('isLoading', false)
-                .setIn(['error', 'appears'], true)
+                .setIn(['error', 'occurred'], true)
                 .setIn(['error', 'message'], action.error.message)
         }
         default: {

@@ -8,7 +8,7 @@ import App from './App'
 
 const Root = ({ store, error, isLoading }) => {
     const loader = isLoading ? <Loading /> : null
-    const content = error.get('appears') ? <Error message={error.get('message')} /> : <App />
+    const content = error.get('occurred') ? <Error message={error.get('message')} /> : <App />
 
     return (
         <Provider store={store}>
@@ -24,7 +24,7 @@ Root.propTypes = {
     store: PropTypes.object.isRequired,
     isLoading: PropTypes.bool.isRequired,
     error: ImmutablePropTypes.mapContains({
-        appears: PropTypes.bool.isRequired,
+        occurred: PropTypes.bool.isRequired,
         message: PropTypes.string.isRequired,
     }).isRequired,
 }
