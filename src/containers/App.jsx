@@ -38,7 +38,7 @@ class App extends React.Component {
         const emptyTodo = {
             id,
             name: '',
-            schedule: 0,
+            schedule: 1,
             lastEvent: '',
         }
 
