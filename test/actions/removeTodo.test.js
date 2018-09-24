@@ -6,6 +6,7 @@ import {
     removeTodo,
     REMOVE_TODO_REQUEST,
     REMOVE_TODO_SUCCESS,
+    RECEIVE_ERROR,
 } from '../../src/redux/actions'
 
 describe('removeTodo', () => {
@@ -14,6 +15,11 @@ describe('removeTodo', () => {
     const todo = {
         id: 1,
     }
+
+    afterEach(() => {
+        fetchMock.reset()
+        fetchMock.restore()
+    })
 
     it('should create the action SAVE_TODO_SUCCESS when save todo has been done', () => {
         fetchMock.deleteOnce('*', {
@@ -24,6 +30,22 @@ describe('removeTodo', () => {
         const expectedActions = [
             { type: REMOVE_TODO_REQUEST },
             { type: REMOVE_TODO_SUCCESS, data: todo },
+        ]
+
+        return store.dispatch(removeTodo(todo)).then(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+        })
+    })
+
+
+    it('should create the action RECEIVE_ERROR when remove todo has failed', () => {
+        const error = 'Error'
+        fetchMock.mock('*', { throws: error })
+
+        const store = mockStore()
+        const expectedActions = [
+            { type: REMOVE_TODO_REQUEST },
+            { type: RECEIVE_ERROR, error },
         ]
 
         return store.dispatch(removeTodo(todo)).then(() => {
