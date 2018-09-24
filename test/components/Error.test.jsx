@@ -9,10 +9,8 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('Error', () => {
     it('should render correcty', () => {
-        const errorObj = {
-            msg: 'An Error occurred',
-        }
-        const component = shallow(<Error obj={errorObj} />)
+        const message = 'An Error occurred'
+        const component = shallow(<Error message={message} />)
         const tree = shallowToJson(component)
         expect(tree).toMatchSnapshot()
     })
