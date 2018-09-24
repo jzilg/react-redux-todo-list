@@ -12,7 +12,7 @@ class Todo extends React.Component {
         this.state = {
             id: todo.id,
             name: todo.name,
-            schedule: parseInt(todo.schedule, 10) || 1,
+            schedule: parseInt(todo.schedule, 10),
             lastEvent: todo.lastEvent || props.today,
         }
 
