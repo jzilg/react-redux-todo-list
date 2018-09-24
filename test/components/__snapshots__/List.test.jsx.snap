@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List should render correcty more todos right sorted 1`] = `
+exports[`List should render correctly more todos right sorted 1`] = `
 <div
   className="container"
 >
@@ -80,7 +80,7 @@ exports[`List should render correcty more todos right sorted 1`] = `
 </div>
 `;
 
-exports[`List should render correcty one todo 1`] = `
+exports[`List should render correctly one todo 1`] = `
 <div
   className="container"
 >

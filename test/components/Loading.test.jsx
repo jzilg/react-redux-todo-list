@@ -8,7 +8,7 @@ import Loading from '../../src/components/Loading'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('Loading', () => {
-    it('should render correcty', () => {
+    it('should render correctly', () => {
         const component = shallow(<Loading />)
         const tree = shallowToJson(component)
         expect(tree).toMatchSnapshot()

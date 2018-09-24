@@ -8,7 +8,7 @@ import Error from '../../src/components/Error'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('Error', () => {
-    it('should render correcty', () => {
+    it('should render correctly', () => {
         const message = 'An Error occurred'
         const component = shallow(<Error message={message} />)
         const tree = shallowToJson(component)

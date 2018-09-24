@@ -35,7 +35,7 @@ describe('List', () => {
         },
     ])
 
-    it('should render correcty one todo', () => {
+    it('should render correctly one todo', () => {
         const addTodo = () => {}
         const todosWithOneTodo = todos.filter(todo => todo.id === 1)
         const component = shallow((
@@ -51,7 +51,7 @@ describe('List', () => {
         expect(tree).toMatchSnapshot()
     })
 
-    it('should render correcty more todos right sorted', () => {
+    it('should render correctly more todos right sorted', () => {
         const addTodo = () => {}
         const component = shallow((
             <List
@@ -66,11 +66,26 @@ describe('List', () => {
         expect(tree).toMatchSnapshot()
     })
 
-    it('should call add todo if button is clicked', () => {
+    it('should call add todo if button is clicked and todos are set', () => {
         const addTodo = jest.fn()
         const component = shallow((
             <List
                 todos={todos}
+                addTodo={addTodo}
+                saveTodo={saveTodo}
+                removeTodo={removeTodo}
+                isLoading={isLoading}
+            />
+        ))
+        component.find('button').simulate('click')
+        expect(addTodo.mock.calls.length).toBe(1)
+    })
+
+    it('should call add todo if button is clicked and todos are empty', () => {
+        const addTodo = jest.fn()
+        const component = shallow((
+            <List
+                todos={ImmutableList()}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
