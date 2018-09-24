@@ -3,13 +3,13 @@ import fetchMock from 'fetch-mock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 import {
-    removeTodo,
-    REMOVE_TODO_REQUEST,
-    REMOVE_TODO_SUCCESS,
+    saveTodo,
+    SAVE_TODO_REQUEST,
+    SAVE_TODO_SUCCESS,
     RECEIVE_ERROR,
-} from '../../src/redux/actions'
+} from '../../../src/redux/actions'
 
-describe('removeTodo', () => {
+describe('saveTodo', () => {
     const middleware = [thunk]
     const mockStore = configureMockStore(middleware)
     const todo = {
@@ -22,33 +22,32 @@ describe('removeTodo', () => {
     })
 
     it('should create the action SAVE_TODO_SUCCESS when save todo has been done', () => {
-        fetchMock.deleteOnce('*', {
+        fetchMock.putOnce('*', {
             todo,
         })
 
         const store = mockStore()
         const expectedActions = [
-            { type: REMOVE_TODO_REQUEST },
-            { type: REMOVE_TODO_SUCCESS, data: todo },
+            { type: SAVE_TODO_REQUEST },
+            { type: SAVE_TODO_SUCCESS, data: todo },
         ]
 
-        return store.dispatch(removeTodo(todo)).then(() => {
+        return store.dispatch(saveTodo(todo)).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
 
-
-    it('should create the action RECEIVE_ERROR when remove todo has failed', () => {
+    it('should create the action RECEIVE_ERROR when save todo has failed', () => {
         const error = 'Error'
         fetchMock.mock('*', { throws: error })
 
         const store = mockStore()
         const expectedActions = [
-            { type: REMOVE_TODO_REQUEST },
+            { type: SAVE_TODO_REQUEST },
             { type: RECEIVE_ERROR, error },
         ]
 
-        return store.dispatch(removeTodo(todo)).then(() => {
+        return store.dispatch(saveTodo(todo)).then(() => {
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
