@@ -3,6 +3,7 @@ module.exports = {
     collectCoverageFrom: [
         'src/**/*.{js,jsx}',
         '!src/**/index.{js,jsx}',
+        '!src/redux/store.js',
     ],
     globals: {
         BACKEND_URL: 'http://example.com',
