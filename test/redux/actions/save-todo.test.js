@@ -7,7 +7,7 @@ import {
     saveTodo,
     SAVE_TODO_REQUEST,
     SAVE_TODO_SUCCESS,
-} from '../../../src/redux/actions/saveTodo.actions'
+} from '../../../src/redux/actions/save-todo.actions'
 
 describe('saveTodo', () => {
     const middleware = [thunk]

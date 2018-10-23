@@ -1,10 +1,10 @@
 import expect from 'expect'
 import { Map, List } from 'immutable'
 import rootReducer from '../../src/redux/reducers/root.reducer'
-import { REQUEST_TODOS, RECEIVE_TODOS } from '../../src/redux/actions/fetchTodos.actions'
-import { ADD_TODO_REQUEST, ADD_TODO_SUCCESS } from '../../src/redux/actions/addTodo.actions'
-import { SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS } from '../../src/redux/actions/saveTodo.actions'
-import { REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS } from '../../src/redux/actions/removeTodo.actions'
+import { REQUEST_TODOS, RECEIVE_TODOS } from '../../src/redux/actions/fetch-todos.actions'
+import { ADD_TODO_REQUEST, ADD_TODO_SUCCESS } from '../../src/redux/actions/add-todo.actions'
+import { SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS } from '../../src/redux/actions/save-todo.actions'
+import { REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS } from '../../src/redux/actions/remove-todo.actions'
 import { RECEIVE_ERROR } from '../../src/redux/actions/error.actions'
 
 describe('rootReducer', () => {
