@@ -1,6 +1,6 @@
 import expect from 'expect'
 import { Map, List } from 'immutable'
-import rootReducer from '../../src/redux/reducers'
+import rootReducer from '../../src/redux/reducers/root.reducer'
 import {
     REQUEST_TODOS,
     RECEIVE_TODOS,
@@ -11,7 +11,7 @@ import {
     REMOVE_TODO_REQUEST,
     REMOVE_TODO_SUCCESS,
     RECEIVE_ERROR,
-} from '../../src/redux/actions'
+} from '../../src/redux/actions/todos.actions'
 
 describe('rootReducer', () => {
     const initStates = {

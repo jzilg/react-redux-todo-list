@@ -1,13 +1,5 @@
 import 'whatwg-fetch'
-
-export const RECEIVE_ERROR = 'RECIEVE_ERROR'
-
-function receiveError(error) {
-    return {
-        error,
-        type: RECEIVE_ERROR,
-    }
-}
+import { receiveError } from './error.actions'
 
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'

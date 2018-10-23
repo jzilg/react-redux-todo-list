@@ -2,12 +2,12 @@ import expect from 'expect'
 import fetchMock from 'fetch-mock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
+import { RECEIVE_ERROR } from '../../../src/redux/actions/error.actions'
 import {
     saveTodo,
     SAVE_TODO_REQUEST,
     SAVE_TODO_SUCCESS,
-    RECEIVE_ERROR,
-} from '../../../src/redux/actions'
+} from '../../../src/redux/actions/todos.actions'
 
 describe('saveTodo', () => {
     const middleware = [thunk]
