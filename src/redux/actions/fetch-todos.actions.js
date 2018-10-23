@@ -10,10 +10,10 @@ function requestTodos() {
     }
 }
 
-function receiveTodos(json) {
+function receiveTodos(todos) {
     return {
         type: RECEIVE_TODOS,
-        data: json,
+        data: todos,
     }
 }
 
@@ -25,7 +25,7 @@ export function fetchTodos() {
 
         return fetch(url)
             .then(json => json.json())
-            .then(json => dispatch(receiveTodos(json)))
+            .then(todos => dispatch(receiveTodos(todos)))
             .catch(error => dispatch(receiveError(error)))
     }
 }
