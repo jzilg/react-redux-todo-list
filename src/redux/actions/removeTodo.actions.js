@@ -20,9 +20,13 @@ function removeTodoSuccess(data) {
 export function removeTodo(data) {
     return (dispatch) => {
         dispatch(removeTodoRequest())
-        return fetch(`${BACKEND_URL}/todos/${data.id}`, {
+
+        const url = `${BACKEND_URL}/todos/${data.id}`
+        const request = fetch(url, {
             method: 'DELETE',
         })
+
+        return request
             .then(() => dispatch(removeTodoSuccess(data)))
             .catch(error => dispatch(receiveError(error)))
     }

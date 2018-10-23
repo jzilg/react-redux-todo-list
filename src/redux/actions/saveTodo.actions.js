@@ -20,13 +20,17 @@ function saveTodoSuccess(data) {
 export function saveTodo(data) {
     return (dispatch) => {
         dispatch(saveTodoRequest())
-        return fetch(`${BACKEND_URL}/todos/${data.id}`, {
+
+        const url = `${BACKEND_URL}/todos/${data.id}`
+        const request = fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
+
+        return request
             .then(() => dispatch(saveTodoSuccess(data)))
             .catch(error => dispatch(receiveError(error)))
     }

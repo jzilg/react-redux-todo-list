@@ -20,7 +20,10 @@ function receiveTodos(json) {
 export function fetchTodos() {
     return (dispatch) => {
         dispatch(requestTodos())
-        return fetch(`${BACKEND_URL}/todos`)
+
+        const url = `${BACKEND_URL}/todos`
+
+        return fetch(url)
             .then(json => json.json())
             .then(json => dispatch(receiveTodos(json)))
             .catch(error => dispatch(receiveError(error)))

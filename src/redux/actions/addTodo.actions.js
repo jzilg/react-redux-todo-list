@@ -20,13 +20,17 @@ function addTodoSuccess(data) {
 export function addTodo(data) {
     return (dispatch) => {
         dispatch(addTodoRequest())
-        return fetch(`${BACKEND_URL}/todos`, {
+
+        const url = `${BACKEND_URL}/todos`
+        const request = fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
+
+        return request
             .then(() => dispatch(addTodoSuccess(data)))
             .catch(error => dispatch(receiveError(error)))
     }
