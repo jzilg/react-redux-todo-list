@@ -1,10 +1,8 @@
 import { List } from 'immutable'
-import {
-    ADD_TODO_SUCCESS,
-    RECEIVE_TODOS,
-    REMOVE_TODO_SUCCESS,
-    SAVE_TODO_SUCCESS,
-} from '../actions/fetchTodos.actions'
+import { RECEIVE_TODOS } from '../actions/fetchTodos.actions'
+import { ADD_TODO_SUCCESS } from '../actions/addTodo.actions'
+import { SAVE_TODO_SUCCESS } from '../actions/saveTodo.actions'
+import { REMOVE_TODO_SUCCESS } from '../actions/removeTodo.actions'
 
 function todos(
     state = List(),

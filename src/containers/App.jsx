@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import List from '../components/List'
-import {
-    fetchTodos,
-    addTodo,
-    saveTodo,
-    removeTodo,
-} from '../redux/actions/fetchTodos.actions'
+import { fetchTodos } from '../redux/actions/fetchTodos.actions'
+import { addTodo } from '../redux/actions/addTodo.actions'
+import { saveTodo } from '../redux/actions/saveTodo.actions'
+import { removeTodo } from '../redux/actions/removeTodo.actions'
 
 class App extends React.Component {
     constructor() {

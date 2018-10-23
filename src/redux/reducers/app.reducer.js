@@ -1,11 +1,9 @@
 import { Map } from 'immutable'
-import {
-    ADD_TODO_REQUEST,
-    ADD_TODO_SUCCESS, RECEIVE_ERROR, RECEIVE_TODOS,
-    REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS,
-    REQUEST_TODOS,
-    SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS
-} from '../actions/fetchTodos.actions'
+import { REQUEST_TODOS, RECEIVE_TODOS } from '../actions/fetchTodos.actions'
+import { ADD_TODO_REQUEST, ADD_TODO_SUCCESS } from '../actions/addTodo.actions'
+import { SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS } from '../actions/saveTodo.actions'
+import { REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS } from '../actions/removeTodo.actions'
+import { RECEIVE_ERROR } from '../actions/error.actions'
 
 function app(
     state = Map({
