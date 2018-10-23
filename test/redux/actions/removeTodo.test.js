@@ -7,7 +7,7 @@ import {
     removeTodo,
     REMOVE_TODO_REQUEST,
     REMOVE_TODO_SUCCESS,
-} from '../../../src/redux/actions/todos.actions'
+} from '../../../src/redux/actions/removeTodo.actions'
 
 describe('removeTodo', () => {
     const middleware = [thunk]

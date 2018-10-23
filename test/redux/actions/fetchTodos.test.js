@@ -7,7 +7,7 @@ import {
     fetchTodos,
     REQUEST_TODOS,
     RECEIVE_TODOS,
-} from '../../../src/redux/actions/todos.actions'
+} from '../../../src/redux/actions/fetchTodos.actions'
 
 describe('fetchTodos', () => {
     const middleware = [thunk]

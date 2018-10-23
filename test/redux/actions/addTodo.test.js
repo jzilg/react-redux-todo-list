@@ -7,7 +7,7 @@ import {
     addTodo,
     ADD_TODO_REQUEST,
     ADD_TODO_SUCCESS,
-} from '../../../src/redux/actions/todos.actions'
+} from '../../../src/redux/actions/addTodo.actions'
 
 describe('addTodo', () => {
     const middleware = [thunk]

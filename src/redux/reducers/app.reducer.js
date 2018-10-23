@@ -5,7 +5,7 @@ import {
     REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS,
     REQUEST_TODOS,
     SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS
-} from '../actions/todos.actions'
+} from '../actions/fetchTodos.actions'
 
 function app(
     state = Map({

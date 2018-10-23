@@ -11,7 +11,7 @@ import {
     REMOVE_TODO_REQUEST,
     REMOVE_TODO_SUCCESS,
     RECEIVE_ERROR,
-} from '../../src/redux/actions/todos.actions'
+} from '../../src/redux/actions/fetchTodos.actions'
 
 describe('rootReducer', () => {
     const initStates = {

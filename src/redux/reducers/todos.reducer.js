@@ -4,7 +4,7 @@ import {
     RECEIVE_TODOS,
     REMOVE_TODO_SUCCESS,
     SAVE_TODO_SUCCESS,
-} from '../actions/todos.actions'
+} from '../actions/fetchTodos.actions'
 
 function todos(
     state = List(),
