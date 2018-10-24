@@ -29,7 +29,7 @@ describe('removeTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: REMOVE_TODO_REQUEST },
-            { type: REMOVE_TODO_SUCCESS, data: todo },
+            { type: REMOVE_TODO_SUCCESS, payload: { todo } },
         ]
 
         return store.dispatch(removeTodo(todo)).then(() => {
@@ -45,7 +45,7 @@ describe('removeTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: REMOVE_TODO_REQUEST },
-            { type: RECEIVE_ERROR, error },
+            { type: RECEIVE_ERROR, payload: { error } },
         ]
 
         return store.dispatch(removeTodo(todo)).then(() => {

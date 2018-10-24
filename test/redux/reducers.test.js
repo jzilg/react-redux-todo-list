@@ -43,7 +43,9 @@ describe('rootReducer', () => {
         ]
         const action = {
             type: RECEIVE_TODOS,
-            data: todos,
+            payload: {
+                todos,
+            },
         }
         const expectedState = {
             app: initStates.app,
@@ -63,7 +65,9 @@ describe('rootReducer', () => {
         const todo = { id: 0 }
         const action = {
             type: ADD_TODO_SUCCESS,
-            data: todo,
+            payload: {
+                todo,
+            },
         }
         const expectedState = {
             app: initStates.app,
@@ -87,7 +91,9 @@ describe('rootReducer', () => {
         }
         const action = {
             type: SAVE_TODO_SUCCESS,
-            data: todo,
+            payload: {
+                todo,
+            },
         }
         expect(rootReducer(initStatesWithTodo, action)).toEqual(initStatesWithTodo)
     })
@@ -107,7 +113,9 @@ describe('rootReducer', () => {
         }
         const action = {
             type: REMOVE_TODO_SUCCESS,
-            data: todo,
+            payload: {
+                todo,
+            },
         }
         const expectedState = {
             app: initStates.app,
@@ -117,18 +125,20 @@ describe('rootReducer', () => {
     })
 
     it('should handle RECEIVE_ERROR', () => {
-        const message = 'Error'
+        const error = {
+            message: 'Error',
+        }
         const action = {
             type: RECEIVE_ERROR,
-            error: {
-                message,
+            payload: {
+                error,
             },
         }
         const expectedState = {
             app: initStates.app
                 .set('isLoading', false)
                 .setIn(['error', 'hasOccurred'], true)
-                .setIn(['error', 'message'], message),
+                .setIn(['error', 'message'], error.message),
             todos: initStates.todos,
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)

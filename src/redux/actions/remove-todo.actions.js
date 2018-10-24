@@ -4,30 +4,26 @@ import { receiveError } from './error.actions'
 export const REMOVE_TODO_REQUEST = 'REMOVE_TODO_REQUEST'
 export const REMOVE_TODO_SUCCESS = 'REMOVE_TODO_SUCCESS'
 
-function removeTodoRequest() {
-    return {
-        type: REMOVE_TODO_REQUEST,
-    }
-}
+const removeTodoRequest = () => ({
+    type: REMOVE_TODO_REQUEST,
+})
 
-function removeTodoSuccess(data) {
-    return {
-        data,
-        type: REMOVE_TODO_SUCCESS,
-    }
-}
+const removeTodoSuccess = todo => ({
+    type: REMOVE_TODO_SUCCESS,
+    payload: {
+        todo,
+    },
+})
 
-export function removeTodo(data) {
-    return (dispatch) => {
-        dispatch(removeTodoRequest())
+export const removeTodo = todo => (dispatch) => {
+    dispatch(removeTodoRequest())
 
-        const url = `${BACKEND_URL}/todos/${data.id}`
-        const request = fetch(url, {
-            method: 'DELETE',
-        })
+    const url = `${BACKEND_URL}/todos/${todo.id}`
+    const request = fetch(url, {
+        method: 'DELETE',
+    })
 
-        return request
-            .then(() => dispatch(removeTodoSuccess(data)))
-            .catch(error => dispatch(receiveError(error)))
-    }
+    return request
+        .then(() => dispatch(removeTodoSuccess(todo)))
+        .catch(error => dispatch(receiveError(error)))
 }

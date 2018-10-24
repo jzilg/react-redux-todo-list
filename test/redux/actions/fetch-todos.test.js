@@ -20,14 +20,12 @@ describe('fetchTodos', () => {
     })
 
     it('should create the action RECEIVE_TODOS when fetching todos has been done', () => {
-        fetchMock.getOnce('*', {
-            todos,
-        })
+        fetchMock.getOnce('*', todos)
 
         const store = mockStore()
         const expectedActions = [
             { type: REQUEST_TODOS },
-            { type: RECEIVE_TODOS, data: { todos } },
+            { type: RECEIVE_TODOS, payload: { todos } },
         ]
 
         return store.dispatch(fetchTodos()).then(() => {
@@ -42,7 +40,7 @@ describe('fetchTodos', () => {
         const store = mockStore()
         const expectedActions = [
             { type: REQUEST_TODOS },
-            { type: RECEIVE_ERROR, error },
+            { type: RECEIVE_ERROR, payload: { error } },
         ]
 
         return store.dispatch(fetchTodos()).then(() => {

@@ -32,7 +32,7 @@ function app(
             return state
                 .set('isLoading', false)
                 .setIn(['error', 'hasOccurred'], true)
-                .setIn(['error', 'message'], action.error.message)
+                .setIn(['error', 'message'], action.payload.error.message)
         }
         default: {
             return state

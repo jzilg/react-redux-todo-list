@@ -29,7 +29,7 @@ describe('saveTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: SAVE_TODO_REQUEST },
-            { type: SAVE_TODO_SUCCESS, data: todo },
+            { type: SAVE_TODO_SUCCESS, payload: { todo } },
         ]
 
         return store.dispatch(saveTodo(todo)).then(() => {
@@ -44,7 +44,7 @@ describe('saveTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: SAVE_TODO_REQUEST },
-            { type: RECEIVE_ERROR, error },
+            { type: RECEIVE_ERROR, payload: { error } },
         ]
 
         return store.dispatch(saveTodo(todo)).then(() => {

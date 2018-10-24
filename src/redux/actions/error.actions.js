@@ -1,8 +1,8 @@
-export const RECEIVE_ERROR = 'RECIEVE_ERROR'
+export const RECEIVE_ERROR = 'RECEIVE_ERROR'
 
-export function receiveError(error) {
-    return {
+export const receiveError = error => ({
+    type: RECEIVE_ERROR,
+    payload: {
         error,
-        type: RECEIVE_ERROR,
-    }
-}
+    },
+})

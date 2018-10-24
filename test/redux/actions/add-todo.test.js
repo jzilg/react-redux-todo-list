@@ -29,7 +29,7 @@ describe('addTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: ADD_TODO_REQUEST },
-            { type: ADD_TODO_SUCCESS, data: todo },
+            { type: ADD_TODO_SUCCESS, payload: { todo } },
         ]
 
         return store.dispatch(addTodo(todo)).then(() => {
@@ -44,7 +44,7 @@ describe('addTodo', () => {
         const store = mockStore()
         const expectedActions = [
             { type: ADD_TODO_REQUEST },
-            { type: RECEIVE_ERROR, error },
+            { type: RECEIVE_ERROR, payload: { error } },
         ]
 
         return store.dispatch(addTodo(todo)).then(() => {

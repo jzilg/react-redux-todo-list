@@ -10,17 +10,17 @@ function todos(
 ) {
     switch (action.type) {
         case ADD_TODO_SUCCESS: {
-            return state.push(action.data)
+            return state.push(action.payload.todo)
         }
         case REMOVE_TODO_SUCCESS: {
-            return state.filter(todo => todo.id !== action.data.id)
+            return state.filter(todo => todo.id !== action.payload.todo.id)
         }
         case SAVE_TODO_SUCCESS: {
-            const index = state.findIndex(todo => todo.id === action.data.id)
-            return state.set(index, action.data)
+            const index = state.findIndex(todo => todo.id === action.payload.todo.id)
+            return state.set(index, action.payload.todo)
         }
         case RECEIVE_TODOS: {
-            return state.concat(action.data)
+            return state.concat(action.payload.todos)
         }
         default: {
             return state
