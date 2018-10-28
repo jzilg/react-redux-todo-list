@@ -2,7 +2,7 @@
 
 .todo {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 2fr 1fr .4fr;
+    grid-template-columns: 1.6fr 1fr 2fr .6fr .4fr .4fr;
     grid-column-gap: 10px;
     align-items: center;
     height: 100%;
@@ -28,10 +28,32 @@
     @extend .input;
 }
 
+.save-btn,
 .delete-btn {
     height: 100%;
-    border-style: none;
+    padding: 0;
+    border-width: 0;
     background-color: transparent;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.save-btn {
+    transition: background-color .2s, color .2s, opacity .2s;
+
+    &[disabled] {
+        opacity: 0;
+    }
+
+    &:hover {
+        background-color: $green;
+        color: #fff;
+    }
+}
+
+.delete-btn {
     font-size: 24px;
     color: $grey;
     transition: background-color .2s, color .2s;

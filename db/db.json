@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "name": "Blumen gießen",
+      "schedule": 5,
+      "lastEvent": "2018-10-28"
+    },
+    {
+      "id": 2,
+      "name": "Tu es 2",
+      "schedule": 1,
+      "lastEvent": "2018-10-28"
+    },
+    {
+      "id": 3,
+      "name": "",
+      "schedule": 1,
+      "lastEvent": "2018-10-28"
+    }
+  ]
+}

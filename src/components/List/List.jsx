@@ -12,6 +12,8 @@ const List = ({
     removeTodo,
     isLoading,
 }) => {
+    const today = getTodaysDate()
+
     const createNewId = () => {
         if (!todos.size) {
             return 0
@@ -26,15 +28,16 @@ const List = ({
         addTodo(id)
     }
 
-    const today = getTodaysDate()
+    const sortByMostUrgent = (todoA, todoB) => {
+        const durationA = getDurationBetweenDates(today, todoA.lastEvent)
+        const durationB = getDurationBetweenDates(today, todoB.lastEvent)
+        const daysA = todoA.schedule - durationA
+        const daysB = todoB.schedule - durationB
+        return daysA - daysB
+    }
+
     const todoElements = todos
-        .sort((todoA, todoB) => {
-            const durationA = getDurationBetweenDates(today, todoA.lastEvent)
-            const durationB = getDurationBetweenDates(today, todoB.lastEvent)
-            const daysA = todoA.schedule - durationA
-            const daysB = todoB.schedule - durationB
-            return daysA - daysB
-        })
+        .sort(sortByMostUrgent)
         .map(todo => (
             <li key={todo.id} styleName="list-element">
                 <Todo
