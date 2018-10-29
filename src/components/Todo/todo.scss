@@ -51,7 +51,6 @@
 }
 
 .save-btn {
-    line-height: 0;
     transition: background-color .2s, color .2s, opacity .2s;
 
     &[disabled] {
