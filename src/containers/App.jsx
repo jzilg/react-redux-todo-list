@@ -21,14 +21,14 @@ class App extends React.Component {
         props.dispatch(fetchTodos())
     }
 
-    saveTodo(data) {
+    saveTodo(todo) {
         const { dispatch } = this.props
-        dispatch(saveTodo(data))
+        dispatch(saveTodo(todo))
     }
 
-    removeTodo(data) {
+    removeTodo(todo) {
         const { dispatch } = this.props
-        dispatch(removeTodo(data))
+        dispatch(removeTodo(todo))
     }
 
     addTodo(id) {
