@@ -1,16 +1,11 @@
 import expect from 'expect'
 import fetchMock from 'fetch-mock'
-import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { RECEIVE_ERROR } from '../../../src/redux/actions/error.actions'
-import {
-    saveTodo,
-    SAVE_TODO_REQUEST,
-    SAVE_TODO_SUCCESS,
-} from '../../../src/redux/actions/save-todo.actions'
+import apiMiddleware from '../../../src/redux/middleware/api.middleware'
+import { saveTodo, SAVE_TODO_REQUEST } from '../../../src/redux/actions/save-todo.actions'
 
 describe('saveTodo', () => {
-    const middleware = [thunk]
+    const middleware = [apiMiddleware]
     const mockStore = configureMockStore(middleware)
     const todo = {
         id: 1,
@@ -21,34 +16,20 @@ describe('saveTodo', () => {
         fetchMock.restore()
     })
 
-    it('should create the action SAVE_TODO_SUCCESS when save todo has been done', () => {
+    it('should create the action SAVE_TODO_SUCCESS when save todo has been done', async () => {
         fetchMock.putOnce('*', {
             todo,
         })
 
         const store = mockStore()
         const expectedActions = [
-            { type: SAVE_TODO_REQUEST },
-            { type: SAVE_TODO_SUCCESS, payload: { todo } },
+            {
+                type: SAVE_TODO_REQUEST,
+                payload: expect.any(Object),
+            },
         ]
 
-        return store.dispatch(saveTodo(todo)).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
-        })
-    })
-
-    it('should create the action RECEIVE_ERROR when save todo has failed', () => {
-        const error = 'Error'
-        fetchMock.mock('*', { throws: error })
-
-        const store = mockStore()
-        const expectedActions = [
-            { type: SAVE_TODO_REQUEST },
-            { type: RECEIVE_ERROR, payload: { error } },
-        ]
-
-        return store.dispatch(saveTodo(todo)).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
-        })
+        await store.dispatch(saveTodo(todo))
+        expect(store.getActions()).toEqual(expectedActions)
     })
 })

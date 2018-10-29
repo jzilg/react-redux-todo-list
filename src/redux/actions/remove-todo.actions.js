@@ -1,12 +1,8 @@
-import 'whatwg-fetch'
-import { receiveError } from './error.actions'
+import { API } from '../middleware/api.middleware'
+import getApiOptions from '../api-options'
 
-export const REMOVE_TODO_REQUEST = 'REMOVE_TODO_REQUEST'
+export const REMOVE_TODO_REQUEST = `${API}_REMOVE_TODO_REQUEST`
 export const REMOVE_TODO_SUCCESS = 'REMOVE_TODO_SUCCESS'
-
-const removeTodoRequest = () => ({
-    type: REMOVE_TODO_REQUEST,
-})
 
 const removeTodoSuccess = todo => ({
     type: REMOVE_TODO_SUCCESS,
@@ -15,15 +11,16 @@ const removeTodoSuccess = todo => ({
     },
 })
 
-export const removeTodo = todo => (dispatch) => {
-    dispatch(removeTodoRequest())
-
+export const removeTodo = (todo) => {
     const url = `${BACKEND_URL}/todos/${todo.id}`
-    const request = fetch(url, {
-        method: 'DELETE',
-    })
+    const options = getApiOptions('DELETE')
 
-    return request
-        .then(() => dispatch(removeTodoSuccess(todo)))
-        .catch(error => dispatch(receiveError(error)))
+    return {
+        type: REMOVE_TODO_REQUEST,
+        payload: {
+            url,
+            options,
+            successAction: () => removeTodoSuccess(todo),
+        },
+    }
 }

@@ -1,9 +1,9 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import thunk from 'redux-thunk'
+import apiMiddleware from './middleware/api.middleware'
 import rootReducer from './reducers/root.reducer'
 
 const enhancer = compose(
-    applyMiddleware(thunk),
+    applyMiddleware(apiMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : store => store,
 )
 

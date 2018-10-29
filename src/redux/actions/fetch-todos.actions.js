@@ -1,12 +1,8 @@
-import 'whatwg-fetch'
-import { receiveError } from './error.actions'
+import { API } from '../middleware/api.middleware'
+import getApiOptions from '../api-options'
 
-export const REQUEST_TODOS = 'REQUEST_TODOS'
+export const REQUEST_TODOS = `${API}_REQUEST_TODOS`
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
-
-const requestTodos = () => ({
-    type: REQUEST_TODOS,
-})
 
 const receiveTodos = todos => ({
     type: RECEIVE_TODOS,
@@ -15,13 +11,16 @@ const receiveTodos = todos => ({
     },
 })
 
-export const fetchTodos = () => (dispatch) => {
-    dispatch(requestTodos())
-
+export const fetchTodos = () => {
     const url = `${BACKEND_URL}/todos`
+    const options = getApiOptions('GET')
 
-    return fetch(url)
-        .then(json => json.json())
-        .then(todos => dispatch(receiveTodos(todos)))
-        .catch(error => dispatch(receiveError(error)))
+    return {
+        type: REQUEST_TODOS,
+        payload: {
+            url,
+            options,
+            successAction: receiveTodos,
+        },
+    }
 }

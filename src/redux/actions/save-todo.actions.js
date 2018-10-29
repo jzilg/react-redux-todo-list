@@ -1,12 +1,8 @@
-import 'whatwg-fetch'
-import { receiveError } from './error.actions'
+import { API } from '../middleware/api.middleware'
+import getApiOptions from '../api-options'
 
-export const SAVE_TODO_REQUEST = 'SAVE_TODO_REQUEST'
+export const SAVE_TODO_REQUEST = `${API}_SAVE_TODO_REQUEST`
 export const SAVE_TODO_SUCCESS = 'SAVE_TODO_SUCCESS'
-
-const saveTodoRequest = () => ({
-    type: SAVE_TODO_REQUEST,
-})
 
 const saveTodoSuccess = todo => ({
     type: SAVE_TODO_SUCCESS,
@@ -15,19 +11,16 @@ const saveTodoSuccess = todo => ({
     },
 })
 
-export const saveTodo = todo => (dispatch) => {
-    dispatch(saveTodoRequest())
-
+export const saveTodo = (todo) => {
     const url = `${BACKEND_URL}/todos/${todo.id}`
-    const request = fetch(url, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(todo),
-    })
+    const options = getApiOptions('PUT', JSON.stringify(todo))
 
-    return request
-        .then(() => dispatch(saveTodoSuccess(todo)))
-        .catch(error => dispatch(receiveError(error)))
+    return {
+        type: SAVE_TODO_REQUEST,
+        payload: {
+            url,
+            options,
+            successAction: saveTodoSuccess,
+        },
+    }
 }

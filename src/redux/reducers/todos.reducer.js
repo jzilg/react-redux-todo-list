@@ -9,18 +9,18 @@ function todos(
     action,
 ) {
     switch (action.type) {
+        case RECEIVE_TODOS: {
+            return state.concat(action.payload.todos)
+        }
         case ADD_TODO_SUCCESS: {
             return state.push(action.payload.todo)
-        }
-        case REMOVE_TODO_SUCCESS: {
-            return state.filter(todo => todo.id !== action.payload.todo.id)
         }
         case SAVE_TODO_SUCCESS: {
             const index = state.findIndex(todo => todo.id === action.payload.todo.id)
             return state.set(index, action.payload.todo)
         }
-        case RECEIVE_TODOS: {
-            return state.concat(action.payload.todos)
+        case REMOVE_TODO_SUCCESS: {
+            return state.filter(todo => todo.id !== action.payload.todo.id)
         }
         default: {
             return state

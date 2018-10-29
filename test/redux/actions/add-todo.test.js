@@ -1,16 +1,11 @@
 import expect from 'expect'
 import fetchMock from 'fetch-mock'
-import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { RECEIVE_ERROR } from '../../../src/redux/actions/error.actions'
-import {
-    addTodo,
-    ADD_TODO_REQUEST,
-    ADD_TODO_SUCCESS,
-} from '../../../src/redux/actions/add-todo.actions'
+import apiMiddleware from '../../../src/redux/middleware/api.middleware'
+import { addTodo, ADD_TODO_REQUEST } from '../../../src/redux/actions/add-todo.actions'
 
 describe('addTodo', () => {
-    const middleware = [thunk]
+    const middleware = [apiMiddleware]
     const mockStore = configureMockStore(middleware)
     const todo = {
         id: 1,
@@ -21,34 +16,20 @@ describe('addTodo', () => {
         fetchMock.restore()
     })
 
-    it('should create the action SAVE_TODO_SUCCESS when add todo has been done', () => {
+    it('should create the action SAVE_TODO_SUCCESS when add todo has been done', async () => {
         fetchMock.postOnce('*', {
             todo,
         })
 
         const store = mockStore()
         const expectedActions = [
-            { type: ADD_TODO_REQUEST },
-            { type: ADD_TODO_SUCCESS, payload: { todo } },
+            {
+                type: ADD_TODO_REQUEST,
+                payload: expect.any(Object),
+            },
         ]
 
-        return store.dispatch(addTodo(todo)).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
-        })
-    })
-
-    it('should create the action RECEIVE_ERROR when add todo has failed', () => {
-        const error = 'Error'
-        fetchMock.mock('*', { throws: error })
-
-        const store = mockStore()
-        const expectedActions = [
-            { type: ADD_TODO_REQUEST },
-            { type: RECEIVE_ERROR, payload: { error } },
-        ]
-
-        return store.dispatch(addTodo(todo)).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
-        })
+        await store.dispatch(addTodo(todo))
+        expect(store.getActions()).toEqual(expectedActions)
     })
 })
