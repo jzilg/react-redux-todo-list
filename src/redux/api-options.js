@@ -26,7 +26,7 @@ const deleteOptions = {
 }
 
 /**
- * @param {string} [method = 'GET']
+ * @param {string} [method]
  * @param {string} [body = undefined]
  * @returns {Object} fetch options
  */
