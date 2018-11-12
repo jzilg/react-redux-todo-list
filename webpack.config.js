@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
 const filename = '[name]-[contenthash]'
-const styleNameSyntax = !isDevServer ? '_[hash:base64:5]' : '[name]-[local]'
+const styleNameSyntax = '[name]-[local]'
 const getStyleLoaders = config => [
     {
         loader: MiniCssExtractPlugin.loader,
