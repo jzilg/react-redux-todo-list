@@ -7,4 +7,4 @@ const enhancer = compose(
     window.devToolsExtension ? window.devToolsExtension() : store => store,
 )
 
-export default createStore(rootReducer, {}, enhancer)
+export default createStore(rootReducer, undefined, enhancer)
