@@ -17,15 +17,9 @@ const getStyleLoaders = config => [
         loader: 'css-loader',
         options: {
             sourceMap: isDevServer,
-            importLoaders: 3,
+            importLoaders: 2,
             modules: config.modules,
             localIdentName: styleNameSyntax,
-        },
-    },
-    {
-        loader: 'group-css-media-queries-loader',
-        options: {
-            sourceMap: isDevServer,
         },
     },
     {
