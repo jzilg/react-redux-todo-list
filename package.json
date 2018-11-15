@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react / redux list for managing recurring todo's",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "build": "webpack -p --hide-modules",
     "test": "jest",
     "test:watch": "jest --watch --coverage",
