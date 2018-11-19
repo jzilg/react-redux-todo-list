@@ -12,8 +12,8 @@
     "json-server": "json-server --watch db/db.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.3.1",
     "babel-core": "^7.0.0-bridge.0",
@@ -39,12 +39,11 @@
     "jest": "^23.6.0",
     "jest-css-modules": "^1.1.0",
     "mini-css-extract-plugin": "^0.4.4",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.3.0",
     "node-sass": "^4.9.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
-    "redux-devtools": "^3.4.1",
     "redux-mock-store": "^1.5.3",
     "redux-test-utils": "^0.2.2",
     "sass-loader": "^7.1.0",
@@ -53,7 +52,7 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.3.2",
     "stylelint-webpack-plugin": "^0.10.5",
-    "webpack": "^4.23.1",
+    "webpack": "^4.26.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
@@ -66,11 +65,12 @@
     "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
+    "redux-devtools": "^3.4.2",
     "whatwg-fetch": "^2.0.4"
   }
 }
