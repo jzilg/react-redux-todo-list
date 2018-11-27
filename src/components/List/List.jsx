@@ -14,6 +14,9 @@ const List = ({
 }) => {
     const today = getTodaysDate()
 
+    /**
+     * @returns {number}
+     */
     const createNewId = () => {
         if (!todos.size) {
             return 0
@@ -28,6 +31,11 @@ const List = ({
         addTodo(id)
     }
 
+    /**
+     * @param {Object} todoA
+     * @param {Object} todoB
+     * @returns {number}
+     */
     const sortByMostUrgent = (todoA, todoB) => {
         const durationA = getDurationBetweenDates(today, todoA.lastEvent)
         const durationB = getDurationBetweenDates(today, todoB.lastEvent)

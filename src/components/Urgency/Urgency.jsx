@@ -11,6 +11,10 @@ const Urgency = ({ today, lastEvent, schedule }) => {
         )
     }
 
+    /**
+     * @param {number} duration
+     * @returns {string}
+     */
     function getUrgency(duration) {
         let days = schedule - duration
         if (days < 0) {
@@ -23,6 +27,10 @@ const Urgency = ({ today, lastEvent, schedule }) => {
         return days === 0 ? 'Do it today' : `${days} ${dayText} ${timeText}`
     }
 
+    /**
+     * @param {number} duration
+     * @returns {string}
+     */
     function getUrgencyColor(duration) {
         let color = ''
 

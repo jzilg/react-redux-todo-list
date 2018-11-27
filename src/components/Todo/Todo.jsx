@@ -37,11 +37,17 @@ class Todo extends React.Component {
         })
     }
 
+    /**
+     * @returns {boolean}
+     */
     todoHasChanged() {
         const { todo } = this.props
         return !equal(todo, this.state)
     }
 
+    /**
+     * @param {object} event
+     */
     inputChange(event) {
         const { name } = event.target
         let { value } = event.target
