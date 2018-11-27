@@ -42,8 +42,8 @@ const Urgency = ({ today, lastEvent, schedule }) => {
     }
 
     const duration = getDurationBetweenDates(today, lastEvent)
-    const color = getUrgencyColor(duration, schedule)
-    const urgency = getUrgency(duration, schedule)
+    const color = getUrgencyColor(duration)
+    const urgency = getUrgency(duration)
 
     return (
         <span className={color}>
