@@ -46,7 +46,7 @@ class Todo extends React.Component {
     }
 
     /**
-     * @param {object} event
+     * @param {Object} event
      */
     inputChange(event) {
         const { name } = event.target

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './icon.scss'
 
 /**
- * @param {object} props
+ * @param {Object} props
  * @param {string} props.name - type of icon
  * @param {string} [props.className=''] - className for icon-wrapper
  * @returns {HTMLElement}
