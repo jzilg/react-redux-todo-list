@@ -73,17 +73,12 @@ class Todo extends React.Component {
 
     render() {
         const { isLoading, today } = this.props
-        const {
-            id,
-            name,
-            schedule,
-            lastEvent,
-        } = this.state
+        const { name, schedule, lastEvent } = this.state
         const saveBtnIsDisabled = () => !this.todoHasChanged() || isLoading
         const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save Todo'
 
         return (
-            <form key={id} styleName="todo" title={name}>
+            <form styleName="todo" title={name}>
                 <input
                     type="text"
                     name="name"

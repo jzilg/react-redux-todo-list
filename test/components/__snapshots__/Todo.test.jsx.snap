@@ -2,7 +2,6 @@
 
 exports[`Todo should render correctly one todo 1`] = `
 <form
-  key="1"
   styleName="todo"
   title="Papa anrufen"
 >
