@@ -8,8 +8,8 @@ describe('helper', () => {
         expect(today).toEqual(expectedToday)
     })
 
-    it('should return -1 if the date one is one day behind date two', () => {
-        const duration = getDurationBetweenDates('2018-09-18', '2018-09-19')
-        expect(duration).toBe(-1)
+    it('should return the right duration between two dates', () => {
+        const duration = getDurationBetweenDates('2018-11-29', '2018-10-28')
+        expect(duration).toBe(32)
     })
 })

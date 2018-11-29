@@ -15,5 +15,5 @@ export function getTodaysDate() {
 export function getDurationBetweenDates(startDate, endDate) {
     const startDateMoment = moment(startDate)
     const endDateMoment = moment(endDate)
-    return moment.duration(startDateMoment.diff(endDateMoment)).asDays()
+    return startDateMoment.diff(endDateMoment, 'days')
 }
