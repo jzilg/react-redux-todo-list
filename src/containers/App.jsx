@@ -9,8 +9,8 @@ import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
 
 class App extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.addTodo = this.addTodo.bind(this)
         this.saveTodo = this.saveTodo.bind(this)
         this.removeTodo = this.removeTodo.bind(this)

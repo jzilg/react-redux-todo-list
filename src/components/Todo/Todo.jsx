@@ -7,7 +7,7 @@ import './todo.scss'
 
 class Todo extends React.Component {
     constructor(props) {
-        super()
+        super(props)
 
         const { todo } = props
 
