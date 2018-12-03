@@ -3,7 +3,7 @@ import { receiveError } from '../actions/error.actions'
 
 export const API = 'API'
 
-const requestMiddleware = ({ dispatch }) => next => (action) => {
+const apiMiddleware = ({ dispatch }) => next => (action) => {
     next(action)
 
     if (action.type.includes(API)) {
@@ -16,4 +16,4 @@ const requestMiddleware = ({ dispatch }) => next => (action) => {
     }
 }
 
-export default requestMiddleware
+export default apiMiddleware
