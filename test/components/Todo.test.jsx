@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
 import Todo from '../../src/components/Todo/Todo'
+import { getTodaysDate } from '../../src/utils/helper'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -25,7 +26,6 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
         const tree = shallowToJson(component)
@@ -39,7 +39,6 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
 
@@ -54,7 +53,6 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
 
@@ -69,7 +67,6 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
         const event = {
@@ -91,7 +88,6 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
         const event = {
@@ -117,11 +113,13 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
 
-        component.instance().setInputToday()
+        const instance = component.instance()
+        instance.today = today
+        instance.setInputToday()
+
         const stateToday = component.state('lastEvent')
         expect(stateToday).toBe(today)
     })
@@ -133,11 +131,13 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
 
-        component.instance().setInputToday()
+        const instance = component.instance()
+        instance.today = today
+        instance.setInputToday()
+
         const stateToday = component.state('lastEvent')
         expect(stateToday).toBe(today)
     })
@@ -153,11 +153,10 @@ describe('Todo', () => {
                 isLoading={false}
                 removeTodo={removeTodo}
                 saveTodo={saveTodo}
-                today={today}
             />
         ))
 
         const state = component.state('lastEvent')
-        expect(state).toBe(today)
+        expect(state).toBe(getTodaysDate())
     })
 })

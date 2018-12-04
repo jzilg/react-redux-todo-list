@@ -71,6 +71,7 @@
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
     "redux-devtools": "^3.4.2",
+    "reselect": "^4.0.0",
     "whatwg-fetch": "^2.0.4"
   }
 }

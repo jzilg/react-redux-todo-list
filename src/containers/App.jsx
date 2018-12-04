@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
+import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import List from '../components/List'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
@@ -75,7 +76,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
     isLoading: state.app.get('isLoading'),
-    todos: state.todos,
+    todos: todosSortByUrgencySelector(state),
 })
 
 export default connect(mapStateToProps)(App)

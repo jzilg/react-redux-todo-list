@@ -3,11 +3,14 @@ import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
+import { getTodaysDate } from '../../utils/helper'
 import './todo.scss'
 
 class Todo extends React.Component {
     constructor(props) {
         super(props)
+
+        this.today = getTodaysDate()
 
         const { todo } = props
 
@@ -15,7 +18,7 @@ class Todo extends React.Component {
             id: todo.id,
             name: todo.name,
             schedule: parseInt(todo.schedule, 10),
-            lastEvent: todo.lastEvent || props.today,
+            lastEvent: todo.lastEvent || this.today,
         }
 
         this.inputChange = this.inputChange.bind(this)
@@ -25,13 +28,13 @@ class Todo extends React.Component {
     }
 
     setInputToday() {
-        const { state, props } = this
-        if (state.lastEvent === props.today) {
+        const { state } = this
+        if (state.lastEvent === this.today) {
             return
         }
 
         this.setState({
-            lastEvent: props.today,
+            lastEvent: this.today,
         }, () => {
             this.saveTodo()
         })
@@ -72,7 +75,7 @@ class Todo extends React.Component {
     }
 
     render() {
-        const { isLoading, today } = this.props
+        const { isLoading } = this.props
         const { name, schedule, lastEvent } = this.state
         const saveBtnIsDisabled = () => !this.todoHasChanged() || isLoading
         const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save Todo'
@@ -125,7 +128,7 @@ class Todo extends React.Component {
                     </button>
                 </div>
                 <Urgency
-                    today={today}
+                    today={this.today}
                     lastEvent={lastEvent}
                     schedule={schedule}
                 />
@@ -167,7 +170,6 @@ Todo.propTypes = {
     }).isRequired,
     saveTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
-    today: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
 }
 

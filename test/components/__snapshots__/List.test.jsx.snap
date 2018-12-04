@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List should render correctly more todos right sorted 1`] = `
+exports[`List should render correctly more todos 1`] = `
 <div
   className="container"
 >
@@ -11,6 +11,24 @@ exports[`List should render correctly more todos right sorted 1`] = `
     styleName="list"
   >
     <li
+      key="1"
+      styleName="list-element"
+    >
+      <Todo
+        isLoading={false}
+        removeTodo={[Function]}
+        saveTodo={[Function]}
+        todo={
+          Object {
+            "id": 1,
+            "lastEvent": "2018-06-03",
+            "name": "Papa anrufen",
+            "schedule": 4,
+          }
+        }
+      />
+    </li>
+    <li
       key="2"
       styleName="list-element"
     >
@@ -18,7 +36,6 @@ exports[`List should render correctly more todos right sorted 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-18"
         todo={
           Object {
             "id": 2,
@@ -37,32 +54,12 @@ exports[`List should render correctly more todos right sorted 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-18"
         todo={
           Object {
             "id": 3,
             "lastEvent": "2018-05-12",
             "name": "Mama anrufen",
             "schedule": 7,
-          }
-        }
-      />
-    </li>
-    <li
-      key="1"
-      styleName="list-element"
-    >
-      <Todo
-        isLoading={false}
-        removeTodo={[Function]}
-        saveTodo={[Function]}
-        today="2018-09-18"
-        todo={
-          Object {
-            "id": 1,
-            "lastEvent": "2018-06-03",
-            "name": "Papa anrufen",
-            "schedule": 4,
           }
         }
       />
@@ -98,7 +95,6 @@ exports[`List should render correctly one todo 1`] = `
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
-        today="2018-09-18"
         todo={
           Object {
             "id": 1,

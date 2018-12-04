@@ -51,7 +51,7 @@ describe('List', () => {
         expect(tree).toMatchSnapshot()
     })
 
-    it('should render correctly more todos right sorted', () => {
+    it('should render correctly more todos', () => {
         const addTodo = () => {}
         const component = shallow((
             <List
