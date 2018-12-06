@@ -4,20 +4,19 @@ import Adapter from 'enzyme-adapter-react-16'
 import { createMockStore } from 'redux-test-utils'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import { Map, List } from 'immutable'
 import App from '../../src/containers/App'
 
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('App', () => {
     const state = {
-        app: Map({
+        app: {
             isLoading: true,
-            error: Map({
+            error: {
                 hasOccurred: false,
-            }),
-        }),
-        todos: List([]),
+            },
+        },
+        todos: [],
     }
     const store = createMockStore(state)
     const todo = {

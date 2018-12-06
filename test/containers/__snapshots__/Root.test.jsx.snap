@@ -4,7 +4,7 @@ exports[`Root should render correctly when error hasOccurred 1`] = `
 <Root
   dispatch={[Function]}
   error={
-    Immutable.Map {
+    Object {
       "hasOccurred": true,
       "message": "error",
     }
@@ -50,7 +50,7 @@ exports[`Root should render correctly when loading 1`] = `
 <Root
   dispatch={[Function]}
   error={
-    Immutable.Map {
+    Object {
       "hasOccurred": false,
       "message": "error",
     }
@@ -96,7 +96,7 @@ exports[`Root should render correctly when not loading and no error hasOccurred 
 <Root
   dispatch={[Function]}
   error={
-    Immutable.Map {
+    Object {
       "hasOccurred": false,
       "message": "error",
     }

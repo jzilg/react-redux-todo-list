@@ -1,11 +1,10 @@
-import { List } from 'immutable'
 import { RECEIVE_TODOS } from '../actions/fetch-todos.actions'
 import { ADD_TODO_SUCCESS } from '../actions/add-todo.actions'
 import { SAVE_TODO_SUCCESS } from '../actions/save-todo.actions'
 import { REMOVE_TODO_SUCCESS } from '../actions/remove-todo.actions'
 
 function todos(
-    state = List(),
+    state = [],
     action,
 ) {
     switch (action.type) {
@@ -13,11 +12,13 @@ function todos(
             return state.concat(action.payload.todos)
         }
         case ADD_TODO_SUCCESS: {
-            return state.push(action.payload.todo)
+            return state.concat(action.payload.todo)
         }
         case SAVE_TODO_SUCCESS: {
-            const index = state.findIndex(todo => todo.id === action.payload.todo.id)
-            return state.set(index, action.payload.todo)
+            return state.map((todo) => {
+                const updatedTodo = todo.id === action.payload.todo.id ? action.payload.todo : todo
+                return updatedTodo
+            })
         }
         case REMOVE_TODO_SUCCESS: {
             return state.filter(todo => todo.id !== action.payload.todo.id)

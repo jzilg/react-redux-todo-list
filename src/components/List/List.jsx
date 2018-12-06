@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import Todo from '../Todo'
 import './list.scss'
 
@@ -61,7 +60,7 @@ const List = ({
 }
 
 List.propTypes = {
-    todos: ImmutablePropTypes.list.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
     addTodo: PropTypes.func.isRequired,
     saveTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,

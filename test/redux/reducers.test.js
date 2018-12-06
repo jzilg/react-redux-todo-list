@@ -1,5 +1,4 @@
 import expect from 'expect'
-import { Map, List } from 'immutable'
 import rootReducer from '../../src/redux/reducers/root.reducer'
 import { REQUEST_TODOS, RECEIVE_TODOS } from '../../src/redux/actions/fetch-todos.actions'
 import { ADD_TODO_REQUEST, ADD_TODO_SUCCESS } from '../../src/redux/actions/add-todo.actions'
@@ -9,18 +8,23 @@ import { RECEIVE_ERROR } from '../../src/redux/actions/error.actions'
 
 describe('rootReducer', () => {
     const initStates = {
-        app: Map({
+        app: {
             isLoading: false,
-            error: Map({
+            error: {
                 hasOccurred: false,
                 message: '',
-            }),
-        }),
-        todos: List(),
+            },
+        },
+        todos: [],
     }
     const loadingStates = {
-        app: initStates.app.set('isLoading', true),
-        todos: List(),
+        app: {
+            ...initStates.app,
+            isLoading: true,
+        },
+        todos: [
+            ...initStates.todos,
+        ],
     }
 
     it('should return the initial state if no matching action is called', () => {
@@ -49,7 +53,7 @@ describe('rootReducer', () => {
         }
         const expectedState = {
             app: initStates.app,
-            todos: List(todos),
+            todos,
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)
     })
@@ -71,7 +75,7 @@ describe('rootReducer', () => {
         }
         const expectedState = {
             app: initStates.app,
-            todos: initStates.todos.push(todo),
+            todos: initStates.todos.concat(todo),
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)
     })
@@ -87,7 +91,7 @@ describe('rootReducer', () => {
         const todo = { id: 0 }
         const initStatesWithTodo = {
             app: initStates.app,
-            todos: initStates.todos.push(todo),
+            todos: initStates.todos.concat(todo),
         }
         const action = {
             type: SAVE_TODO_SUCCESS,
@@ -109,7 +113,7 @@ describe('rootReducer', () => {
         const todo = { id: 0 }
         const initStatesWithTodo = {
             app: initStates.app,
-            todos: initStates.todos.push(todo),
+            todos: initStates.todos.concat(todo),
         }
         const action = {
             type: REMOVE_TODO_SUCCESS,
@@ -119,7 +123,7 @@ describe('rootReducer', () => {
         }
         const expectedState = {
             app: initStates.app,
-            todos: List(),
+            todos: [],
         }
         expect(rootReducer(initStatesWithTodo, action)).toEqual(expectedState)
     })
@@ -135,10 +139,15 @@ describe('rootReducer', () => {
             },
         }
         const expectedState = {
-            app: initStates.app
-                .set('isLoading', false)
-                .setIn(['error', 'hasOccurred'], true)
-                .setIn(['error', 'message'], error.message),
+            app: {
+                ...initStates.app,
+                isLoading: false,
+                error: {
+                    ...initStates.error,
+                    hasOccurred: true,
+                    message: error.message,
+                },
+            },
             todos: initStates.todos,
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)

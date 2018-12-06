@@ -1,5 +1,4 @@
 import React from 'react'
-import { List as ImmutableList } from 'immutable'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
@@ -14,7 +13,7 @@ describe('List', () => {
     const saveTodo = () => {}
     const removeTodo = () => {}
     const isLoading = false
-    const todos = ImmutableList([
+    const todos = [
         {
             id: 1,
             name: 'Papa anrufen',
@@ -33,7 +32,7 @@ describe('List', () => {
             schedule: 7,
             lastEvent: '2018-05-12',
         },
-    ])
+    ]
 
     it('should render correctly one todo', () => {
         const addTodo = () => {}
@@ -85,7 +84,7 @@ describe('List', () => {
         const addTodo = jest.fn()
         const component = shallow((
             <List
-                todos={ImmutableList()}
+                todos={[]}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}

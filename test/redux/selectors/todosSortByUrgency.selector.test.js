@@ -1,10 +1,9 @@
 import expect from 'expect'
-import { List as ImmutableList } from 'immutable'
 import todosSortByUrgency from '../../../src/redux/selectors/todosSortByUrgency.selector'
 
 describe('todosSortByUrgency.selector', () => {
     const state = {
-        todos: ImmutableList([
+        todos: [
             {
                 id: 1,
                 name: 'Papa anrufen',
@@ -23,11 +22,11 @@ describe('todosSortByUrgency.selector', () => {
                 schedule: 7,
                 lastEvent: '2018-05-12',
             },
-        ]),
+        ],
     }
 
     it('should sort the todos by urgency', () => {
-        const expectedList = ImmutableList([
+        const expectedList = [
             {
                 id: 2,
                 name: 'Superfit',
@@ -46,7 +45,7 @@ describe('todosSortByUrgency.selector', () => {
                 schedule: 4,
                 lastEvent: '2018-06-03',
             },
-        ])
+        ]
 
         const sortedTodos = todosSortByUrgency(state)
         expect(sortedTodos).toEqual(expectedList)

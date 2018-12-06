@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import List from '../components/List'
@@ -70,12 +69,12 @@ class App extends React.Component {
 
 App.propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    todos: ImmutablePropTypes.list.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
     dispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-    isLoading: state.app.get('isLoading'),
+    isLoading: state.app.isLoading,
     todos: todosSortByUrgencySelector(state),
 })
 

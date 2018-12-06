@@ -37,6 +37,6 @@ exports[`App should render correctly 1`] = `
       "unsubscribe": undefined,
     }
   }
-  todos={Immutable.List []}
+  todos={Array []}
 />
 `;
