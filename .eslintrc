@@ -46,14 +46,6 @@
     "react/forbid-prop-types": [false],
     "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": ["error", 4],
-    "react/prefer-stateless-function": [1],
     "jsx-a11y/no-autofocus": [false],
-    "jsx-a11y/no-static-element-interactions": [false],
-    "jsx-a11y/click-events-have-key-events": [false],
-    "jsx-a11y/anchor-is-valid": ["error", {
-      "components": ["Link"],
-      "specialLink": ["to", "hrefLeft", "hrefRight"],
-      "aspects": ["noHref", "invalidHref", "preferButton"]
-    }]
   }
 }
