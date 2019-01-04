@@ -15,7 +15,6 @@ exports[`Error should render correctly 1`] = `
        
       <a
         href="http://example.com"
-        styleName="link"
       >
         http://example.com
       </a>

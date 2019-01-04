@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './icon.scss'
+import style from './icon.scss'
 
 /**
  * @param {Object} props
@@ -39,9 +39,9 @@ const Icon = ({
     const finalHeight = height || icon.height
 
     return (
-        <span styleName="wrapper" className={className}>
+        <span className={`${style.wrapper} ${className}`}>
             <svg
-                styleName="svg"
+                className={style.svg}
                 width={finalWidth}
                 height={finalHeight}
                 viewBox={viewBox}

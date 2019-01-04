@@ -2,13 +2,11 @@
 
 exports[`Icon should render correctly 1`] = `
 <span
-  className=""
-  styleName="wrapper"
+  className="undefined "
 >
   <svg
     height={32}
     role="img"
-    styleName="svg"
     viewBox="0 0 448 512"
     width={28}
     xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,6 @@
 
 exports[`Todo should render correctly one todo 1`] = `
 <form
-  styleName="todo"
   title="Papa anrufen"
 >
   <input
@@ -11,7 +10,6 @@ exports[`Todo should render correctly one todo 1`] = `
     name="name"
     onChange={[Function]}
     placeholder="Name"
-    styleName="input"
     type="text"
     value="Papa anrufen"
   />
@@ -24,7 +22,6 @@ exports[`Todo should render correctly one todo 1`] = `
       min="1"
       name="schedule"
       onChange={[Function]}
-      styleName="schedule-input"
       type="number"
       value={4}
     />
@@ -39,7 +36,6 @@ exports[`Todo should render correctly one todo 1`] = `
     <input
       name="lastEvent"
       onChange={[Function]}
-      styleName="last-event-input"
       type="date"
       value="2018-06-03"
     />
@@ -55,16 +51,11 @@ exports[`Todo should render correctly one todo 1`] = `
     schedule={4}
     today="2018-12-04"
   />
-  <ul
-    styleName="btn-list"
-  >
-    <li
-      styleName="btn-list-item"
-    >
+  <ul>
+    <li>
       <button
         disabled={true}
         onClick={[Function]}
-        styleName="save-btn"
         title=""
         type="button"
       >
@@ -76,13 +67,10 @@ exports[`Todo should render correctly one todo 1`] = `
         />
       </button>
     </li>
-    <li
-      styleName="btn-list-item"
-    >
+    <li>
       <button
         disabled={false}
         onClick={[Function]}
-        styleName="delete-btn"
         title="Remove Todo"
         type="button"
       >

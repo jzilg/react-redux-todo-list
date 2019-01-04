@@ -1,9 +1,9 @@
 import React from 'react'
 import spinner from './spinner.svg'
-import './loading.scss'
+import style from './loading.scss'
 
 const Loading = () => (
-    <div styleName="loading">
+    <div className={style.loading}>
         <img src={spinner} alt="Loading..." />
     </div>
 )

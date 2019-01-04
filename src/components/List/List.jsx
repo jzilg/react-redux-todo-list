@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from '../Todo'
-import './list.scss'
+import style from './list.scss'
 
 const List = ({
     todos,
@@ -28,7 +28,7 @@ const List = ({
     }
 
     const todoElements = todos.map(todo => (
-        <li key={todo.id} styleName="list-element">
+        <li key={todo.id} className={style['list-element']}>
             <Todo
                 todo={todo}
                 saveTodo={saveTodo}
@@ -43,12 +43,12 @@ const List = ({
             <h1>
                 Todo List
             </h1>
-            <ul styleName="list">
+            <ul className={style.list}>
                 {todoElements}
             </ul>
             <button
                 type="button"
-                styleName="add-todo-btn"
+                className={style['add-todo-btn']}
                 title="Add Todo"
                 onClick={addNewTodo}
                 disabled={isLoading}

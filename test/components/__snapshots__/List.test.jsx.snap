@@ -7,12 +7,9 @@ exports[`List should render correctly more todos 1`] = `
   <h1>
     Todo List
   </h1>
-  <ul
-    styleName="list"
-  >
+  <ul>
     <li
       key="1"
-      styleName="list-element"
     >
       <Todo
         isLoading={false}
@@ -30,7 +27,6 @@ exports[`List should render correctly more todos 1`] = `
     </li>
     <li
       key="2"
-      styleName="list-element"
     >
       <Todo
         isLoading={false}
@@ -48,7 +44,6 @@ exports[`List should render correctly more todos 1`] = `
     </li>
     <li
       key="3"
-      styleName="list-element"
     >
       <Todo
         isLoading={false}
@@ -68,7 +63,6 @@ exports[`List should render correctly more todos 1`] = `
   <button
     disabled={false}
     onClick={[Function]}
-    styleName="add-todo-btn"
     title="Add Todo"
     type="button"
   >
@@ -84,12 +78,9 @@ exports[`List should render correctly one todo 1`] = `
   <h1>
     Todo List
   </h1>
-  <ul
-    styleName="list"
-  >
+  <ul>
     <li
       key="1"
-      styleName="list-element"
     >
       <Todo
         isLoading={false}
@@ -109,7 +100,6 @@ exports[`List should render correctly one todo 1`] = `
   <button
     disabled={false}
     onClick={[Function]}
-    styleName="add-todo-btn"
     title="Add Todo"
     type="button"
   >

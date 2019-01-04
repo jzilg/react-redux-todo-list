@@ -62,21 +62,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            plugins: [
-                                ['react-css-modules', {
-                                    generateScopedName: styleNameSyntax,
-                                    filetypes: {
-                                        '.scss': {
-                                            syntax: 'postcss-scss',
-                                        },
-                                    },
-                                }],
-                            ],
-                        },
-                    },
+                    'babel-loader',
                     'eslint-loader',
                 ],
             },

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './error.scss'
+import style from './error.scss'
 
 const Error = ({ message }) => (
     <div className="container">
@@ -11,7 +11,7 @@ const Error = ({ message }) => (
             <p>
                 Is
                 {' '}
-                <a styleName="link" href={BACKEND_URL}>
+                <a className={style.link} href={BACKEND_URL}>
                     {BACKEND_URL}
                 </a>
                 {' '}

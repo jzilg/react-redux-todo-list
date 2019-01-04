@@ -4,7 +4,7 @@ import equal from 'deep-equal'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'
-import './todo.scss'
+import style from './todo.scss'
 
 class Todo extends React.Component {
     constructor(props) {
@@ -81,7 +81,7 @@ class Todo extends React.Component {
         const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save Todo'
 
         return (
-            <form styleName="todo" title={name}>
+            <form className={style.todo} title={name}>
                 <input
                     type="text"
                     name="name"
@@ -90,7 +90,7 @@ class Todo extends React.Component {
                     autoComplete="off"
                     onChange={this.inputChange}
                     autoFocus={!name.length}
-                    styleName="input"
+                    className={style.input}
                 />
                 <div>
                     <span>
@@ -99,7 +99,7 @@ class Todo extends React.Component {
                     <input
                         type="number"
                         name="schedule"
-                        styleName="schedule-input"
+                        className={style['schedule-input']}
                         value={schedule}
                         min="1"
                         autoComplete="off"
@@ -116,7 +116,7 @@ class Todo extends React.Component {
                     <input
                         type="date"
                         name="lastEvent"
-                        styleName="last-event-input"
+                        className={style['last-event-input']}
                         value={lastEvent}
                         onChange={this.inputChange}
                     />
@@ -132,11 +132,11 @@ class Todo extends React.Component {
                     lastEvent={lastEvent}
                     schedule={schedule}
                 />
-                <ul styleName="btn-list">
-                    <li styleName="btn-list-item">
+                <ul className={style['btn-list']}>
+                    <li className={style['btn-list-item']}>
                         <button
                             type="button"
-                            styleName="save-btn"
+                            className={style['save-btn']}
                             onClick={this.saveTodo}
                             disabled={saveBtnIsDisabled()}
                             title={saveBtnTitle}
@@ -144,10 +144,10 @@ class Todo extends React.Component {
                             <Icon name="save" width="1em" height="auto" />
                         </button>
                     </li>
-                    <li styleName="btn-list-item">
+                    <li className={style['btn-list-item']}>
                         <button
                             type="button"
-                            styleName="delete-btn"
+                            className={style['delete-btn']}
                             onClick={this.removeTodo}
                             disabled={isLoading}
                             title="Remove Todo"
