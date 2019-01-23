@@ -1,26 +1,18 @@
 # macOS
-*.DS_Store
-.AppleDouble
-.LSOverride
-
-# Eclipse
-.classpath
-.project
-.settings/
+.DS_Store
 
 # JetBrains
-*.iml
-.idea/
+.idea
 
 # VS Code
-.vscode/
+.vscode
 
 # npm
-node_modules/
+node_modules
 npm-debug.log*
 
 # Jest
-coverage/
+coverage
 
-# built files
-/dist/
+# Built files
+/dist
