@@ -4,14 +4,6 @@
     "stylelint-config-recommended-scss"
   ],
   "rules": {
-    "indentation": 4,
-    "max-nesting-depth": 3,
-    "selector-max-id": 0,
-    "selector-pseudo-element-colon-notation": "single",
-    "font-family-name-quotes": "always-where-recommended",
-    "string-quotes": "double",
-    "selector-attribute-quotes": "always",
-    "number-leading-zero": "never",
     "at-rule-empty-line-before": [
       "always", {
         "except": [
@@ -27,6 +19,14 @@
           "if"
         ]
       }
-    ]
+    ],
+    "font-family-name-quotes": "always-where-recommended",
+    "indentation": 4,
+    "number-leading-zero": "never",
+    "max-nesting-depth": 1,
+    "selector-attribute-quotes": "always",
+    "selector-max-id": 0,
+    "selector-pseudo-element-colon-notation": "single",
+    "string-quotes": "double"
   }
 }
