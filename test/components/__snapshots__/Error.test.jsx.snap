@@ -10,17 +10,6 @@ exports[`Error should render correctly 1`] = `
     <h2>
       An Error occurred
     </h2>
-    <p>
-      Is
-       
-      <a
-        href="http://example.com"
-      >
-        http://example.com
-      </a>
-       
-      active?
-    </p>
   </div>
 </div>
 `;

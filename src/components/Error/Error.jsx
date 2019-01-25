@@ -5,18 +5,9 @@ import style from './error.scss'
 const Error = ({ message }) => (
     <div className="container">
         <div className="error">
-            <h2>
+            <h2 className={style.title}>
                 {message}
             </h2>
-            <p>
-                Is
-                {' '}
-                <a className={style.link} href={BACKEND_URL}>
-                    {BACKEND_URL}
-                </a>
-                {' '}
-                active?
-            </p>
         </div>
     </div>
 )

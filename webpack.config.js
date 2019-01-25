@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
@@ -106,9 +105,6 @@ module.exports = {
         new StyleLintPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-        }),
-        new webpack.DefinePlugin({
-            BACKEND_URL: '"http://localhost:3000"',
         }),
         new MiniCssExtractPlugin({
             filename: `${filename}.css`,

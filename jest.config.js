@@ -5,9 +5,6 @@ module.exports = {
         '!src/**/index.{js,jsx}',
         '!src/redux/store.js',
     ],
-    globals: {
-        BACKEND_URL: 'http://example.com',
-    },
     moduleNameMapper: {
         '\\.(scss)$': '<rootDir>/node_modules/jest-css-modules',
         '\\.(svg)$': '<rootDir>/test/empty-module.js',
