@@ -107,9 +107,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
-        new webpack.DefinePlugin({
-            BACKEND_URL: '"http://localhost:3000"',
-        }),
         new MiniCssExtractPlugin({
             filename: `${filename}.css`,
             chunkFilename: `${filename}.css`,
