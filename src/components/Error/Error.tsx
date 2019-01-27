@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import style from './error.scss'
 
 interface ErrorProps {
-    message: string,
+    message: string
 }
 
 const Error = ({ message }: ErrorProps): ReactElement<{}> => (

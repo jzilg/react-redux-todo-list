@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../interfaces/todo.interface'
+import State from '../interfaces/state.interface'
 import List from '../components/List'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
@@ -9,7 +10,7 @@ import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
 
 interface AppProps extends AppStateProps {
-    dispatch: Function,
+    dispatch: Function
 }
 
 class App extends React.Component<AppProps, {}> {
@@ -20,7 +21,7 @@ class App extends React.Component<AppProps, {}> {
         this.removeTodo = this.removeTodo.bind(this)
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         const { props } = this
         props.dispatch(fetchTodos())
     }
@@ -28,7 +29,7 @@ class App extends React.Component<AppProps, {}> {
     /**
      * @param {Object} todo
      */
-    saveTodo(todo) {
+    saveTodo(todo): void {
         const { dispatch } = this.props
         dispatch(saveTodo(todo))
     }
@@ -36,7 +37,7 @@ class App extends React.Component<AppProps, {}> {
     /**
      * @param {Object} todo
      */
-    removeTodo(todo) {
+    removeTodo(todo): void {
         const { dispatch } = this.props
         dispatch(removeTodo(todo))
     }
@@ -44,7 +45,7 @@ class App extends React.Component<AppProps, {}> {
     /**
      * @param {number} id
      */
-    addTodo(id) {
+    addTodo(id): void {
         const { dispatch } = this.props
         const emptyTodo = {
             id,
@@ -56,7 +57,7 @@ class App extends React.Component<AppProps, {}> {
         dispatch(addTodo(emptyTodo))
     }
 
-    render() {
+    render(): ReactNode {
         const { isLoading, todos } = this.props
 
         return (
@@ -72,11 +73,11 @@ class App extends React.Component<AppProps, {}> {
 }
 
 interface AppStateProps {
-    isLoading: boolean,
-    todos: Todo[],
+    isLoading: boolean
+    todos: Todo[]
 }
 
-const mapStateToProps = (state: any): AppStateProps => ({
+const mapStateToProps = (state: State): AppStateProps => ({
     isLoading: state.app.isLoading,
     todos: todosSortByUrgencySelector(state),
 })

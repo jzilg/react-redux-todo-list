@@ -1,6 +1,6 @@
-import React from 'react'
-import TodoType from '../../interfaces/todo.interface'
+import React, { ReactNode } from 'react'
 import equal from 'deep-equal'
+import TodoType from '../../interfaces/todo.interface'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'
@@ -8,9 +8,9 @@ import style from './todo.scss'
 
 interface TodoProps {
     todo: TodoType
-    saveTodo: Function,
-    removeTodo: Function,
-    isLoading: boolean,
+    saveTodo: Function
+    removeTodo: Function
+    isLoading: boolean
 }
 
 interface TodoState extends TodoType {}
@@ -36,7 +36,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
         this.setInputToday = this.setInputToday.bind(this)
     }
 
-    setInputToday() {
+    setInputToday(): void {
         const { state } = this
         if (state.lastEvent === this.today) {
             return
@@ -52,7 +52,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
     /**
      * @returns {boolean}
      */
-    todoHasChanged() {
+    todoHasChanged(): boolean {
         const { todo } = this.props
         return !equal(todo, this.state)
     }
@@ -60,7 +60,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
     /**
      * @param {Object} event
      */
-    inputChange(event) {
+    inputChange(event): void {
         const { name } = event.target
         let { value } = event.target
 
@@ -68,25 +68,26 @@ class Todo extends React.Component<TodoProps, TodoState> {
             value = parseInt(value, 10)
         }
 
-        this.setState({
+        this.setState(state => ({
+            ...state,
             [name]: value,
-        })
+        }))
     }
 
-    saveTodo() {
+    saveTodo(): void {
         const { saveTodo } = this.props
         saveTodo(this.state)
     }
 
-    removeTodo() {
+    removeTodo(): void {
         const { removeTodo } = this.props
         removeTodo(this.state)
     }
 
-    render() {
+    render(): ReactNode {
         const { isLoading } = this.props
         const { name, schedule, lastEvent } = this.state
-        const saveBtnIsDisabled = () => !this.todoHasChanged() || isLoading
+        const saveBtnIsDisabled = (): boolean => !this.todoHasChanged() || isLoading
         const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save Todo'
 
         return (

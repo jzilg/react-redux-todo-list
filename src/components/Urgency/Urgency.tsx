@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import PropTypes from 'prop-types'
 import { getDurationBetweenDates } from '../../utils/helper'
 
-const Urgency = ({ today, lastEvent, schedule }) => {
+const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
     if (!lastEvent || !schedule) {
         return (
             <span>
@@ -15,7 +15,7 @@ const Urgency = ({ today, lastEvent, schedule }) => {
      * @param {number} duration
      * @returns {string}
      */
-    function getUrgency(duration) {
+    function getUrgency(duration): string {
         let days = schedule - duration
         if (days < 0) {
             days = -(days)
@@ -31,7 +31,7 @@ const Urgency = ({ today, lastEvent, schedule }) => {
      * @param {number} duration
      * @returns {string}
      */
-    function getUrgencyColor(duration) {
+    function getUrgencyColor(duration): string {
         let color = ''
 
         if (duration !== schedule) {

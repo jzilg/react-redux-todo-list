@@ -4,11 +4,11 @@ import Todo from '../Todo'
 import style from './list.scss'
 
 interface ListProps {
-    todos: TodoType[],
-    addTodo: Function,
-    saveTodo: Function,
-    removeTodo: Function,
-    isLoading: boolean,
+    todos: TodoType[]
+    addTodo: Function
+    saveTodo: Function
+    removeTodo: Function
+    isLoading: boolean
 }
 
 const List = ({
