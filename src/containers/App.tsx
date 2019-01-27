@@ -1,14 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
+import Todo from '../interfaces/todo.interface'
 import List from '../components/List'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
 import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
 
-class App extends React.Component {
+interface AppProps extends AppStateProps {
+    dispatch: Function,
+}
+
+class App extends React.Component<AppProps, {}> {
     constructor(props) {
         super(props)
         this.addTodo = this.addTodo.bind(this)
@@ -67,13 +71,12 @@ class App extends React.Component {
     }
 }
 
-App.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-    dispatch: PropTypes.func.isRequired,
+interface AppStateProps {
+    isLoading: boolean,
+    todos: Todo[],
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any): AppStateProps => ({
     isLoading: state.app.isLoading,
     todos: todosSortByUrgencySelector(state),
 })

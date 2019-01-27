@@ -1,16 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import TodoType from '../../interfaces/todo.interface'
 import equal from 'deep-equal'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'
 import style from './todo.scss'
 
-class Todo extends React.Component {
+interface TodoProps {
+    todo: TodoType
+    saveTodo: Function,
+    removeTodo: Function,
+    isLoading: boolean,
+}
+
+interface TodoState extends TodoType {}
+
+class Todo extends React.Component<TodoProps, TodoState> {
+    today = getTodaysDate()
+
     constructor(props) {
         super(props)
-
-        this.today = getTodaysDate()
 
         const { todo } = props
 
@@ -159,18 +168,6 @@ class Todo extends React.Component {
             </form>
         )
     }
-}
-
-Todo.propTypes = {
-    todo: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        schedule: PropTypes.number.isRequired,
-        lastEvent: PropTypes.string.isRequired,
-    }).isRequired,
-    saveTodo: PropTypes.func.isRequired,
-    removeTodo: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
 }
 
 export default Todo

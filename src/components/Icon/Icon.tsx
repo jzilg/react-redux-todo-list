@@ -2,18 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './icon.scss'
 
-/**
- * @param {Object} props
- * @param {string} props.name - type of icon
- * @param {string} [props.className=''] - className for icon-wrapper
- * @returns {HTMLElement}
- */
+interface IconProps {
+    name: string,
+    width?: string,
+    height?: string,
+    className?: string,
+}
+
 const Icon = ({
     name,
     width,
     height,
     className,
-}) => {
+}: IconProps) => {
     const icons = {
         save: {
             width: 28,
@@ -52,13 +53,6 @@ const Icon = ({
             </svg>
         </span>
     )
-}
-
-Icon.propTypes = {
-    name: PropTypes.string.isRequired,
-    width: PropTypes.string,
-    height: PropTypes.string,
-    className: PropTypes.string,
 }
 
 Icon.defaultProps = {
