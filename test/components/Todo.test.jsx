@@ -20,6 +20,9 @@ describe('Todo', () => {
     }
 
     it('should render correctly one todo', () => {
+        // pretend today is the date when the snapshot was taken
+        Date.now = () => 1543881600000
+
         const component = shallow((
             <Todo
                 todo={todo}
