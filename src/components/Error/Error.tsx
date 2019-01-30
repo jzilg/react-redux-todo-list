@@ -1,8 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 import style from './error.scss'
 
-const Error = ({ message }) => (
+interface ErrorProps {
+    message: string
+}
+
+const Error = ({ message }: ErrorProps): ReactElement<{}> => (
     <div className="container">
         <div className="error">
             <h2 className={style.title}>
@@ -11,9 +14,5 @@ const Error = ({ message }) => (
         </div>
     </div>
 )
-
-Error.propTypes = {
-    message: PropTypes.string.isRequired,
-}
 
 export default Error

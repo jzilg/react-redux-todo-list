@@ -38,7 +38,7 @@ const getStyleLoaders = config => [
 module.exports = {
     mode: !isDevServer ? 'production' : 'development',
     devtool: !isDevServer ? '' : 'source-map',
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve('dist'),
         filename: `${filename}.js`,
@@ -48,6 +48,8 @@ module.exports = {
         extensions: [
             '.js',
             '.jsx',
+            '.ts',
+            '.tsx',
         ],
     },
     module: {
@@ -58,7 +60,7 @@ module.exports = {
                 loader: 'html-loader',
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: [
                     'babel-loader',

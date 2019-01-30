@@ -1,7 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
+import TodoType from '../../interfaces/todo.interface'
 import Todo from '../Todo'
 import style from './list.scss'
+
+interface ListProps {
+    todos: TodoType[]
+    addTodo: Function
+    saveTodo: Function
+    removeTodo: Function
+    isLoading: boolean
+}
 
 const List = ({
     todos,
@@ -9,12 +17,9 @@ const List = ({
     saveTodo,
     removeTodo,
     isLoading,
-}) => {
-    /**
-     * @returns {number}
-     */
-    const createNewId = () => {
-        if (!todos.size) {
+}: ListProps): ReactElement<{}> => {
+    const createNewId = (): number => {
+        if (!todos.length) {
             return 0
         }
         const ids = todos.map(todo => todo.id)
@@ -22,7 +27,7 @@ const List = ({
         return highestId + 1
     }
 
-    const addNewTodo = () => {
+    const addNewTodo = (): void => {
         const id = createNewId()
         addTodo(id)
     }
@@ -57,14 +62,6 @@ const List = ({
             </button>
         </div>
     )
-}
-
-List.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-    addTodo: PropTypes.func.isRequired,
-    saveTodo: PropTypes.func.isRequired,
-    removeTodo: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
 }
 
 export default List

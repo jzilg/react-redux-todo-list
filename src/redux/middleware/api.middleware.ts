@@ -1,9 +1,20 @@
-import 'whatwg-fetch'
+import Action from '../../interfaces/action.interface'
 import { receiveError } from '../actions/error.actions'
+import 'whatwg-fetch'
 
 export const API = 'API'
 
-const apiMiddleware = ({ dispatch }) => next => (action) => {
+interface ApiActionPayload {
+    url: string
+    options: object
+    successAction: Function
+}
+
+interface ApiAction extends Action {
+    payload: ApiActionPayload
+}
+
+const apiMiddleware = ({ dispatch }): Function => next => (action: ApiAction) => {
     next(action)
 
     if (action.type.includes(API)) {

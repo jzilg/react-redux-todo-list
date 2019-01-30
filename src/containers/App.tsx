@@ -1,14 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
+import Todo from '../interfaces/todo.interface'
+import State from '../interfaces/state.interface'
 import List from '../components/List'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
 import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
 
-class App extends React.Component {
+interface AppProps extends AppStateProps {
+    dispatch: Function
+}
+
+class App extends React.Component<AppProps, {}> {
     constructor(props) {
         super(props)
         this.addTodo = this.addTodo.bind(this)
@@ -16,7 +21,7 @@ class App extends React.Component {
         this.removeTodo = this.removeTodo.bind(this)
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         const { props } = this
         props.dispatch(fetchTodos())
     }
@@ -24,7 +29,7 @@ class App extends React.Component {
     /**
      * @param {Object} todo
      */
-    saveTodo(todo) {
+    saveTodo(todo): void {
         const { dispatch } = this.props
         dispatch(saveTodo(todo))
     }
@@ -32,7 +37,7 @@ class App extends React.Component {
     /**
      * @param {Object} todo
      */
-    removeTodo(todo) {
+    removeTodo(todo): void {
         const { dispatch } = this.props
         dispatch(removeTodo(todo))
     }
@@ -40,7 +45,7 @@ class App extends React.Component {
     /**
      * @param {number} id
      */
-    addTodo(id) {
+    addTodo(id): void {
         const { dispatch } = this.props
         const emptyTodo = {
             id,
@@ -52,7 +57,7 @@ class App extends React.Component {
         dispatch(addTodo(emptyTodo))
     }
 
-    render() {
+    render(): ReactNode {
         const { isLoading, todos } = this.props
 
         return (
@@ -67,13 +72,12 @@ class App extends React.Component {
     }
 }
 
-App.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-    dispatch: PropTypes.func.isRequired,
+interface AppStateProps {
+    isLoading: boolean
+    todos: Todo[]
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State): AppStateProps => ({
     isLoading: state.app.isLoading,
     todos: todosSortByUrgencySelector(state),
 })
