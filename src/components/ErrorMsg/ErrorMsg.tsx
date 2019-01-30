@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
-import style from './error.scss'
+import style from './error-msg.scss'
 
 interface ErrorProps {
     message: string
 }
 
-const Error = ({ message }: ErrorProps): ReactElement<{}> => (
+const ErrorMsg = ({ message }: ErrorProps): ReactElement<{}> => (
     <div className="container">
         <div className="error">
             <h2 className={style.title}>
@@ -15,4 +15,4 @@ const Error = ({ message }: ErrorProps): ReactElement<{}> => (
     </div>
 )
 
-export default Error
+export default ErrorMsg

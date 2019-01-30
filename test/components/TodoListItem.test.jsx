@@ -3,11 +3,11 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import List from '../../src/components/List'
+import TodoList from '../../src/components/TodoList'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('List', () => {
+describe('TodoList', () => {
     Date.now = () => '2018-09-18' // otherwise today is today
 
     const saveTodo = () => {}
@@ -38,7 +38,7 @@ describe('List', () => {
         const addTodo = () => {}
         const todosWithOneTodo = todos.filter(todo => todo.id === 1)
         const component = shallow((
-            <List
+            <TodoList
                 todos={todosWithOneTodo}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
@@ -53,7 +53,7 @@ describe('List', () => {
     it('should render correctly more todos', () => {
         const addTodo = () => {}
         const component = shallow((
-            <List
+            <TodoList
                 todos={todos}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
@@ -68,7 +68,7 @@ describe('List', () => {
     it('should call add todo if button is clicked and todos are set', () => {
         const addTodo = jest.fn()
         const component = shallow((
-            <List
+            <TodoList
                 todos={todos}
                 addTodo={addTodo}
                 saveTodo={saveTodo}
@@ -83,7 +83,7 @@ describe('List', () => {
     it('should call add todo if button is clicked and todos are empty', () => {
         const addTodo = jest.fn()
         const component = shallow((
-            <List
+            <TodoList
                 todos={[]}
                 addTodo={addTodo}
                 saveTodo={saveTodo}

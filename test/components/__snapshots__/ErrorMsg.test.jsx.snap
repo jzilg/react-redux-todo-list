@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error should render correctly 1`] = `
+exports[`ErrorMsg should render correctly 1`] = `
 <div
   className="container"
 >
@@ -8,7 +8,7 @@ exports[`Error should render correctly 1`] = `
     className="error"
   >
     <h2>
-      An Error occurred
+      An ErrorMsg occurred
     </h2>
   </div>
 </div>

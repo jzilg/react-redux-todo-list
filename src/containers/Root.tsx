@@ -1,9 +1,9 @@
 import React, { Fragment, ReactElement } from 'react'
 import { Provider, connect } from 'react-redux'
-import ErrorType from '../interfaces/error.interface'
+import Error from '../interfaces/error.interface'
 import State from '../interfaces/state.interface'
 import Loading from '../components/Loading'
-import Error from '../components/Error'
+import ErrorMsg from '../components/ErrorMsg'
 import App from './App'
 
 interface RootProps extends RootStateProps {
@@ -12,7 +12,7 @@ interface RootProps extends RootStateProps {
 
 const Root = ({ store, error, isLoading }: RootProps): ReactElement<{}> => {
     const loader = isLoading ? <Loading /> : null
-    const content = error.hasOccurred ? <Error message={error.message} /> : <App />
+    const content = error.hasOccurred ? <ErrorMsg message={error.message} /> : <App />
 
     return (
         <Provider store={store}>
@@ -25,7 +25,7 @@ const Root = ({ store, error, isLoading }: RootProps): ReactElement<{}> => {
 }
 
 interface RootStateProps {
-    error: ErrorType
+    error: Error
     isLoading: boolean
 }
 

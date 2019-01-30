@@ -130,7 +130,7 @@ describe('rootReducer', () => {
 
     it('should handle RECEIVE_ERROR', () => {
         const error = {
-            message: 'Error',
+            message: 'ErrorMsg',
         }
         const action = {
             type: RECEIVE_ERROR,

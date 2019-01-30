@@ -3,14 +3,14 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import Error from '../../src/components/Error'
+import ErrorMsg from '../../src/components/ErrorMsg'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Error', () => {
+describe('ErrorMsg', () => {
     it('should render correctly', () => {
-        const message = 'An Error occurred'
-        const component = shallow(<Error message={message} />)
+        const message = 'An ErrorMsg occurred'
+        const component = shallow(<ErrorMsg message={message} />)
         const tree = shallowToJson(component)
         expect(tree).toMatchSnapshot()
     })

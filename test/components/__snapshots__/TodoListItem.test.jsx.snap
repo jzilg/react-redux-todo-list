@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List should render correctly more todos 1`] = `
+exports[`TodoList should render correctly more todos 1`] = `
 <div
   className="container"
 >
@@ -11,7 +11,7 @@ exports[`List should render correctly more todos 1`] = `
     <li
       key="1"
     >
-      <Todo
+      <TodoListItem
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
@@ -28,7 +28,7 @@ exports[`List should render correctly more todos 1`] = `
     <li
       key="2"
     >
-      <Todo
+      <TodoListItem
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
@@ -45,7 +45,7 @@ exports[`List should render correctly more todos 1`] = `
     <li
       key="3"
     >
-      <Todo
+      <TodoListItem
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}
@@ -71,7 +71,7 @@ exports[`List should render correctly more todos 1`] = `
 </div>
 `;
 
-exports[`List should render correctly one todo 1`] = `
+exports[`TodoList should render correctly one todo 1`] = `
 <div
   className="container"
 >
@@ -82,7 +82,7 @@ exports[`List should render correctly one todo 1`] = `
     <li
       key="1"
     >
-      <Todo
+      <TodoListItem
         isLoading={false}
         removeTodo={[Function]}
         saveTodo={[Function]}

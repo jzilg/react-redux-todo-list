@@ -4,7 +4,7 @@ import { RECEIVE_ERROR, receiveError } from '../../../src/redux/actions/error.ac
 describe('error.actions', () => {
     it('should create the action RECEIVE_ERROR if receiveError is called', () => {
         const error = {
-            msg: 'Error!',
+            msg: 'ErrorMsg!',
         }
         const expectedAction = {
             type: RECEIVE_ERROR,

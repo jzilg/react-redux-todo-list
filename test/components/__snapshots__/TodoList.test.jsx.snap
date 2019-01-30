@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todo should render correctly one todo 1`] = `
+exports[`TodoListItem should render correctly one todo 1`] = `
 <form
   title="Papa anrufen"
 >

@@ -3,12 +3,12 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import Todo from '../../src/components/Todo/Todo'
+import TodoListItem from '../../src/components/TodoListItem/TodoListItem'
 import { getTodaysDate } from '../../src/utils/helper'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Todo', () => {
+describe('TodoListItem', () => {
     const removeTodo = jest.fn()
     const saveTodo = jest.fn()
     const today = '2018-06-02'
@@ -24,7 +24,7 @@ describe('Todo', () => {
         Date.now = () => 1543881600000
 
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -37,7 +37,7 @@ describe('Todo', () => {
 
     it('should call saveTodo', () => {
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -51,7 +51,7 @@ describe('Todo', () => {
 
     it('should call removeTodo', () => {
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -65,7 +65,7 @@ describe('Todo', () => {
 
     it('should update state if inputChanged is called', () => {
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -86,7 +86,7 @@ describe('Todo', () => {
 
     it('should update state with number if inputChanged is called and name is schedule', () => {
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -111,7 +111,7 @@ describe('Todo', () => {
             lastEvent: today,
         }
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todoWithLastEventToday}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -129,7 +129,7 @@ describe('Todo', () => {
 
     it('should set state.lastEvent to today, if setInputToday is called and last event was in the past', () => {
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todo}
                 isLoading={false}
                 removeTodo={removeTodo}
@@ -151,7 +151,7 @@ describe('Todo', () => {
             lastEvent: '',
         }
         const component = shallow((
-            <Todo
+            <TodoListItem
                 todo={todoWithNoLastEvent}
                 isLoading={false}
                 removeTodo={removeTodo}

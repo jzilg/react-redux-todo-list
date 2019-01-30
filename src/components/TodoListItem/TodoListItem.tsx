@@ -1,21 +1,21 @@
 import React, { ReactNode } from 'react'
 import equal from 'deep-equal'
-import TodoType from '../../interfaces/todo.interface'
+import Todo from '../../interfaces/todo.interface'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'
-import style from './todo.scss'
+import style from './todo-list-item.scss'
 
 interface TodoProps {
-    todo: TodoType
+    todo: Todo
     saveTodo: Function
     removeTodo: Function
     isLoading: boolean
 }
 
-interface TodoState extends TodoType {}
+interface TodoState extends Todo {}
 
-class Todo extends React.Component<TodoProps, TodoState> {
+class TodoListItem extends React.Component<TodoProps, TodoState> {
     today = getTodaysDate()
 
     constructor(props) {
@@ -88,7 +88,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
         const { isLoading } = this.props
         const { name, schedule, lastEvent } = this.state
         const saveBtnIsDisabled = (): boolean => !this.todoHasChanged() || isLoading
-        const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save Todo'
+        const saveBtnTitle = saveBtnIsDisabled() ? '' : 'Save TodoListItem'
 
         return (
             <form className={style.todo} title={name}>
@@ -171,4 +171,4 @@ class Todo extends React.Component<TodoProps, TodoState> {
     }
 }
 
-export default Todo
+export default TodoListItem

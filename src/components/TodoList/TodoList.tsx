@@ -1,17 +1,17 @@
 import React, { ReactElement } from 'react'
-import TodoType from '../../interfaces/todo.interface'
-import Todo from '../Todo'
-import style from './list.scss'
+import Todo from '../../interfaces/todo.interface'
+import TodoListItem from '../TodoListItem'
+import style from './todo-list.scss'
 
 interface ListProps {
-    todos: TodoType[]
+    todos: Todo[]
     addTodo: Function
     saveTodo: Function
     removeTodo: Function
     isLoading: boolean
 }
 
-const List = ({
+const TodoList = ({
     todos,
     addTodo,
     saveTodo,
@@ -34,7 +34,7 @@ const List = ({
 
     const todoElements = todos.map(todo => (
         <li key={todo.id} className={style['list-element']}>
-            <Todo
+            <TodoListItem
                 todo={todo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
@@ -64,4 +64,4 @@ const List = ({
     )
 }
 
-export default List
+export default TodoList

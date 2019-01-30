@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../interfaces/todo.interface'
 import State from '../interfaces/state.interface'
-import List from '../components/List'
+import TodoList from '../components/TodoList'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
 import { saveTodo } from '../redux/actions/save-todo.actions'
@@ -61,7 +61,7 @@ class App extends React.Component<AppProps, {}> {
         const { isLoading, todos } = this.props
 
         return (
-            <List
+            <TodoList
                 todos={todos}
                 addTodo={this.addTodo}
                 saveTodo={this.saveTodo}
