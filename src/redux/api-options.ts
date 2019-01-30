@@ -7,7 +7,7 @@ interface ApiOptionsHeaders {
 interface ApiOptions {
     method: string
     headers?: ApiOptionsHeaders
-    body?: object
+    body?: string
 }
 
 const defaultOptions: ApiOptions = {
@@ -37,7 +37,7 @@ const deleteOptions: ApiOptions = {
     method: 'DELETE',
 }
 
-function getApiOptions(method: Method, body?: object): ApiOptions {
+function getApiOptions(method: Method, body?: string): ApiOptions {
     const options = {
         GET: defaultOptions,
         POST: body ? {
