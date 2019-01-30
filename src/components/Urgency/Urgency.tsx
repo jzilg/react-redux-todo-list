@@ -1,8 +1,13 @@
 import React, { ReactElement } from 'react'
-import PropTypes from 'prop-types'
 import { getDurationBetweenDates } from '../../utils/helper'
 
-const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
+interface UrgencyProps {
+    today: string
+    lastEvent: string
+    schedule: number
+}
+
+const Urgency = ({ today, lastEvent, schedule }: UrgencyProps): ReactElement<{}> => {
     if (!lastEvent || !schedule) {
         return (
             <span>
@@ -11,11 +16,7 @@ const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
         )
     }
 
-    /**
-     * @param {number} duration
-     * @returns {string}
-     */
-    function getUrgency(duration): string {
+    function getUrgency(duration: number): string {
         let days = schedule - duration
         if (days < 0) {
             days = -(days)
@@ -27,11 +28,7 @@ const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
         return days === 0 ? 'Do it today' : `${days} ${dayText} ${timeText}`
     }
 
-    /**
-     * @param {number} duration
-     * @returns {string}
-     */
-    function getUrgencyColor(duration): string {
+    function getUrgencyColor(duration: number): string {
         let color = ''
 
         if (duration !== schedule) {
@@ -41,9 +38,9 @@ const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
         return color
     }
 
-    const duration = getDurationBetweenDates(today, lastEvent)
-    const color = getUrgencyColor(duration)
-    const urgency = getUrgency(duration)
+    const duration: number = getDurationBetweenDates(today, lastEvent)
+    const color: string = getUrgencyColor(duration)
+    const urgency: string = getUrgency(duration)
 
     return (
         <span className={color}>
@@ -51,11 +48,5 @@ const Urgency = ({ today, lastEvent, schedule }): ReactElement<{}> => {
         </span>
     )
 }
-
-Urgency.propTypes = ({
-    today: PropTypes.string.isRequired,
-    lastEvent: PropTypes.string.isRequired,
-    schedule: PropTypes.number.isRequired,
-})
 
 export default Urgency
