@@ -1,8 +1,20 @@
-const defaultOptions = {
+type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+
+interface ApiOptionsHeaders {
+    'Content-Type': string
+}
+
+interface ApiOptions {
+    method: string
+    headers?: ApiOptionsHeaders
+    body?: object
+}
+
+const defaultOptions: ApiOptions = {
     method: 'GET',
 }
 
-const postOptions = {
+const postOptions: ApiOptions = {
     ...defaultOptions,
     method: 'POST',
     headers: {
@@ -11,7 +23,7 @@ const postOptions = {
     },
 }
 
-const putOptions = {
+const putOptions: ApiOptions = {
     ...defaultOptions,
     method: 'PUT',
     headers: {
@@ -20,17 +32,12 @@ const putOptions = {
     },
 }
 
-const deleteOptions = {
+const deleteOptions: ApiOptions = {
     ...defaultOptions,
     method: 'DELETE',
 }
 
-/**
- * @param {string} [method]
- * @param {string} [body = undefined]
- * @returns {Object} fetch options
- */
-function getApiOptions(method, body = undefined) {
+function getApiOptions(method: Method, body?: object): ApiOptions {
     const options = {
         GET: defaultOptions,
         POST: body ? {

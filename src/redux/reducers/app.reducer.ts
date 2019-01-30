@@ -1,19 +1,29 @@
-import { REQUEST_TODOS, RECEIVE_TODOS } from '../actions/fetch-todos.actions'
+import AppState from '../../interfaces/app-state.interface'
+import Action from '../../interfaces/action.interface'
+import Error from '../../interfaces/error.interface'
 import { ADD_TODO_REQUEST, ADD_TODO_SUCCESS } from '../actions/add-todo.actions'
+import { REQUEST_TODOS, RECEIVE_TODOS } from '../actions/fetch-todos.actions'
 import { SAVE_TODO_REQUEST, SAVE_TODO_SUCCESS } from '../actions/save-todo.actions'
 import { REMOVE_TODO_REQUEST, REMOVE_TODO_SUCCESS } from '../actions/remove-todo.actions'
 import { RECEIVE_ERROR } from '../actions/error.actions'
 
-function app(
-    state = {
-        isLoading: false,
-        error: {
-            hasOccurred: false,
-            message: '',
-        },
+interface AppActionPayload {
+    error: Error
+}
+
+interface AppAction extends Action {
+    payload: AppActionPayload
+}
+
+const defaultState: AppState = {
+    isLoading: false,
+    error: {
+        hasOccurred: false,
+        message: '',
     },
-    action,
-) {
+}
+
+function appReducer(state = defaultState, action: AppAction): AppState {
     switch (action.type) {
         case ADD_TODO_REQUEST:
         case SAVE_TODO_REQUEST:
@@ -50,4 +60,4 @@ function app(
     }
 }
 
-export default app
+export default appReducer

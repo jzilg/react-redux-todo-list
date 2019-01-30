@@ -1,10 +1,7 @@
-import Error from './error.interface'
-import Todo from './todo.interface'
+import AppState from './app-state.interface'
+import TodosState from './todos-state.interface'
 
 export default interface State {
-    app: {
-        isLoading: boolean
-        error: Error
-    }
-    todos: Todo[]
+    app: AppState
+    todos: TodosState
 }
