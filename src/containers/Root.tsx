@@ -1,4 +1,5 @@
 import React, { Fragment, ReactElement } from 'react'
+import { Store } from 'redux'
 import { Provider, connect } from 'react-redux'
 import Error from '../interfaces/error.interface'
 import State from '../interfaces/state.interface'
@@ -7,7 +8,7 @@ import ErrorMsg from '../components/ErrorMsg'
 import App from './App'
 
 interface RootProps extends RootStateProps {
-    store: any
+    store: Store
 }
 
 const Root = ({ store, error, isLoading }: RootProps): ReactElement<{}> => {
