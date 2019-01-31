@@ -88,18 +88,24 @@ describe('rootReducer', () => {
     })
 
     it('should handle SAVE_TODO_SUCCESS', () => {
-        const todo = { id: 0 }
-        const initStatesWithTodo = {
+        const todo0 = { id: 0 }
+        const todo1 = { id: 1 }
+
+        const initStatesWithTodos = {
             app: initStates.app,
-            todos: initStates.todos.concat(todo),
+            todos: [
+                ...initStates.todos,
+                todo0,
+                todo1,
+            ],
         }
         const action = {
             type: SAVE_TODO_SUCCESS,
             payload: {
-                todo,
+                todo: todo0,
             },
         }
-        expect(rootReducer(initStatesWithTodo, action)).toEqual(initStatesWithTodo)
+        expect(rootReducer(initStatesWithTodos, action)).toEqual(initStatesWithTodos)
     })
 
     it('should handle REMOVE_TODO_REQUEST', () => {
