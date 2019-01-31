@@ -2,12 +2,11 @@
   "root": true,
   "extends": [
     "airbnb",
-    "plugin:typescript/recommended"
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "typescript-eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "plugins": [
-    "import",
-    "typescript"
+    "@typescript-eslint"
   ],
   "settings": {
     "import/resolver": {
@@ -63,10 +62,10 @@
     "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": ["error", 4],
     "jsx-a11y/no-autofocus": [false],
-    "typescript/no-empty-interface": 0,
-    "typescript/no-var-requires": 0,
-    "typescript/explicit-member-accessibility": 0,
-    "typescript/member-delimiter-style": ["error", {
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/member-delimiter-style": ["error", {
       "multiline": {
         "delimiter": "none"
       }
