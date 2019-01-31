@@ -1,3 +1,4 @@
+import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
 import Action from '../../interfaces/action.interface'
 import { receiveError } from '../actions/error.actions'
 import 'whatwg-fetch'
@@ -14,7 +15,7 @@ interface ApiAction extends Action {
     payload: ApiActionPayload
 }
 
-const apiMiddleware = ({ dispatch }): Function => next => (action: ApiAction) => {
+const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiAction) => {
     next(action)
 
     if (action.type.includes(API)) {
