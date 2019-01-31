@@ -8,7 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch --coverage",
     "analyze": "webpack -p --config webpack.analyze.js",
-    "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src test *.js *.ts",
+    "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src test *.js",
     "json-server": "json-server --watch db/db.json"
   },
   "devDependencies": {
