@@ -2,7 +2,7 @@ import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
 import Action from '../../interfaces/action.interface'
 import { setLoader } from '../actions/ui.actions'
 
-const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Action) => {
+const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Action) => {
     next(action)
 
     if (!action.meta || action.meta.showLoader === undefined) {
@@ -12,4 +12,4 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Acti
     dispatch(setLoader(action.meta.showLoader))
 }
 
-export default apiMiddleware
+export default uiMiddleware
