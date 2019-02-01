@@ -12,6 +12,9 @@ const receiveTodos = (todos: Todo[]): Action => ({
     payload: {
         todos,
     },
+    meta: {
+        showLoader: false,
+    },
 })
 
 export const fetchTodos = (): Action => {
@@ -24,6 +27,9 @@ export const fetchTodos = (): Action => {
             url,
             options,
             successAction: receiveTodos,
+        },
+        meta: {
+            showLoader: true,
         },
     }
 }

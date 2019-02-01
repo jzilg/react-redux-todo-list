@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import apiMiddleware from './middleware/api.middleware'
+import middleware from './middleware'
 import rootReducer from './reducers/root.reducer'
 
 declare global {
@@ -9,7 +9,7 @@ declare global {
 }
 
 const enhancer = compose(
-    applyMiddleware(apiMiddleware),
+    applyMiddleware(...middleware),
     window.devToolsExtension ? window.devToolsExtension() : store => store,
 )
 
