@@ -1,12 +1,11 @@
 import UiState from '../../interfaces/ui-state.interface'
 import Action from '../../interfaces/action.interface'
-import Error from '../../interfaces/error.interface'
 import { RECEIVE_ERROR } from '../actions/error.actions'
 import { SET_LOADER } from '../actions/ui.actions'
 
 interface AppAction extends Action {
     payload: {
-        error: Error
+        errorMsg: string
         value: boolean
     }
 }
@@ -42,7 +41,7 @@ function appReducer(state = defaultState, action: AppAction): UiState {
                 error: {
                     ...state.error,
                     hasOccurred: true,
-                    message: action.payload.error.message,
+                    message: action.payload.errorMsg,
                 },
             }
         }
