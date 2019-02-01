@@ -31,8 +31,8 @@ interface RootStateProps {
 }
 
 const mapStateToProps = (state: State): RootStateProps => ({
-    isLoading: state.app.isLoading,
-    error: state.app.error,
+    isLoading: state.ui.isLoading,
+    error: state.ui.error,
 })
 
 export default connect(mapStateToProps)(Root)

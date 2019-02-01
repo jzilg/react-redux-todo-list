@@ -8,7 +8,7 @@ import { RECEIVE_ERROR } from '../../src/redux/actions/error.actions'
 
 describe('rootReducer', () => {
     const initStates = {
-        app: {
+        ui: {
             isLoading: false,
             error: {
                 hasOccurred: false,
@@ -18,8 +18,8 @@ describe('rootReducer', () => {
         todos: [],
     }
     const loadingStates = {
-        app: {
-            ...initStates.app,
+        ui: {
+            ...initStates.ui,
             isLoading: true,
         },
         todos: [
@@ -52,7 +52,7 @@ describe('rootReducer', () => {
             },
         }
         const expectedState = {
-            app: initStates.app,
+            ui: initStates.ui,
             todos,
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)
@@ -74,7 +74,7 @@ describe('rootReducer', () => {
             },
         }
         const expectedState = {
-            app: initStates.app,
+            ui: initStates.ui,
             todos: initStates.todos.concat(todo),
         }
         expect(rootReducer(initStates, action)).toEqual(expectedState)
@@ -92,7 +92,7 @@ describe('rootReducer', () => {
         const todo1 = { id: 1 }
 
         const initStatesWithTodos = {
-            app: initStates.app,
+            ui: initStates.ui,
             todos: [
                 ...initStates.todos,
                 todo0,
@@ -118,7 +118,7 @@ describe('rootReducer', () => {
     it('should handle REMOVE_TODO_SUCCESS', () => {
         const todo = { id: 0 }
         const initStatesWithTodo = {
-            app: initStates.app,
+            ui: initStates.ui,
             todos: initStates.todos.concat(todo),
         }
         const action = {
@@ -128,7 +128,7 @@ describe('rootReducer', () => {
             },
         }
         const expectedState = {
-            app: initStates.app,
+            ui: initStates.ui,
             todos: [],
         }
         expect(rootReducer(initStatesWithTodo, action)).toEqual(expectedState)
@@ -145,8 +145,8 @@ describe('rootReducer', () => {
             },
         }
         const expectedState = {
-            app: {
-                ...initStates.app,
+            ui: {
+                ...initStates.ui,
                 isLoading: false,
                 error: {
                     ...initStates.error,

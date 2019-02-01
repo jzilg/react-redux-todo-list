@@ -1,4 +1,4 @@
-import AppState from '../../interfaces/app-state.interface'
+import UiState from '../../interfaces/ui-state.interface'
 import Action from '../../interfaces/action.interface'
 import Error from '../../interfaces/error.interface'
 import { RECEIVE_ERROR } from '../actions/error.actions'
@@ -11,7 +11,7 @@ interface AppAction extends Action {
     }
 }
 
-const defaultState: AppState = {
+const defaultState: UiState = {
     numOfLoadingRequests: 0,
     isLoading: false,
     error: {
@@ -20,7 +20,7 @@ const defaultState: AppState = {
     },
 }
 
-function appReducer(state = defaultState, action: AppAction): AppState {
+function appReducer(state = defaultState, action: AppAction): UiState {
     switch (action.type) {
         case SET_LOADER: {
             const { value } = action.payload

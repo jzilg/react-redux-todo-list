@@ -1,7 +1,7 @@
-import AppState from './app-state.interface'
+import UiState from './ui-state.interface'
 import Todo from './todo.interface'
 
 export default interface State {
-    app: AppState
+    ui: UiState
     todos: Todo[]
 }

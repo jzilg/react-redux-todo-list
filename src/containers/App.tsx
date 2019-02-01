@@ -69,7 +69,7 @@ interface AppStateProps {
 }
 
 const mapStateToProps = (state: State): AppStateProps => ({
-    isLoading: state.app.isLoading,
+    isLoading: state.ui.isLoading,
     todos: todosSortByUrgencySelector(state),
 })
 
