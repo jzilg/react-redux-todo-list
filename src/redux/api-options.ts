@@ -1,4 +1,4 @@
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 interface ApiOptionsHeaders {
     'Content-Type': string
@@ -37,7 +37,7 @@ const deleteOptions: ApiOptions = {
     method: 'DELETE',
 }
 
-function getApiOptions(method: Method, body?: string): ApiOptions {
+function getApiOptions(method: HTTPMethod, body?: string): ApiOptions {
     const options = {
         GET: defaultOptions,
         POST: body ? {

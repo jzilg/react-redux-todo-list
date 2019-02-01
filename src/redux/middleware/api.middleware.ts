@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
 import Action from '../../interfaces/action.interface'
-import getApiOptions from '../api-options'
+import getApiOptions, { HTTPMethod } from '../api-options'
 import { receiveError } from '../actions/error.actions'
 import {
     API_REQUEST,
@@ -12,28 +12,25 @@ import {
     apiError,
 } from '../actions/api.actions'
 
+export interface ApiRequestOptions {
+    url: string
+    method: HTTPMethod
+    body?: string
+    successAction: Function
+}
+interface ApiActionPayload extends ApiRequestOptions {
+    data: object
+    errorMsg: string
+}
 interface ApiAction extends Action {
-    payload: {
-        url: string
-        method: 'GET' | 'POST' | 'PUT' | 'DELETE'
-        body?: string
-        successAction: Function
-        data: object
-        errorMsg: string
-    }
+    payload: ApiActionPayload
 }
 
 const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiAction) => {
     next(action)
 
     if (action.meta && action.meta.api) {
-        const {
-            url,
-            method,
-            successAction,
-            body,
-        } = action.meta.api
-        dispatch(apiRequest(url, method, successAction, body))
+        dispatch(apiRequest(action.meta.api))
     }
 
     if (action.type === API_REQUEST) {

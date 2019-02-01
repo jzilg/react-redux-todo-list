@@ -1,13 +1,10 @@
+import { ApiRequestOptions } from '../redux/middleware/api.middleware'
+
 export default interface Action {
     type: string
     payload?: object
     meta?: {
-        api?: {
-            url: string
-            method: string
-            body?: string
-            successAction: Function
-        }
+        api?: ApiRequestOptions
         showLoader?: boolean
     }
 }
