@@ -1,7 +1,5 @@
 import Action from '../../interfaces/action.interface'
 import Todo from '../../interfaces/todo.interface'
-import getApiOptions from '../api-options'
-import { ADD_TODO_REQUEST } from './add-todo.actions'
 
 export const TODOS = '[TODOS]'
 
@@ -30,14 +28,14 @@ export const saveTodo = (todo: Todo): Action => ({
     type: SAVE_TODO,
     payload: {
         todo,
-    }
+    },
 })
 
 export const removeTodo = (todo: Todo): Action => ({
     type: REMOVE_TODO,
     payload: {
         todo,
-    }
+    },
 })
 
 export const setTodos = (todos: Todo[]): Action => ({
