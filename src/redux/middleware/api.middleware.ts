@@ -1,30 +1,40 @@
-import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
 import Action from '../../interfaces/action.interface'
-import { receiveError } from '../actions/error.actions'
+import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
+import { API_REQUEST, apiError, apiSuccess } from '../actions/api.actions'
 import 'whatwg-fetch'
 
 export const API = 'API'
 
 interface ApiActionPayload {
     url: string
-    options: object
-    successAction: Function
+    method: string
+    body?: string
+}
+
+interface ApiActionMeta {
+    entity: string
 }
 
 interface ApiAction extends Action {
     payload: ApiActionPayload
+    meta: ApiActionMeta
 }
 
 const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiAction) => {
     next(action)
 
-    if (action.type.includes(API)) {
-        const { url, options, successAction } = action.payload
+    if (action.type.includes(API_REQUEST)) {
+        const { url, method, body } = action.payload
+        const { entity } = action.meta
+        const options = {
+            method,
+            body,
+        }
 
         fetch(url, options)
             .then(response => response.json())
-            .then(data => dispatch(successAction(data)))
-            .catch(error => dispatch(receiveError(error)))
+            .then(data => dispatch(apiSuccess(data, entity)))
+            .catch(error => dispatch(apiError(error, entity)))
     }
 }
 

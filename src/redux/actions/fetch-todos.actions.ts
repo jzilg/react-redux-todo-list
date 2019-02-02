@@ -4,6 +4,9 @@ import { API } from '../middleware/api.middleware'
 import BACKEND_URL from '../../constants/api'
 import getApiOptions from '../api-options'
 
+export const TODOS = '[TODOS]'
+export const FETCH_TODOS = `FETCH ${TODOS}`
+
 export const REQUEST_TODOS = `${API}_REQUEST_TODOS`
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 

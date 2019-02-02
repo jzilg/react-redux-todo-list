@@ -1,5 +1,5 @@
 export default interface Action {
     type: string
-    payload: object
+    payload?: object
     meta?: object
 }

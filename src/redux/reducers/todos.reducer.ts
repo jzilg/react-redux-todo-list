@@ -1,9 +1,9 @@
 import Todo from '../../interfaces/todo.interface'
 import Action from '../../interfaces/action.interface'
 import { ADD_TODO_SUCCESS } from '../actions/add-todo.actions'
-import { RECEIVE_TODOS } from '../actions/fetch-todos.actions'
 import { SAVE_TODO_SUCCESS } from '../actions/save-todo.actions'
 import { REMOVE_TODO_SUCCESS } from '../actions/remove-todo.actions'
+import { SET_TODOS } from '../actions/todos.actions'
 
 type TodosState = Todo[]
 
@@ -20,7 +20,7 @@ const defaultState: TodosState = []
 
 function todosReducer(state = defaultState, action: TodosReducerAction): TodosState {
     switch (action.type) {
-        case RECEIVE_TODOS: {
+        case SET_TODOS: {
             return state.concat(action.payload.todos)
         }
         case ADD_TODO_SUCCESS: {

@@ -4,7 +4,7 @@ import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.se
 import Todo from '../interfaces/todo.interface'
 import State from '../interfaces/state.interface'
 import TodoList from '../components/TodoList'
-import { fetchTodos } from '../redux/actions/fetch-todos.actions'
+import { fetchTodos } from '../redux/actions/todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
 import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
