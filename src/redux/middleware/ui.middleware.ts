@@ -5,11 +5,9 @@ import { setLoader } from '../actions/ui.actions'
 const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Action) => {
     next(action)
 
-    if (!action.meta || action.meta.showLoader === undefined) {
-        return
+    if (action.meta && action.meta.showLoader !== undefined) {
+        dispatch(setLoader(action.meta.showLoader))
     }
-
-    dispatch(setLoader(action.meta.showLoader))
 }
 
 export default uiMiddleware
