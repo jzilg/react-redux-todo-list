@@ -10,6 +10,9 @@ const removeTodoSuccess = (todo: Todo): Action => ({
     payload: {
         todo,
     },
+    meta: {
+        showLoader: false,
+    },
 })
 
 export const removeTodo = (todo: Todo): Action => {
@@ -23,6 +26,7 @@ export const removeTodo = (todo: Todo): Action => {
                 method: 'DELETE',
                 successAction: () => removeTodoSuccess(todo),
             },
+            showLoader: true,
         },
     }
 }

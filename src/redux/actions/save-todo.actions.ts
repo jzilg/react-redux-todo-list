@@ -10,6 +10,9 @@ const saveTodoSuccess = (todo: Todo): Action => ({
     payload: {
         todo,
     },
+    meta: {
+        showLoader: false,
+    },
 })
 
 export const saveTodo = (todo: Todo): Action => {
@@ -23,6 +26,7 @@ export const saveTodo = (todo: Todo): Action => {
                 body: JSON.stringify(todo),
                 successAction: saveTodoSuccess,
             },
+            showLoader: true,
         },
     }
 }
