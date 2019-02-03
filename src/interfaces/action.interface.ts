@@ -6,5 +6,6 @@ export default interface Action {
     meta?: {
         api?: ApiRequestOptions
         showLoader?: boolean
+        triggeredBy?: string
     }
 }

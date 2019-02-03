@@ -6,7 +6,7 @@ const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Actio
     next(action)
 
     if (action.meta && action.meta.showLoader !== undefined) {
-        dispatch(setLoader(action.meta.showLoader))
+        dispatch(setLoader(action.meta.showLoader, action.type))
     }
 }
 
