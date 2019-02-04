@@ -22,14 +22,14 @@ const defaultState: AppState = {
 }
 
 function appReducer(state = defaultState, action: AppAction): AppState {
-    switch (action.type) {
-        case SET_IS_LOADING: {
+    switch (true) {
+        case action.type.includes(SET_IS_LOADING): {
             return {
                 ...state,
                 isLoading: action.payload.value,
             }
         }
-        case RECEIVE_ERROR: {
+        case action.type.includes(RECEIVE_ERROR): {
             return {
                 ...state,
                 isLoading: false,
