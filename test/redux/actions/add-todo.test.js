@@ -2,7 +2,7 @@ import expect from 'expect'
 import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'
 import apiMiddleware from '../../../src/redux/middleware/api.middleware'
-import { addTodo, ADD_TODO_REQUEST, } from '../../../src/redux/actions/add-todo.actions'
+import { addTodo, ADD_TODO_REQUEST } from '../../../src/redux/actions/add-todo.actions'
 import { API_REQUEST } from '../../../src/redux/actions/api.actions'
 
 describe('addTodo', () => {
