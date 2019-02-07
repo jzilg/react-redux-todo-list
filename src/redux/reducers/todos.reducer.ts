@@ -1,4 +1,4 @@
-import Todo from '../../interfaces/todo.interface'
+import Todo from '../../entities/todo.interface'
 import Action from '../interfaces/action.interface'
 import { ADD_TODO_SUCCESS } from '../actions/add-todo.actions'
 import { RECEIVE_TODOS } from '../actions/fetch-todos.actions'

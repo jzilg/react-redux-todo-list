@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import State from '../interfaces/state.interface'
-import Todo from '../../interfaces/todo.interface'
+import Todo from '../../entities/todo.interface'
 import { TodosState } from '../reducers/todos.reducer'
 import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
 

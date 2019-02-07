@@ -1,5 +1,5 @@
 import Action from '../interfaces/action.interface'
-import Todo from '../../interfaces/todo.interface'
+import Todo from '../../entities/todo.interface'
 import BACKEND_URL from '../../constants/api'
 
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'

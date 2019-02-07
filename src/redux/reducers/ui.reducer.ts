@@ -1,5 +1,5 @@
 import Action from '../interfaces/action.interface'
-import Error from '../../interfaces/error.interface'
+import Error from '../../entities/error.interface'
 import { RECEIVE_ERROR } from '../actions/error.actions'
 import { SET_LOADER } from '../actions/ui.actions'
 

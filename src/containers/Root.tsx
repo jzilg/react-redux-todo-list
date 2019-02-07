@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react'
 import { Store } from 'redux'
 import { Provider, connect } from 'react-redux'
-import Error from '../interfaces/error.interface'
+import Error from '../entities/error.interface'
 import State from '../redux/interfaces/state.interface'
 import Loading from '../components/Loading'
 import ErrorMsg from '../components/ErrorMsg'

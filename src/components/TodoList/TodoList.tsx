@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import Todo from '../../interfaces/todo.interface'
+import Todo from '../../entities/todo.interface'
 import TodoListItem from '../TodoListItem'
 import style from './todo-list.scss'
 
