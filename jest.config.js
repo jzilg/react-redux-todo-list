@@ -2,7 +2,7 @@ module.exports = {
     collectCoverage: false,
     collectCoverageFrom: [
         'src/**/*.{js,jsx,ts,tsx}',
-        '!src/**/index.{js,tsx}',
+        '!src/**/index.{js,ts,tsx}',
         '!src/redux/store.ts',
     ],
     moduleNameMapper: {
