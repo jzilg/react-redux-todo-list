@@ -1,5 +1,5 @@
-import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
-import Action from '../../interfaces/action.interface'
+import MiddlewareCreator from '../interfaces/middleware-creator.interface'
+import Action from '../interfaces/action.interface'
 import { setLoader } from '../actions/ui.actions'
 
 const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Action) => {

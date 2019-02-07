@@ -1,4 +1,4 @@
-import Action from '../../interfaces/action.interface'
+import Action from '../interfaces/action.interface'
 import Todo from '../../interfaces/todo.interface'
 import BACKEND_URL from '../../constants/api'
 

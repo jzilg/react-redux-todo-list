@@ -1,5 +1,5 @@
-import MiddlewareCreator from '../../interfaces/middleware-creator.interface'
-import Action from '../../interfaces/action.interface'
+import MiddlewareCreator from '../interfaces/middleware-creator.interface'
+import Action from '../interfaces/action.interface'
 import getApiOptions, { HTTPMethod } from '../api-options'
 import { receiveError } from '../actions/error.actions'
 import {

@@ -1,4 +1,4 @@
-import Action from '../../interfaces/action.interface'
+import Action from '../interfaces/action.interface'
 import { ApiRequestOptions } from '../middleware/api.middleware'
 
 export const API_REQUEST = '[API] REQUEST'

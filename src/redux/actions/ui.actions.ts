@@ -1,4 +1,4 @@
-import Action from '../../interfaces/action.interface'
+import Action from '../interfaces/action.interface'
 
 export const SET_LOADER = '[UI] SET_LOADER'
 

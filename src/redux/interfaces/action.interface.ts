@@ -1,4 +1,4 @@
-import { ApiRequestOptions } from '../redux/middleware/api.middleware'
+import { ApiRequestOptions } from '../middleware/api.middleware'
 
 export default interface Action {
     type: string

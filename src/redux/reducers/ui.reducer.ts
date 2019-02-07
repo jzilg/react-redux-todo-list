@@ -1,7 +1,13 @@
-import UiState from '../../interfaces/ui-state.interface'
-import Action from '../../interfaces/action.interface'
+import Action from '../interfaces/action.interface'
+import Error from '../../interfaces/error.interface'
 import { RECEIVE_ERROR } from '../actions/error.actions'
 import { SET_LOADER } from '../actions/ui.actions'
+
+export interface UiState {
+    numOfLoadingRequests: number
+    isLoading: boolean
+    error: Error
+}
 
 interface UiAction extends Action {
     payload: {
