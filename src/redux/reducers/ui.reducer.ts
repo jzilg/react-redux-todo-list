@@ -3,14 +3,14 @@ import Action from '../../interfaces/action.interface'
 import { RECEIVE_ERROR } from '../actions/error.actions'
 import { SET_LOADER } from '../actions/ui.actions'
 
-interface AppAction extends Action {
+interface UiAction extends Action {
     payload: {
-        errorMsg: string
-        value: boolean
+        errorMsg?: string
+        value?: boolean
     }
 }
 
-const defaultState: UiState = {
+export const defaultState: UiState = {
     numOfLoadingRequests: 0,
     isLoading: false,
     error: {
@@ -19,7 +19,7 @@ const defaultState: UiState = {
     },
 }
 
-function appReducer(state = defaultState, action: AppAction): UiState {
+function appReducer(state = defaultState, action: UiAction): UiState {
     switch (action.type) {
         case SET_LOADER: {
             const { value } = action.payload
@@ -37,9 +37,9 @@ function appReducer(state = defaultState, action: AppAction): UiState {
         case RECEIVE_ERROR: {
             return {
                 ...state,
+                numOfLoadingRequests: 0,
                 isLoading: false,
                 error: {
-                    ...state.error,
                     hasOccurred: true,
                     message: action.payload.errorMsg,
                 },
