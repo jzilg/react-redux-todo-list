@@ -3,6 +3,7 @@ import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'
 import apiMiddleware from '../../../src/redux/middleware/api.middleware'
 import { removeTodo, REMOVE_TODO_REQUEST } from '../../../src/redux/actions/remove-todo.actions'
+import { API_REQUEST } from '../../../src/redux/actions/api.actions'
 
 describe('removeTodo', () => {
     const middleware = [apiMiddleware]
@@ -25,7 +26,12 @@ describe('removeTodo', () => {
         const expectedActions = [
             {
                 type: REMOVE_TODO_REQUEST,
+                meta: expect.any(Object),
+            },
+            {
+                type: API_REQUEST,
                 payload: expect.any(Object),
+                meta: expect.any(Object),
             },
         ]
 

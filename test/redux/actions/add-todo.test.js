@@ -2,7 +2,8 @@ import expect from 'expect'
 import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'
 import apiMiddleware from '../../../src/redux/middleware/api.middleware'
-import { addTodo, ADD_TODO_REQUEST } from '../../../src/redux/actions/add-todo.actions'
+import { addTodo, ADD_TODO_REQUEST, } from '../../../src/redux/actions/add-todo.actions'
+import { API_REQUEST } from '../../../src/redux/actions/api.actions'
 
 describe('addTodo', () => {
     const middleware = [apiMiddleware]
@@ -25,7 +26,12 @@ describe('addTodo', () => {
         const expectedActions = [
             {
                 type: ADD_TODO_REQUEST,
+                meta: expect.any(Object),
+            },
+            {
+                type: API_REQUEST,
                 payload: expect.any(Object),
+                meta: expect.any(Object),
             },
         ]
 

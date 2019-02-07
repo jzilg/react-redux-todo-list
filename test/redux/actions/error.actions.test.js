@@ -3,16 +3,15 @@ import { RECEIVE_ERROR, receiveError } from '../../../src/redux/actions/error.ac
 
 describe('error.actions', () => {
     it('should create the action RECEIVE_ERROR if receiveError is called', () => {
-        const error = {
-            msg: 'ErrorMsg!',
-        }
+        const errorMsg = 'ErrorMsg!'
+
         const expectedAction = {
             type: RECEIVE_ERROR,
             payload: {
-                error,
+                errorMsg,
             },
         }
 
-        expect(receiveError(error)).toEqual(expectedAction)
+        expect(receiveError(errorMsg)).toEqual(expectedAction)
     })
 })

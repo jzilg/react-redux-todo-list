@@ -3,6 +3,7 @@ import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'
 import apiMiddleware from '../../../src/redux/middleware/api.middleware'
 import { fetchTodos, REQUEST_TODOS } from '../../../src/redux/actions/fetch-todos.actions'
+import { API_REQUEST } from '../../../src/redux/actions/api.actions'
 
 describe('fetchTodos', () => {
     const middleware = [apiMiddleware]
@@ -21,7 +22,12 @@ describe('fetchTodos', () => {
         const expectedActions = [
             {
                 type: REQUEST_TODOS,
+                meta: expect.any(Object),
+            },
+            {
+                type: API_REQUEST,
                 payload: expect.any(Object),
+                meta: expect.any(Object),
             },
         ]
 
