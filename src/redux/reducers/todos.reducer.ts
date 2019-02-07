@@ -16,7 +16,7 @@ interface TodosReducerAction extends Action {
     payload: TodosReducerPayload
 }
 
-const defaultState: TodosState = []
+export const defaultState: TodosState = []
 
 function todosReducer(state = defaultState, action: TodosReducerAction): TodosState {
     switch (action.type) {
