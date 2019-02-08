@@ -5,7 +5,7 @@ import BACKEND_URL from '../../constants/api'
 export const REQUEST_TODOS = 'REQUEST_TODOS'
 export const RECEIVE_TODOS = 'RECEIVE_TODOS'
 
-const receiveTodos = (todos: Todo[]): Action => ({
+export const receiveTodos = (todos: Todo[]): Action => ({
     type: RECEIVE_TODOS,
     payload: {
         todos,
