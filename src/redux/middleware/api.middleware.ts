@@ -17,10 +17,12 @@ export interface ApiRequestOptions {
     body?: string
     successAction: Function
 }
+
 interface ApiActionPayload extends ApiRequestOptions {
     data: object
     errorMsg: string
 }
+
 interface ApiAction extends Action {
     payload: ApiActionPayload
 }
