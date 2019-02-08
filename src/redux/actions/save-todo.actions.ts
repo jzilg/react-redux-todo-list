@@ -5,7 +5,7 @@ import BACKEND_URL from '../../constants/api'
 export const SAVE_TODO_REQUEST = 'SAVE_TODO_REQUEST'
 export const SAVE_TODO_SUCCESS = 'SAVE_TODO_SUCCESS'
 
-const saveTodoSuccess = (todo: Todo): Action => ({
+export const saveTodoSuccess = (todo: Todo): Action => ({
     type: SAVE_TODO_SUCCESS,
     payload: {
         todo,
