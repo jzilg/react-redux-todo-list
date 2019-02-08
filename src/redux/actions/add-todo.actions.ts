@@ -5,7 +5,7 @@ import BACKEND_URL from '../../constants/api'
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
 
-const addTodoSuccess = (todo: Todo): Action => ({
+export const addTodoSuccess = (todo: Todo): Action => ({
     type: ADD_TODO_SUCCESS,
     payload: {
         todo,
