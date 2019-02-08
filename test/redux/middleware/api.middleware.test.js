@@ -1,0 +1,96 @@
+import fetchMock from 'fetch-mock'
+import configureMockStore from 'redux-mock-store'
+import apiMiddleware from '../../../src/redux/middleware/api.middleware'
+import { API_ERROR, API_REQUEST, API_SUCCESS } from '../../../src/redux/actions/api.actions'
+
+describe('apiMiddleware', () => {
+    const mockStore = configureMockStore()
+    const next = jest.fn()
+
+    afterEach(() => {
+        fetchMock.reset()
+        fetchMock.restore()
+    })
+
+    it('should call API_REQUEST action if action.meta.api is set', () => {
+        const store = mockStore()
+        const action = {
+            type: 'SOME_ACTION',
+            meta: {
+                api: {},
+            },
+        }
+
+        apiMiddleware(store)(next)(action)
+
+        const executedActions = store.getActions()
+        expect(executedActions[0].type).toBe(API_REQUEST)
+    })
+
+    it('should not call dispatch an action if no meta.showLoader is set', () => {
+        const store = jest.fn()
+        store.dispatch = jest.fn()
+        const action = {
+            type: 'SOME_ACTION',
+        }
+
+        apiMiddleware(store)(next)(action)
+
+        expect(store.dispatch.mock.calls.length).toEqual(0)
+    })
+
+    it('should call apiSuccess if action is API_REQUEST and fetch is successfull', async () => {
+        const store = jest.fn()
+        store.dispatch = jest.fn()
+        const successAction = jest.fn()
+        const action = {
+            type: API_REQUEST,
+            payload: {
+                url: 'http://test.de',
+                method: 'GET',
+                successAction,
+            },
+            meta: {
+                triggeredBy: 'SOME_ACTION',
+            },
+        }
+
+        fetchMock.getOnce('*', {})
+
+        await apiMiddleware(store)(next)(action)
+
+        expect(store.dispatch.mock).toBe(1)
+    })
+
+    it('should call successAction if action is API_SUCCESS', () => {
+        const store = jest.fn()
+        store.dispatch = jest.fn()
+        const successAction = jest.fn()
+        const action = {
+            type: API_SUCCESS,
+            payload: {
+                successAction,
+            },
+        }
+
+        apiMiddleware(store)(next)(action)
+
+        expect(successAction.mock.calls.length).toBe(1)
+    })
+
+    it('should call RECEIVE_ERROR action if action is API_ERROR', () => {
+        const store = mockStore()
+        const errorMsg = 'Error!'
+        const action = {
+            type: API_ERROR,
+            payload: {
+                errorMsg,
+            },
+        }
+
+        apiMiddleware(store)(next)(action)
+
+        const executedActions = store.getActions()
+        expect(executedActions[0].payload.errorMsg).toBe(errorMsg)
+    })
+})
