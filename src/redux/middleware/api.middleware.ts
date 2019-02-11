@@ -45,10 +45,12 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
         const { triggeredBy } = action.meta
         const options: object = getApiOptions(method, body)
 
-        return fetch(url, options)
+        fetch(url, options)
             .then(response => response.json())
             .then(data => dispatch(apiSuccess(successAction, data, triggeredBy)))
             .catch(error => dispatch(apiError(error.message, triggeredBy)))
+
+        return
     }
 
     if (action.type === API_SUCCESS) {
