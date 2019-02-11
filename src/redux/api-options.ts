@@ -1,45 +1,36 @@
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
-interface ApiOptionsHeaders {
-    'Content-Type': string
-}
-
-interface ApiOptions {
+export interface ApiOptions {
     method: string
-    headers?: ApiOptionsHeaders
+    headers?: Headers
     body?: string
 }
 
-const defaultOptions: ApiOptions = {
+const JSONHeaders = new Headers({
+    'Content-Type': 'application/json',
+})
+
+const getOptions: ApiOptions = {
     method: 'GET',
 }
 
 const postOptions: ApiOptions = {
-    ...defaultOptions,
     method: 'POST',
-    headers: {
-        ...defaultOptions.headers,
-        'Content-Type': 'application/json',
-    },
+    headers: JSONHeaders,
 }
 
 const putOptions: ApiOptions = {
-    ...defaultOptions,
     method: 'PUT',
-    headers: {
-        ...defaultOptions.headers,
-        'Content-Type': 'application/json',
-    },
+    headers: JSONHeaders,
 }
 
 const deleteOptions: ApiOptions = {
-    ...defaultOptions,
     method: 'DELETE',
 }
 
 function getApiOptions(method: HTTPMethod, body?: string): ApiOptions {
     const options = {
-        GET: defaultOptions,
+        GET: getOptions,
         POST: body ? {
             ...postOptions,
             body,
