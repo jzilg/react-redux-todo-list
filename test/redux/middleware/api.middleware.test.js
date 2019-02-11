@@ -40,9 +40,10 @@ describe('apiMiddleware', () => {
     })
 
     it('should call apiSuccess if action is API_REQUEST and fetch is successfull', async () => {
-        const store = jest.fn()
+        const store = {}
+        const successAction = () => {}
         store.dispatch = jest.fn()
-        const successAction = jest.fn()
+
         const action = {
             type: API_REQUEST,
             payload: {
@@ -59,7 +60,31 @@ describe('apiMiddleware', () => {
 
         await apiMiddleware(store)(next)(action)
 
-        expect(store.dispatch.mock).toBe(1)
+        expect(store.dispatch.mock.calls[0][0].payload.successAction).toBe(successAction)
+    })
+
+    it('should call apiError if action is API_REQUEST and fetch is not successfull', async () => {
+        const store = {}
+        const successAction = () => {}
+        store.dispatch = jest.fn()
+
+        const action = {
+            type: API_REQUEST,
+            payload: {
+                url: 'http://test.de',
+                method: 'GET',
+                successAction,
+            },
+            meta: {
+                triggeredBy: 'SOME_ACTION',
+            },
+        }
+
+        fetchMock.getOnce('*', 404)
+
+        await apiMiddleware(store)(next)(action)
+
+        expect(store.dispatch.mock.calls[0][0].payload.errorMsg).not.toBe(undefined)
     })
 
     it('should call successAction if action is API_SUCCESS', () => {
