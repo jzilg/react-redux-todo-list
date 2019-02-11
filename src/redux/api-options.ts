@@ -10,7 +10,7 @@ const JSONHeaders = new Headers({
     'Content-Type': 'application/json',
 })
 
-const getOptions: ApiOptions = {
+const defaultOptions: ApiOptions = {
     method: 'GET',
 }
 
@@ -30,7 +30,7 @@ const deleteOptions: ApiOptions = {
 
 function getApiOptions(method: HTTPMethod, body?: string): ApiOptions {
     const options = {
-        GET: getOptions,
+        GET: defaultOptions,
         POST: body ? {
             ...postOptions,
             body,
