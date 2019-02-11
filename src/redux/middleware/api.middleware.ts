@@ -60,7 +60,6 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
     if (action.type === API_ERROR) {
         const { errorMsg } = action.payload
         dispatch(receiveError(errorMsg))
-        return
     }
 }
 
