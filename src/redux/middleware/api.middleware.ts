@@ -32,6 +32,7 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
 
     if (action.meta && action.meta.api) {
         dispatch(apiRequest(action.meta.api, action.type))
+        return
     }
 
     if (action.type === API_REQUEST) {
@@ -44,7 +45,7 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
         const { triggeredBy } = action.meta
         const options: object = getApiOptions(method, body)
 
-        fetch(url, options)
+        return fetch(url, options)
             .then(response => response.json())
             .then(data => dispatch(apiSuccess(successAction, data, triggeredBy)))
             .catch(error => dispatch(apiError(error.message, triggeredBy)))
@@ -53,11 +54,13 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
     if (action.type === API_SUCCESS) {
         const { successAction, data } = action.payload
         dispatch(successAction(data))
+        return
     }
 
     if (action.type === API_ERROR) {
         const { errorMsg } = action.payload
         dispatch(receiveError(errorMsg))
+        return
     }
 }
 
