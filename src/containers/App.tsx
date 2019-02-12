@@ -26,26 +26,17 @@ class App extends React.Component<AppProps, {}> {
         props.dispatch(fetchTodos())
     }
 
-    /**
-     * @param {Object} todo
-     */
-    saveTodo(todo): void {
+    saveTodo(todo: Todo): void {
         const { dispatch } = this.props
         dispatch(saveTodo(todo))
     }
 
-    /**
-     * @param {Object} todo
-     */
-    removeTodo(todo): void {
+    removeTodo(todo: Todo): void {
         const { dispatch } = this.props
         dispatch(removeTodo(todo))
     }
 
-    /**
-     * @param {number} id
-     */
-    addTodo(id): void {
+    addTodo(id: number): void {
         const { dispatch } = this.props
         const emptyTodo = {
             id,
