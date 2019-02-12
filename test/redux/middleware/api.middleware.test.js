@@ -1,4 +1,3 @@
-import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'
 import apiMiddleware from '../../../src/redux/middleware/api.middleware'
 import { API_ERROR, API_REQUEST, API_SUCCESS } from '../../../src/redux/actions/api.actions'
@@ -8,8 +7,7 @@ describe('apiMiddleware', () => {
     const next = jest.fn()
 
     afterEach(() => {
-        fetchMock.reset()
-        fetchMock.restore()
+        fetch.resetMocks()
     })
 
     it('should call API_REQUEST action if action.meta.api is set', () => {
@@ -39,7 +37,7 @@ describe('apiMiddleware', () => {
         expect(store.dispatch.mock.calls.length).toEqual(0)
     })
 
-    it('should call apiSuccess if action is API_REQUEST and fetch is successfull', async () => {
+    it('should call apiSuccess if action is API_REQUEST and fetch is successfull', () => {
         const store = {}
         const successAction = () => {}
         store.dispatch = jest.fn()
@@ -56,14 +54,16 @@ describe('apiMiddleware', () => {
             },
         }
 
-        fetchMock.getOnce('*', {})
+        fetch.mockResponseOnce(JSON.stringify({ data: '12345' }))
+        apiMiddleware(store)(next)(action)
 
-        await apiMiddleware(store)(next)(action)
-
-        expect(store.dispatch.mock.calls[0][0].payload.successAction).toBe(successAction)
+        setTimeout(() => {
+            expect(store.dispatch.mock.calls[0][0].payload.successAction).toBe(successAction)
+        }, 0)
     })
 
-    it('should call apiError if action is API_REQUEST and fetch is not successfull', async () => {
+    it('should call apiError if action is API_REQUEST and fetch is not successfull', () => {
+        const errorMsg = 'Error!'
         const store = {}
         const successAction = () => {}
         store.dispatch = jest.fn()
@@ -80,11 +80,12 @@ describe('apiMiddleware', () => {
             },
         }
 
-        fetchMock.getOnce('*', 404)
+        fetch.mockRejectOnce(new Error(errorMsg))
+        apiMiddleware(store)(next)(action)
 
-        await apiMiddleware(store)(next)(action)
-
-        expect(store.dispatch.mock.calls[0][0].payload.errorMsg).not.toBe(undefined)
+        setTimeout(() => {
+            expect(store.dispatch.mock.calls[0][0].payload.errorMsg).toBe(errorMsg)
+        }, 0)
     })
 
     it('should call successAction if action is API_SUCCESS', () => {

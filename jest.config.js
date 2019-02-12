@@ -21,4 +21,7 @@ module.exports = {
         '^.+\\.tsx?$': 'ts-jest',
         '^.+\\.jsx?$': 'babel-jest',
     },
+    setupFiles: [
+        './test/jest-fetch-mock.js',
+    ],
 }
