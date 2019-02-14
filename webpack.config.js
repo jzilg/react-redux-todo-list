@@ -40,7 +40,7 @@ const getScriptLoaders = ({ typescriptIsUsed }) => [
     'babel-loader',
     typescriptIsUsed ? 'ts-loader' : null,
     'eslint-loader',
-]
+].filter(Boolean)
 
 module.exports = {
     mode: !isDevServer ? 'production' : 'development',
