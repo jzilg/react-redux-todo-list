@@ -8,7 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1
 const filename = '[name]-[contenthash]'
 const styleNameSyntax = '[name]-[local]'
-const getStyleLoaders = config => [
+
+const getStyleLoaders = ({ cssModulesIsUsed }) => [
     {
         loader: MiniCssExtractPlugin.loader,
     },
@@ -17,7 +18,7 @@ const getStyleLoaders = config => [
         options: {
             sourceMap: isDevServer,
             importLoaders: 2,
-            modules: config.modules,
+            modules: cssModulesIsUsed,
             localIdentName: styleNameSyntax,
         },
     },
@@ -83,13 +84,17 @@ module.exports = {
                 test: /\.scss$/,
                 include: path.resolve('src/style'),
                 exclude: /node_modules/,
-                use: getStyleLoaders({ modules: false }),
+                use: getStyleLoaders({
+                    cssModulesIsUsed: false,
+                }),
             },
             {
                 test: /\.scss$/,
                 include: path.resolve('src/components'),
                 exclude: /node_modules/,
-                use: getStyleLoaders({ modules: true }),
+                use: getStyleLoaders({
+                    cssModulesIsUsed: true,
+                }),
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
