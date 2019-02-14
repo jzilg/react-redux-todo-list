@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
-import Todo from '../interfaces/todo.interface'
-import State from '../interfaces/state.interface'
+import Todo from '../entities/todo.interface'
+import State from '../redux/interfaces/state.interface'
 import TodoList from '../components/TodoList'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
@@ -69,7 +69,7 @@ interface AppStateProps {
 }
 
 const mapStateToProps = (state: State): AppStateProps => ({
-    isLoading: state.app.isLoading,
+    isLoading: state.ui.isLoading,
     todos: todosSortByUrgencySelector(state),
 })
 

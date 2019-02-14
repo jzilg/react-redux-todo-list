@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('Root', () => {
     it('should render correctly when loading', () => {
         const state = {
-            app: {
+            ui: {
                 isLoading: true,
                 error: {
                     hasOccurred: false,
@@ -27,7 +27,7 @@ describe('Root', () => {
 
     it('should render correctly when error hasOccurred', () => {
         const state = {
-            app: {
+            ui: {
                 isLoading: false,
                 error: {
                     hasOccurred: true,
@@ -43,7 +43,7 @@ describe('Root', () => {
 
     it('should render correctly when not loading and no error hasOccurred', () => {
         const state = {
-            app: {
+            ui: {
                 isLoading: false,
                 error: {
                     hasOccurred: false,

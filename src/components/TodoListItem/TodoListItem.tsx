@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import equal from 'deep-equal'
-import Todo from '../../interfaces/todo.interface'
+import Todo from '../../entities/todo.interface'
 import Icon from '../Icon'
 import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'

@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect'
-import State from '../../interfaces/state.interface'
-import Todo from '../../interfaces/todo.interface'
+import State from '../interfaces/state.interface'
+import Todo from '../../entities/todo.interface'
+import { TodosState } from '../reducers/todos.reducer'
 import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
 
 const today: string = getTodaysDate()
@@ -13,7 +14,7 @@ const sortByMostUrgent = (todoA: Todo, todoB: Todo): number => {
     return daysA - daysB
 }
 
-const todosSelector = (state: State): Todo[] => state.todos
+const todosSelector = (state: State): TodosState => state.todos
 const todosSortByUrgency = (todos: Todo[]): Todo[] => todos.sort(sortByMostUrgent)
 
 export default createSelector(

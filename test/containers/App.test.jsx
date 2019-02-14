@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('App', () => {
     const state = {
-        app: {
+        ui: {
             isLoading: true,
             error: {
                 hasOccurred: false,

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import appReducer from './app.reducer'
+import uiReducer from './ui.reducer'
 import todosReducer from './todos.reducer'
 
 const rootReducer = combineReducers({
-    app: appReducer,
+    ui: uiReducer,
     todos: todosReducer,
 })
 
