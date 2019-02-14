@@ -15,7 +15,7 @@ export const addTodoSuccess = (todo: Todo): Action => ({
     },
 })
 
-export const addTodo = (todo): Action => {
+export const addTodo = (todo: Todo): Action => {
     const url = `${BACKEND_URL}/todos`
     return {
         type: ADD_TODO_REQUEST,
