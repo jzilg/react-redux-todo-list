@@ -35,6 +35,12 @@ const getStyleLoaders = config => [
     },
 ]
 
+const getScriptLoaders = ({ typescriptIsUsed }) => [
+    'babel-loader',
+    typescriptIsUsed ? 'ts-loader' : null,
+    'eslint-loader',
+]
+
 module.exports = {
     mode: !isDevServer ? 'production' : 'development',
     devtool: !isDevServer ? '' : 'source-map',
@@ -60,12 +66,18 @@ module.exports = {
                 loader: 'html-loader',
             },
             {
-                test: /\.(js|jsx|ts|tsx)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                    'eslint-loader',
-                ],
+                use: getScriptLoaders({
+                    typescriptIsUsed: false,
+                }),
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: getScriptLoaders({
+                    typescriptIsUsed: true,
+                }),
             },
             {
                 test: /\.scss$/,
