@@ -1,82 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TodoListItem should render correctly one todo 1`] = `
-<form
-  title="Papa anrufen"
+exports[`TodoList should render correctly more todos 1`] = `
+<div
+  className="container"
 >
-  <input
-    autoComplete="off"
-    autoFocus={false}
-    name="name"
-    onChange={[Function]}
-    placeholder="Name"
-    type="text"
-    value="Papa anrufen"
-  />
-  <div>
-    <span>
-      Every
-    </span>
-    <input
-      autoComplete="off"
-      min="1"
-      name="schedule"
-      onChange={[Function]}
-      type="number"
-      value={4}
-    />
-    <span>
-      Days
-    </span>
-  </div>
-  <div>
-    <span>
-      Last done on
-    </span>
-    <input
-      name="lastEvent"
-      onChange={[Function]}
-      type="date"
-      value="2018-06-03"
-    />
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Today
-    </button>
-  </div>
-  <Urgency
-    lastEvent="2018-06-03"
-    schedule={4}
-    today="2018-12-04"
-  />
+  <h1>
+    Todo List
+  </h1>
   <ul>
-    <li>
-      <button
-        disabled={true}
-        onClick={[Function]}
-        title=""
-        type="button"
-      >
-        <Icon
-          className=""
-          height="auto"
-          name="save"
-          width="1em"
-        />
-      </button>
+    <li
+      key="1"
+    >
+      <TodoListItem
+        isLoading={false}
+        removeTodo={[Function]}
+        saveTodo={[Function]}
+        todo={
+          Object {
+            "id": 1,
+            "lastEvent": "2018-06-03",
+            "name": "Papa anrufen",
+            "schedule": 4,
+          }
+        }
+      />
     </li>
-    <li>
-      <button
-        disabled={false}
-        onClick={[Function]}
-        title="Remove Todo"
-        type="button"
-      >
-        ✕
-      </button>
+    <li
+      key="2"
+    >
+      <TodoListItem
+        isLoading={false}
+        removeTodo={[Function]}
+        saveTodo={[Function]}
+        todo={
+          Object {
+            "id": 2,
+            "lastEvent": "2018-05-11",
+            "name": "Superfit",
+            "schedule": 3,
+          }
+        }
+      />
+    </li>
+    <li
+      key="3"
+    >
+      <TodoListItem
+        isLoading={false}
+        removeTodo={[Function]}
+        saveTodo={[Function]}
+        todo={
+          Object {
+            "id": 3,
+            "lastEvent": "2018-05-12",
+            "name": "Mama anrufen",
+            "schedule": 7,
+          }
+        }
+      />
     </li>
   </ul>
-</form>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    title="Add Todo"
+    type="button"
+  >
+    +
+  </button>
+</div>
+`;
+
+exports[`TodoList should render correctly one todo 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Todo List
+  </h1>
+  <ul>
+    <li
+      key="1"
+    >
+      <TodoListItem
+        isLoading={false}
+        removeTodo={[Function]}
+        saveTodo={[Function]}
+        todo={
+          Object {
+            "id": 1,
+            "lastEvent": "2018-06-03",
+            "name": "Papa anrufen",
+            "schedule": 4,
+          }
+        }
+      />
+    </li>
+  </ul>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    title="Add Todo"
+    type="button"
+  >
+    +
+  </button>
+</div>
 `;

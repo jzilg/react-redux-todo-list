@@ -3,163 +3,95 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import TodoListItem from '../../src/components/TodoListItem/TodoListItem'
-import { getTodaysDate } from '../../src/utils/helper'
+import TodoList from '../../src/components/TodoList'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('TodoListItem', () => {
-    const removeTodo = jest.fn()
-    const saveTodo = jest.fn()
-    const today = '2018-06-02'
-    const todo = {
-        id: 1,
-        name: 'Papa anrufen',
-        schedule: 4,
-        lastEvent: '2018-06-03',
-    }
+describe('TodoList', () => {
+    Date.now = () => '2018-09-18' // otherwise today is today
+
+    const saveTodo = () => {}
+    const removeTodo = () => {}
+    const isLoading = false
+    const todos = [
+        {
+            id: 1,
+            name: 'Papa anrufen',
+            schedule: 4,
+            lastEvent: '2018-06-03',
+        },
+        {
+            id: 2,
+            name: 'Superfit',
+            schedule: 3,
+            lastEvent: '2018-05-11',
+        },
+        {
+            id: 3,
+            name: 'Mama anrufen',
+            schedule: 7,
+            lastEvent: '2018-05-12',
+        },
+    ]
 
     it('should render correctly one todo', () => {
-        // pretend today is the date when the snapshot was taken
-        Date.now = () => 1543881600000
-
+        const addEmptyTodo = () => {}
+        const todosWithOneTodo = todos.filter(todo => todo.id === 1)
         const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
+            <TodoList
+                todos={todosWithOneTodo}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
+                removeTodo={removeTodo}
+                isLoading={isLoading}
             />
         ))
         const tree = shallowToJson(component)
         expect(tree).toMatchSnapshot()
     })
 
-    it('should call saveTodo', () => {
+    it('should render correctly more todos', () => {
+        const addEmptyTodo = () => {}
         const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
+            <TodoList
+                todos={todos}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
+                removeTodo={removeTodo}
+                isLoading={isLoading}
             />
         ))
-
-        component.instance().saveTodo()
-        expect(saveTodo.mock.calls.length).toBe(1)
+        const tree = shallowToJson(component)
+        expect(tree).toMatchSnapshot()
     })
 
-    it('should call removeTodo', () => {
+    it('should call addEmptyTodo if button is clicked and todos are set', () => {
+        const addEmptyTodo = jest.fn()
         const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
+            <TodoList
+                todos={todos}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
+                removeTodo={removeTodo}
+                isLoading={isLoading}
             />
         ))
-
-        component.instance().removeTodo()
-        expect(removeTodo.mock.calls.length).toBe(1)
+        component.find('button').simulate('click')
+        expect(addEmptyTodo.mock.calls.length).toBe(1)
     })
 
-    it('should update state if inputChanged is called', () => {
+    it('should call addEmptyTodo if button is clicked and todos are empty', () => {
+        const addEmptyTodo = jest.fn()
         const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
+            <TodoList
+                todos={[]}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
+                removeTodo={removeTodo}
+                isLoading={isLoading}
             />
         ))
-        const event = {
-            target: {
-                name: 'foo',
-                value: 'bar',
-            },
-        }
-
-        component.instance().inputChange(event)
-        const newState = component.state('foo')
-        expect(newState).toBe('bar')
-    })
-
-    it('should update state with number if inputChanged is called and name is schedule', () => {
-        const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
-                saveTodo={saveTodo}
-            />
-        ))
-        const event = {
-            target: {
-                name: 'schedule',
-                value: '1',
-            },
-        }
-
-        component.instance().inputChange(event)
-        const newState = component.state('schedule')
-        expect(newState).toBe(1)
-    })
-
-    it('should not set state.lastEvent if setInputToday is called but last event is today', () => {
-        const todoWithLastEventToday = {
-            ...todo,
-            lastEvent: today,
-        }
-        const component = shallow((
-            <TodoListItem
-                todo={todoWithLastEventToday}
-                isLoading={false}
-                removeTodo={removeTodo}
-                saveTodo={saveTodo}
-            />
-        ))
-
-        const instance = component.instance()
-        instance.today = today
-        instance.setInputToday()
-
-        const stateToday = component.state('lastEvent')
-        expect(stateToday).toBe(today)
-    })
-
-    it('should set state.lastEvent to today, if setInputToday is called and last event was in the past', () => {
-        const component = shallow((
-            <TodoListItem
-                todo={todo}
-                isLoading={false}
-                removeTodo={removeTodo}
-                saveTodo={saveTodo}
-            />
-        ))
-
-        const instance = component.instance()
-        instance.today = today
-        instance.setInputToday()
-
-        const stateToday = component.state('lastEvent')
-        expect(stateToday).toBe(today)
-    })
-
-    it('should set initial state.lastEvent to today if none is set', () => {
-        const todoWithNoLastEvent = {
-            ...todo,
-            lastEvent: '',
-        }
-        const component = shallow((
-            <TodoListItem
-                todo={todoWithNoLastEvent}
-                isLoading={false}
-                removeTodo={removeTodo}
-                saveTodo={saveTodo}
-            />
-        ))
-
-        const state = component.state('lastEvent')
-        expect(state).toBe(getTodaysDate())
+        component.find('button').simulate('click')
+        expect(addEmptyTodo.mock.calls.length).toBe(1)
     })
 })
