@@ -8,13 +8,13 @@ import {
     ADD_TODO_SUCCESS,
 } from '../../../src/redux/actions/add-todo.actions'
 
-describe('addTodo', () => {
+describe('addEmptyTodo', () => {
     const mockStore = configureMockStore()
     const todo = {
         id: 1,
     }
 
-    it('should create the action ADD_TODO_REQUEST when addTodo is called', () => {
+    it('should create the action ADD_TODO_REQUEST when addEmptyTodo is called', () => {
         const store = mockStore()
         const url = `${BACKEND_URL}/todos`
         const method = 'POST'
@@ -40,7 +40,7 @@ describe('addTodo', () => {
         expect(store.getActions()).toEqual(expectedActions)
     })
 
-    it('should create the action ADD_TODO_REQUEST when addTodo is called', () => {
+    it('should create the action ADD_TODO_REQUEST when addEmptyTodo is called', () => {
         const store = mockStore()
 
         const expectedActions = [

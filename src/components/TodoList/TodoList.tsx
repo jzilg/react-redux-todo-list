@@ -5,7 +5,7 @@ import style from './todo-list.scss'
 
 interface ListProps {
     todos: Todo[]
-    addTodo: Function
+    addEmptyTodo: Function
     saveTodo: Function
     removeTodo: Function
     isLoading: boolean
@@ -13,7 +13,7 @@ interface ListProps {
 
 const TodoList = ({
     todos,
-    addTodo,
+    addEmptyTodo,
     saveTodo,
     removeTodo,
     isLoading,
@@ -29,7 +29,7 @@ const TodoList = ({
 
     const addNewTodo = (): void => {
         const id = createNewId()
-        addTodo(id)
+        addEmptyTodo(id)
     }
 
     const todoElements = todos.map(todo => (

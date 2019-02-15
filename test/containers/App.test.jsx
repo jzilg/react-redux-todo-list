@@ -46,11 +46,11 @@ describe('App', () => {
         expect(dispatch.mock.calls.length).toBe(1)
     })
 
-    it('should call dispatch if addTodo is called', async () => {
+    it('should call dispatch if addEmptyTodo is called', async () => {
         const dispatch = jest.fn().mockResolvedValue()
         const output = shallow(<App store={store} dispatch={dispatch} />)
         await dispatch()
-        output.dive().instance().addTodo(todo)
+        output.dive().instance().addEmptyTodo(todo)
         expect(dispatch.mock.calls.length).toBe(1)
     })
 })

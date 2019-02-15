@@ -16,7 +16,7 @@ interface AppProps extends AppStateProps {
 class App extends React.Component<AppProps, {}> {
     constructor(props) {
         super(props)
-        this.addTodo = this.addTodo.bind(this)
+        this.addEmptyTodo = this.addEmptyTodo.bind(this)
         this.saveTodo = this.saveTodo.bind(this)
         this.removeTodo = this.removeTodo.bind(this)
     }
@@ -36,7 +36,7 @@ class App extends React.Component<AppProps, {}> {
         dispatch(removeTodo(todo))
     }
 
-    addTodo(id: number): void {
+    addEmptyTodo(id: number): void {
         const { dispatch } = this.props
         const emptyTodo = {
             id,
@@ -54,7 +54,7 @@ class App extends React.Component<AppProps, {}> {
         return (
             <TodoList
                 todos={todos}
-                addTodo={this.addTodo}
+                addEmptyTodo={this.addEmptyTodo}
                 saveTodo={this.saveTodo}
                 removeTodo={this.removeTodo}
                 isLoading={isLoading}

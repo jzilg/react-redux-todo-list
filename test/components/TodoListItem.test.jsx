@@ -35,12 +35,12 @@ describe('TodoList', () => {
     ]
 
     it('should render correctly one todo', () => {
-        const addTodo = () => {}
+        const addEmptyTodo = () => {}
         const todosWithOneTodo = todos.filter(todo => todo.id === 1)
         const component = shallow((
             <TodoList
                 todos={todosWithOneTodo}
-                addTodo={addTodo}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
                 isLoading={isLoading}
@@ -51,11 +51,11 @@ describe('TodoList', () => {
     })
 
     it('should render correctly more todos', () => {
-        const addTodo = () => {}
+        const addEmptyTodo = () => {}
         const component = shallow((
             <TodoList
                 todos={todos}
-                addTodo={addTodo}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
                 isLoading={isLoading}
@@ -65,33 +65,33 @@ describe('TodoList', () => {
         expect(tree).toMatchSnapshot()
     })
 
-    it('should call add todo if button is clicked and todos are set', () => {
-        const addTodo = jest.fn()
+    it('should call addEmptyTodo if button is clicked and todos are set', () => {
+        const addEmptyTodo = jest.fn()
         const component = shallow((
             <TodoList
                 todos={todos}
-                addTodo={addTodo}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
                 isLoading={isLoading}
             />
         ))
         component.find('button').simulate('click')
-        expect(addTodo.mock.calls.length).toBe(1)
+        expect(addEmptyTodo.mock.calls.length).toBe(1)
     })
 
-    it('should call add todo if button is clicked and todos are empty', () => {
-        const addTodo = jest.fn()
+    it('should call addEmptyTodo if button is clicked and todos are empty', () => {
+        const addEmptyTodo = jest.fn()
         const component = shallow((
             <TodoList
                 todos={[]}
-                addTodo={addTodo}
+                addEmptyTodo={addEmptyTodo}
                 saveTodo={saveTodo}
                 removeTodo={removeTodo}
                 isLoading={isLoading}
             />
         ))
         component.find('button').simulate('click')
-        expect(addTodo.mock.calls.length).toBe(1)
+        expect(addEmptyTodo.mock.calls.length).toBe(1)
     })
 })
