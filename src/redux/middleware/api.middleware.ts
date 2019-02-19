@@ -12,6 +12,7 @@ import {
 export interface ApiRequestOptions {
     url: string
     method: HTTPMethod
+    headers?: object
     body?: string
     successAction: Function
 }
@@ -38,10 +39,11 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
             url,
             method,
             successAction,
+            headers,
             body,
         } = action.payload
         const { triggeredBy } = action.meta
-        const options: ApiOptions = getApiOptions(method, body)
+        const options: ApiOptions = getApiOptions({ method, headers, body })
 
         fetch(url, options)
             .then(response => response.json())
