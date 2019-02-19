@@ -38,9 +38,9 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
         const {
             url,
             method,
-            successAction,
             headers,
             body,
+            successAction,
         } = action.payload
         const { triggeredBy } = action.meta
         const options: ApiOptions = getApiOptions({ method, headers, body })
