@@ -24,7 +24,7 @@ function randomIntFromInterval(min: number, max: number): number {
 }
 
 /**
- * @returns {number} new id base64 of timestamp and random number
+ * @returns {number} new id with 8 or 9 digits
  */
 export function createUniqueId(): number {
     const date = new Date()
