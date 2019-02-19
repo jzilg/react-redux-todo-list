@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Todo from '../../entities/todo.interface'
-import { createNewId } from '../../utils/helper'
+import { createUniqueId } from '../../utils/helper'
 import TodoListItem from '../TodoListItem'
 import style from './todo-list.scss'
 
@@ -20,7 +20,7 @@ const TodoList = ({
     isLoading,
 }: ListProps): ReactElement<{}> => {
     const addNewTodo = (): void => {
-        const id = createNewId()
+        const id = createUniqueId()
         addEmptyTodo(id)
     }
 

@@ -21,7 +21,7 @@ export function getDurationBetweenDates(startDate, endDate): number {
 /**
  * @returns {number} new id base64 of timestamp and random number
  */
-export function createNewId(): string {
+export function createUniqueId(): string {
     const date = new Date()
     const time = date.getTime()
     const randomNumber = Math.random()
