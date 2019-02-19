@@ -1,10 +1,8 @@
 @import "../../style/color";
+@import "../../style/mixins";
 
 .list {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
+    @include no-list-style();
 }
 
 .list-element {
@@ -22,13 +20,12 @@
 }
 
 .add-todo-btn {
-    border-style: none;
-    background-color: transparent;
     width: 100%;
     height: 40px;
     font-size: 24px;
     color: $grey;
     transition: background-color .2s, color .2s;
+    @include no-button-style();
 
     &:hover {
         background-color: $blue;
