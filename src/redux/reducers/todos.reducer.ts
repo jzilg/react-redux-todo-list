@@ -1,6 +1,6 @@
 import Todo from '../../entities/todo.interface'
 import Action from '../interfaces/action.interface'
-import { ADD_TODO_SUCCESS } from '../actions/add-todo.actions'
+import { ADD_TODO } from '../actions/add-todo.actions'
 import { RECEIVE_TODOS } from '../actions/fetch-todos.actions'
 import { SAVE_TODO_SUCCESS } from '../actions/save-todo.actions'
 import { REMOVE_TODO_SUCCESS } from '../actions/remove-todo.actions'
@@ -23,7 +23,7 @@ function todosReducer(state = defaultState, action: TodosReducerAction): TodosSt
         case RECEIVE_TODOS: {
             return state.concat(action.payload.todos)
         }
-        case ADD_TODO_SUCCESS: {
+        case ADD_TODO: {
             return state.concat(action.payload.todo)
         }
         case SAVE_TODO_SUCCESS: {
