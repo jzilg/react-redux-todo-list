@@ -1,6 +1,5 @@
 import expect from 'expect'
 import uiReducer, { defaultState } from '../../../src/redux/reducers/ui.reducer'
-import { RECEIVE_ERROR } from '../../../src/redux/actions/error.actions'
 import { SET_LOADER } from '../../../src/redux/actions/ui.actions'
 
 describe('uiReducer', () => {
@@ -45,26 +44,5 @@ describe('uiReducer', () => {
         }
 
         expect(uiReducer(loadingState, action)).toEqual(defaultState)
-    })
-
-    it('should return error state if RECEIVE_ERROR is called', () => {
-        const errorMsg = 'Error!'
-        const action = {
-            type: RECEIVE_ERROR,
-            payload: {
-                errorMsg,
-            },
-        }
-
-        const expectedState = {
-            ...defaultState,
-            isLoading: false,
-            error: {
-                hasOccurred: true,
-                message: errorMsg,
-            },
-        }
-
-        expect(uiReducer(loadingState, action)).toEqual(expectedState)
     })
 })

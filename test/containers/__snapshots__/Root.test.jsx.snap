@@ -3,12 +3,6 @@
 exports[`Root should render correctly when error hasOccurred 1`] = `
 <Root
   dispatch={[Function]}
-  error={
-    Object {
-      "hasOccurred": true,
-      "message": "error",
-    }
-  }
   isLoading={false}
   store={
     Object {
@@ -49,12 +43,6 @@ exports[`Root should render correctly when error hasOccurred 1`] = `
 exports[`Root should render correctly when loading 1`] = `
 <Root
   dispatch={[Function]}
-  error={
-    Object {
-      "hasOccurred": false,
-      "message": "error",
-    }
-  }
   isLoading={true}
   store={
     Object {
@@ -95,12 +83,6 @@ exports[`Root should render correctly when loading 1`] = `
 exports[`Root should render correctly when not loading and no error hasOccurred 1`] = `
 <Root
   dispatch={[Function]}
-  error={
-    Object {
-      "hasOccurred": false,
-      "message": "error",
-    }
-  }
   isLoading={false}
   store={
     Object {
