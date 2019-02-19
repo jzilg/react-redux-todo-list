@@ -1,5 +1,5 @@
 type NotificationType = 'success' | 'warning' | 'error'
-export type NotificationId = string
+export type NotificationId = number
 
 export default interface Notification {
     id: NotificationId

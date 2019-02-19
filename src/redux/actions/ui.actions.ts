@@ -1,5 +1,5 @@
 import Action from '../interfaces/action.interface'
-import Notification from '../../entities/notification.interface'
+import Notification, { NotificationId } from '../../entities/notification.interface'
 
 export const SET_LOADER = '[UI] SET_LOADER'
 export const SET_NOTIFICATION = '[UI] SET_NOTIFICATION'
@@ -25,7 +25,7 @@ export const setNotification = (notification: Notification, triggeredBy: string)
     },
 })
 
-export const unsetNotification = (notificationId: string, triggeredBy: string): Action => ({
+export const unsetNotification = (notificationId: NotificationId, triggeredBy: string): Action => ({
     type: UNSET_NOTIFICATION,
     payload: {
         notificationId,

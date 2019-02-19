@@ -18,13 +18,17 @@ export function getDurationBetweenDates(startDate, endDate): number {
     return startDateMoment.diff(endDateMoment, 'days')
 }
 
+function randomIntFromInterval(min: number, max: number): number {
+    const { random, floor } = Math
+    return floor(random() * (max - min + 1) + min)
+}
+
 /**
  * @returns {number} new id base64 of timestamp and random number
  */
-export function createUniqueId(): string {
+export function createUniqueId(): number {
     const date = new Date()
     const time = date.getTime()
-    const randomNumber = Math.random()
-    const hash = btoa(String(time / randomNumber))
-    return hash
+    const randomNumber = randomIntFromInterval(10000, 99999)
+    return Math.floor(time / randomNumber)
 }
