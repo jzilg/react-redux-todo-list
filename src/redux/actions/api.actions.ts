@@ -1,5 +1,6 @@
 import Action from '../interfaces/action.interface'
 import { ApiRequestOptions } from '../middleware/api.middleware'
+import { createNewId } from '../../utils/helper'
 
 export const API_REQUEST = '[API] REQUEST'
 export const API_SUCCESS = '[API] SUCCESS'
@@ -31,5 +32,11 @@ export const apiError = (errorMsg: string, triggeredBy: string): Action => ({
     },
     meta: {
         triggeredBy,
+        showLoader: false,
+        notification: {
+            id: createNewId(),
+            type: 'error',
+            message: errorMsg,
+        },
     },
 })

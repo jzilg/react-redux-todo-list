@@ -1,11 +1,9 @@
 import MiddlewareCreator from '../interfaces/middleware-creator.interface'
 import Action from '../interfaces/action.interface'
 import getApiOptions, { ApiOptions, HTTPMethod } from '../api-options'
-import { receiveError } from '../actions/error.actions'
 import {
     API_REQUEST,
     API_SUCCESS,
-    API_ERROR,
     apiRequest,
     apiSuccess,
     apiError,
@@ -56,12 +54,6 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
     if (action.type === API_SUCCESS) {
         const { successAction, data } = action.payload
         dispatch(successAction(data))
-        return
-    }
-
-    if (action.type === API_ERROR) {
-        const { errorMsg } = action.payload
-        dispatch(receiveError(errorMsg))
     }
 }
 

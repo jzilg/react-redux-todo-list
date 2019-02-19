@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import Todo from '../../entities/todo.interface'
+import { createNewId } from '../../utils/helper'
 import TodoListItem from '../TodoListItem'
 import style from './todo-list.scss'
 
@@ -18,15 +19,6 @@ const TodoList = ({
     removeTodo,
     isLoading,
 }: ListProps): ReactElement<{}> => {
-    const createNewId = (): number => {
-        if (!todos.length) {
-            return 0
-        }
-        const ids = todos.map(todo => todo.id)
-        const highestId = Math.max(...ids)
-        return highestId + 1
-    }
-
     const addNewTodo = (): void => {
         const id = createNewId()
         addEmptyTodo(id)

@@ -17,3 +17,14 @@ export function getDurationBetweenDates(startDate, endDate): number {
     const endDateMoment = moment(endDate)
     return startDateMoment.diff(endDateMoment, 'days')
 }
+
+/**
+ * @returns {number} new id base64 of timestamp and random number
+ */
+export function createNewId(): string {
+    const date = new Date()
+    const time = date.getTime()
+    const randomNumber = Math.random()
+    const hash = btoa(String(time / randomNumber))
+    return hash
+}

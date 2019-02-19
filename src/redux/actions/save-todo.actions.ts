@@ -1,6 +1,7 @@
 import Action from '../interfaces/action.interface'
 import Todo from '../../entities/todo.interface'
 import BACKEND_URL from '../../constants/api'
+import { createNewId } from '../../utils/helper'
 
 export const SAVE_TODO_REQUEST = 'SAVE_TODO_REQUEST'
 export const SAVE_TODO_SUCCESS = 'SAVE_TODO_SUCCESS'
@@ -12,6 +13,12 @@ export const saveTodoSuccess = (todo: Todo): Action => ({
     },
     meta: {
         showLoader: false,
+        notification: {
+            id: createNewId(),
+            type: 'success',
+            message: 'Todo saved',
+            duration: 4000,
+        },
     },
 })
 

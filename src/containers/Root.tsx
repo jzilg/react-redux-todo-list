@@ -1,38 +1,48 @@
 import React, { Fragment, ReactElement } from 'react'
 import { Store } from 'redux'
 import { Provider, connect } from 'react-redux'
-import Error from '../entities/error.interface'
+import Notification from '../entities/notification.interface'
 import State from '../redux/interfaces/state.interface'
+import { unsetNotification } from '../redux/actions/ui.actions'
 import Loading from '../components/Loading'
-import ErrorMsg from '../components/ErrorMsg'
+import Notifications from '../components/Notifications'
 import App from './App'
 
 interface RootProps extends RootStateProps {
     store: Store
 }
 
-const Root = ({ store, error, isLoading }: RootProps): ReactElement<{}> => {
+const Root = ({ store, isLoading, notifications }: RootProps): ReactElement<{}> => {
+    const removeNotification = (id, triggeredBy): void => {
+        store.dispatch(unsetNotification(id, triggeredBy))
+    }
     const loader = isLoading ? <Loading /> : null
-    const content = error.hasOccurred ? <ErrorMsg message={error.message} /> : <App />
+    const notificationsElement = (
+        <Notifications
+            notifications={notifications}
+            removeNotification={removeNotification}
+        />
+    )
 
     return (
         <Provider store={store}>
             <Fragment>
                 {loader}
-                {content}
+                {notificationsElement}
+                <App />
             </Fragment>
         </Provider>
     )
 }
 
 interface RootStateProps {
-    error: Error
     isLoading: boolean
+    notifications: Notification[]
 }
 
 const mapStateToProps = (state: State): RootStateProps => ({
     isLoading: state.ui.isLoading,
-    error: state.ui.error,
+    notifications: state.ui.notifications,
 })
 
 export default connect(mapStateToProps)(Root)
