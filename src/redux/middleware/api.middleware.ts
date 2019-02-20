@@ -1,6 +1,6 @@
 import MiddlewareCreator from '../interfaces/middleware-creator.interface'
 import Action from '../interfaces/action.interface'
-import getApiOptions, { ApiOptions, HTTPMethod } from '../api-options'
+import getApiOptions, { HTTPMethod } from '../api-options'
 import {
     API_REQUEST,
     API_SUCCESS,
@@ -43,7 +43,7 @@ const apiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: ApiA
             successAction,
         } = action.payload
         const { triggeredBy } = action.meta
-        const options: ApiOptions = getApiOptions({ method, headers, body })
+        const options: object = getApiOptions({ method, headers, body })
 
         fetch(url, options)
             .then(response => response.json())

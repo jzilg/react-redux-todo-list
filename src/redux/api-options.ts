@@ -2,15 +2,11 @@ export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 export interface ApiOptions {
     method: HTTPMethod
-    headers?: Headers
-    body?: string
-}
-
-interface ApiOptionsConfig {
-    method: HTTPMethod
     headers?: object
     body?: string
 }
+
+interface ApiOptionsConfig extends ApiOptions {}
 
 function getApiOptions({ method, headers, body }: ApiOptionsConfig): ApiOptions {
     const options: ApiOptions = {
@@ -18,14 +14,14 @@ function getApiOptions({ method, headers, body }: ApiOptionsConfig): ApiOptions 
     }
 
     if (method === 'POST' || method === 'PUT') {
-        options.headers = new Headers({
+        options.headers = {
             'Content-Type': 'application/json',
             ...headers,
-        })
+        }
     } else if (headers) {
-        options.headers = new Headers({
+        options.headers = {
             ...headers,
-        })
+        }
     }
 
     if (body) {
