@@ -2,17 +2,17 @@ import React, { Fragment, ReactElement } from 'react'
 import { Store } from 'redux'
 import { Provider, connect } from 'react-redux'
 import Notification from '../entities/notification.interface'
-import State from '../redux/interfaces/state.interface'
+import ReduxState from '../redux/interfaces/state.interface'
 import { unsetNotification } from '../redux/actions/ui.actions'
 import Loading from '../components/Loading'
 import Notifications from '../components/Notifications'
 import App from './App'
 
-interface RootProps extends RootStateProps {
+interface Props extends StateProps {
     store: Store
 }
 
-const Root = ({ store, isLoading, notifications }: RootProps): ReactElement<{}> => {
+const Root = ({ store, isLoading, notifications }: Props): ReactElement<{}> => {
     const removeNotification = (id, triggeredBy): void => {
         store.dispatch(unsetNotification(id, triggeredBy))
     }
@@ -35,12 +35,12 @@ const Root = ({ store, isLoading, notifications }: RootProps): ReactElement<{}> 
     )
 }
 
-interface RootStateProps {
+interface StateProps {
     isLoading: boolean
     notifications: Notification[]
 }
 
-const mapStateToProps = (state: State): RootStateProps => ({
+const mapStateToProps = (state: ReduxState): StateProps => ({
     isLoading: state.ui.isLoading,
     notifications: state.ui.notifications,
 })

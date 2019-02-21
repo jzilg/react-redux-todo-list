@@ -4,7 +4,7 @@ import { createUniqueId } from '../../utils/helper'
 import TodoListItem from '../TodoListItem'
 import style from './todo-list.scss'
 
-interface ListProps {
+interface Props {
     todos: Todo[]
     addEmptyTodo: Function
     saveTodo: Function
@@ -18,7 +18,7 @@ const TodoList = ({
     saveTodo,
     removeTodo,
     isLoading,
-}: ListProps): ReactElement<{}> => {
+}: Props): ReactElement<{}> => {
     const addNewTodo = (): void => {
         const id = createUniqueId()
         addEmptyTodo(id)

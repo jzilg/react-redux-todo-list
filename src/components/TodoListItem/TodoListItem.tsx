@@ -6,16 +6,16 @@ import Urgency from '../Urgency'
 import { getTodaysDate } from '../../utils/helper'
 import style from './todo-list-item.scss'
 
-interface TodoProps {
+interface Props {
     todo: Todo
     saveTodo: Function
     removeTodo: Function
     isLoading: boolean
 }
 
-interface TodoState extends Todo {}
+interface State extends Todo {}
 
-class TodoListItem extends React.Component<TodoProps, TodoState> {
+class TodoListItem extends React.Component<Props, State> {
     today = getTodaysDate()
 
     constructor(props) {

@@ -2,18 +2,18 @@ import React, { ReactNode } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../entities/todo.interface'
-import State from '../redux/interfaces/state.interface'
+import ReduxState from '../redux/interfaces/state.interface'
 import TodoList from '../components/TodoList'
 import { fetchTodos } from '../redux/actions/fetch-todos.actions'
 import { addTodo } from '../redux/actions/add-todo.actions'
 import { saveTodo } from '../redux/actions/save-todo.actions'
 import { removeTodo } from '../redux/actions/remove-todo.actions'
 
-interface AppProps extends AppStateProps {
+interface Props extends StateProps {
     dispatch: Function
 }
 
-class App extends React.Component<AppProps, {}> {
+class App extends React.Component<Props, {}> {
     constructor(props) {
         super(props)
         this.addEmptyTodo = this.addEmptyTodo.bind(this)
@@ -63,12 +63,12 @@ class App extends React.Component<AppProps, {}> {
     }
 }
 
-interface AppStateProps {
+interface StateProps {
     isLoading: boolean
     todos: Todo[]
 }
 
-const mapStateToProps = (state: State): AppStateProps => ({
+const mapStateToProps = (state: ReduxState): StateProps => ({
     isLoading: state.ui.isLoading,
     todos: todosSortByUrgencySelector(state),
 })

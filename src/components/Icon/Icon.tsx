@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import style from './icon.scss'
 
-interface IconProps {
+interface Props {
     name: string
     width?: string
     height?: string
@@ -13,7 +13,7 @@ const Icon = ({
     width,
     height,
     className,
-}: IconProps): ReactElement<{}> => {
+}: Props): ReactElement<{}> => {
     const icons = {
         save: {
             width: 28,

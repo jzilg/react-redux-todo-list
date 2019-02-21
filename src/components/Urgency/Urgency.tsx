@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react'
 import { getDurationBetweenDates } from '../../utils/helper'
 
-interface UrgencyProps {
+interface Props {
     today: string
     lastEvent: string
     schedule: number
 }
 
-const Urgency = ({ today, lastEvent, schedule }: UrgencyProps): ReactElement<{}> => {
+const Urgency = ({ today, lastEvent, schedule }: Props): ReactElement<{}> => {
     if (!lastEvent || !schedule) {
         return (
             <span>
