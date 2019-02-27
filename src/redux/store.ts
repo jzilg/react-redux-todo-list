@@ -1,16 +1,11 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import middleware from './middleware'
 import rootReducer from './reducers/root.reducer'
-
-declare global {
-    interface Window {
-        devToolsExtension: Function
-    }
-}
+import applyDevtoolExtension from './redux-devtools-extension'
 
 const enhancer = compose(
     applyMiddleware(...middleware),
-    window.devToolsExtension ? window.devToolsExtension() : store => store,
+    applyDevtoolExtension(),
 )
 
 export default createStore(rootReducer, undefined, enhancer)
