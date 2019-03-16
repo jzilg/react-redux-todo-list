@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import Todo from '../../entities/todo.interface'
 import { createUniqueId } from '../../utils/helper'
-import TodoListItem from '../todo-list-item'
+import TodoListItem from '../TodoListItem'
 import style from './todo-list.scss'
 
 interface Props {

@@ -4,8 +4,8 @@ import { Provider, connect } from 'react-redux'
 import Notification from '../entities/notification.interface'
 import ReduxState from '../redux/interfaces/state.interface'
 import { unsetNotification } from '../redux/actions/ui.actions'
-import Loading from '../components/loading'
-import Notifications from '../components/notifications'
+import Loading from '../components/Loading'
+import Notifications from '../components/Notifications'
 import App from './App'
 
 interface Props extends StateProps {
