@@ -50,6 +50,12 @@ describe('saveTodo', () => {
                     todo,
                 },
                 meta: {
+                    notification: {
+                        id: expect.any(Number),
+                        duration: 4000,
+                        message: 'Todo saved',
+                        type: 'success',
+                    },
                     showLoader: false,
                 },
             },

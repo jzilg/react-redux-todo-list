@@ -103,20 +103,4 @@ describe('apiMiddleware', () => {
 
         expect(successAction.mock.calls.length).toBe(1)
     })
-
-    it('should call RECEIVE_ERROR action if action is API_ERROR', () => {
-        const store = mockStore()
-        const errorMsg = 'Error!'
-        const action = {
-            type: API_ERROR,
-            payload: {
-                errorMsg,
-            },
-        }
-
-        apiMiddleware(store)(next)(action)
-
-        const executedActions = store.getActions()
-        expect(executedActions[0].payload.errorMsg).toBe(errorMsg)
-    })
 })

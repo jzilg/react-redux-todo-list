@@ -2,8 +2,11 @@
 
 exports[`App should render correctly 1`] = `
 <App
-  dispatch={[Function]}
+  addTodo={[Function]}
+  fetchTodos={[Function]}
   isLoading={true}
+  removeTodo={[Function]}
+  saveTodo={[Function]}
   store={
     Object {
       "dispatch": [Function],

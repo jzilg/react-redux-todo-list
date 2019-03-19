@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import Urgency from '../../src/components/Urgency'
+import Urgency from '../../src/components/urgency'
 
 Enzyme.configure({ adapter: new Adapter() })
 

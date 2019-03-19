@@ -4,59 +4,44 @@ import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.se
 import Todo from '../entities/todo.interface'
 import ReduxState from '../redux/interfaces/state.interface'
 import TodoList from '../components/todo-list'
-import { fetchTodos } from '../redux/actions/fetch-todos.actions'
-import { addTodo } from '../redux/actions/add-todo.actions'
-import { saveTodo } from '../redux/actions/save-todo.actions'
-import { removeTodo } from '../redux/actions/remove-todo.actions'
+import { fetchTodos as fetchTodosActionCreator } from '../redux/actions/fetch-todos.actions'
+import { addTodo as addTodoActionCreator } from '../redux/actions/add-todo.actions'
+import { saveTodo as saveTodoActionCreator } from '../redux/actions/save-todo.actions'
+import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-todo.actions'
 
-interface Props extends StateProps {
-    dispatch: Function
-}
+interface Props extends StateProps, DispatchProps {}
 
 class App extends React.Component<Props, {}> {
-    constructor(props) {
-        super(props)
-        this.addEmptyTodo = this.addEmptyTodo.bind(this)
-        this.saveTodo = this.saveTodo.bind(this)
-        this.removeTodo = this.removeTodo.bind(this)
-    }
-
     componentDidMount(): void {
-        const { props } = this
-        props.dispatch(fetchTodos())
+        const { fetchTodos } = this.props
+        fetchTodos()
     }
 
-    saveTodo(todo: Todo): void {
-        const { dispatch } = this.props
-        dispatch(saveTodo(todo))
-    }
-
-    removeTodo(todo: Todo): void {
-        const { dispatch } = this.props
-        dispatch(removeTodo(todo))
-    }
-
-    addEmptyTodo(id: number): void {
-        const { dispatch } = this.props
+    addEmptyTodo = (id: number): void => {
+        const { addTodo } = this.props
         const emptyTodo = {
             id,
             name: '',
             schedule: 1,
             lastEvent: '',
         }
-
-        dispatch(addTodo(emptyTodo))
+        addTodo(emptyTodo)
     }
 
     render(): ReactNode {
-        const { isLoading, todos } = this.props
+        const {
+            isLoading,
+            todos,
+            saveTodo,
+            removeTodo,
+        } = this.props
 
         return (
             <TodoList
                 todos={todos}
                 addEmptyTodo={this.addEmptyTodo}
-                saveTodo={this.saveTodo}
-                removeTodo={this.removeTodo}
+                saveTodo={saveTodo}
+                removeTodo={removeTodo}
                 isLoading={isLoading}
             />
         )
@@ -73,4 +58,18 @@ const mapStateToProps = (state: ReduxState): StateProps => ({
     todos: todosSortByUrgencySelector(state),
 })
 
-export default connect(mapStateToProps)(App)
+interface DispatchProps {
+    fetchTodos: Function
+    saveTodo: Function
+    removeTodo: Function
+    addTodo: Function
+}
+
+const mapDispatchToProps = {
+    fetchTodos: fetchTodosActionCreator,
+    addTodo: addTodoActionCreator,
+    saveTodo: saveTodoActionCreator,
+    removeTodo: removeTodoActionCreator,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

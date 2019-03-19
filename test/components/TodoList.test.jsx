@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallowToJson } from 'enzyme-to-json'
 import expect from 'expect'
-import TodoList from '../../src/components/TodoList'
+import TodoList from '../../src/components/todo-list'
 
 Enzyme.configure({ adapter: new Adapter() })
 
