@@ -4,6 +4,7 @@ module.exports = {
         'src/**/*.{js,jsx,ts,tsx}',
         '!src/**/index.{js,ts,tsx}',
         '!src/redux/store.ts',
+        '!src/redux/redux-devtools-extension.ts',
     ],
     moduleNameMapper: {
         '\\.(scss)$': '<rootDir>/node_modules/jest-css-modules',

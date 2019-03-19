@@ -2,7 +2,6 @@
 
 exports[`Root should render correctly when error hasOccurred 1`] = `
 <Root
-  dispatch={[Function]}
   isLoading={false}
   store={
     Object {
@@ -37,12 +36,12 @@ exports[`Root should render correctly when error hasOccurred 1`] = `
       "unsubscribe": undefined,
     }
   }
+  unsetNotification={[Function]}
 />
 `;
 
 exports[`Root should render correctly when loading 1`] = `
 <Root
-  dispatch={[Function]}
   isLoading={true}
   store={
     Object {
@@ -77,12 +76,12 @@ exports[`Root should render correctly when loading 1`] = `
       "unsubscribe": undefined,
     }
   }
+  unsetNotification={[Function]}
 />
 `;
 
 exports[`Root should render correctly when not loading and no error hasOccurred 1`] = `
 <Root
-  dispatch={[Function]}
   isLoading={false}
   store={
     Object {
@@ -117,5 +116,6 @@ exports[`Root should render correctly when not loading and no error hasOccurred 
       "unsubscribe": undefined,
     }
   }
+  unsetNotification={[Function]}
 />
 `;

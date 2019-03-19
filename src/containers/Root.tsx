@@ -3,32 +3,33 @@ import { Store } from 'redux'
 import { Provider, connect } from 'react-redux'
 import Notification from '../entities/notification.interface'
 import ReduxState from '../redux/interfaces/state.interface'
-import { unsetNotification } from '../redux/actions/ui.actions'
+import { unsetNotification as unsetNotificationActionCreator } from '../redux/actions/ui.actions'
 import Loading from '../components/loading'
 import Notifications from '../components/notifications'
 import App from './App'
 
-interface Props extends StateProps {
+interface Props extends StateProps, DispatchProps {
     store: Store
 }
 
-const Root = ({ store, isLoading, notifications }: Props): ReactElement<{}> => {
-    const removeNotification = (id, triggeredBy): void => {
-        store.dispatch(unsetNotification(id, triggeredBy))
-    }
-    const loader = isLoading ? <Loading /> : null
-    const notificationsElement = (
-        <Notifications
-            notifications={notifications}
-            removeNotification={removeNotification}
-        />
-    )
+const Root = (props: Props): ReactElement<{}> => {
+    const {
+        store,
+        isLoading,
+        notifications,
+        unsetNotification,
+    } = props
+
+    const loaderElement = isLoading ? <Loading /> : null
 
     return (
         <Provider store={store}>
             <Fragment>
-                {loader}
-                {notificationsElement}
+                {loaderElement}
+                <Notifications
+                    notifications={notifications}
+                    removeNotification={unsetNotification}
+                />
                 <App />
             </Fragment>
         </Provider>
@@ -45,4 +46,12 @@ const mapStateToProps = (state: ReduxState): StateProps => ({
     notifications: state.ui.notifications,
 })
 
-export default connect(mapStateToProps)(Root)
+interface DispatchProps {
+    unsetNotification: Function
+}
+
+const mapDispatchToProps = {
+    unsetNotification: unsetNotificationActionCreator,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root)
