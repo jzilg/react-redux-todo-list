@@ -65,9 +65,9 @@ const mapStateToProps = (state: ReduxState): StateProps => ({
 
 interface DispatchProps {
     fetchTodos: Function
+    addTodo: Function
     saveTodo: Function
     removeTodo: Function
-    addTodo: Function
 }
 
 const mapDispatchToProps = {
