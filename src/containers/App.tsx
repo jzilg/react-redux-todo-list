@@ -12,12 +12,17 @@ import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-t
 interface Props extends StateProps, DispatchProps {}
 
 class App extends React.Component<Props, {}> {
+    constructor(props) {
+        super(props)
+        this.addEmptyTodo = this.addEmptyTodo.bind(this)
+    }
+
     componentDidMount(): void {
         const { fetchTodos } = this.props
         fetchTodos()
     }
 
-    addEmptyTodo = (id: number): void => {
+    addEmptyTodo(id: number): void {
         const { addTodo } = this.props
         const emptyTodo = {
             id,
