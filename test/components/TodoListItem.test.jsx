@@ -1,11 +1,8 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 import TodoListItem from '../../src/components/todo-list-item'
 import { getTodaysDate } from '../../src/utils/helper'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('TodoListItem', () => {
     const removeTodo = jest.fn()

@@ -23,6 +23,7 @@ module.exports = {
         '^.+\\.jsx?$': 'babel-jest',
     },
     setupFiles: [
-        './test/jest-fetch-mock.js',
+        '<rootDir>/test/jest-fetch-mock.js',
+        '<rootDir>/test//enzyme.config.js',
     ],
 }

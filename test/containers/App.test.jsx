@@ -1,12 +1,9 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { shallow } from 'enzyme'
 import { createMockStore } from 'redux-test-utils'
 import { shallowToJson } from 'enzyme-to-json'
 import App from '../../src/containers/App'
 import { REQUEST_TODOS } from '../../src/redux/actions/fetch-todos.actions'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('App', () => {
     const state = {

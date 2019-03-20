@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 import Urgency from '../../src/components/urgency'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('Urgency', () => {
     const pastOneDayAgo = '2018-09-16'
