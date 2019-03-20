@@ -1,4 +1,3 @@
-import expect from 'expect'
 import todosReducer, { defaultState } from '../../../src/redux/reducers/todos.reducer'
 import { ADD_TODO_SUCCESS } from '../../../src/redux/actions/add-todo.actions'
 import { RECEIVE_TODOS } from '../../../src/redux/actions/fetch-todos.actions'

@@ -1,4 +1,3 @@
-import expect from 'expect'
 import configureMockStore from 'redux-mock-store'
 import BACKEND_URL from '../../../src/constants/api'
 import {

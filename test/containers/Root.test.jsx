@@ -3,7 +3,6 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { createMockStore } from 'redux-test-utils'
 import { shallowToJson } from 'enzyme-to-json'
-import expect from 'expect'
 import Root from '../../src/containers/Root'
 
 Enzyme.configure({ adapter: new Adapter() })

@@ -1,4 +1,3 @@
-import expect from 'expect'
 import uiReducer, { defaultState } from '../../../src/redux/reducers/ui.reducer'
 import { SET_LOADER, SET_NOTIFICATION, UNSET_NOTIFICATION } from '../../../src/redux/actions/ui.actions'
 

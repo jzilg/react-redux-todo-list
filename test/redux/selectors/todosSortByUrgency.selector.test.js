@@ -1,4 +1,3 @@
-import expect from 'expect'
 import todosSortByUrgency from '../../../src/redux/selectors/todosSortByUrgency.selector'
 
 describe('todosSortByUrgency.selector', () => {
