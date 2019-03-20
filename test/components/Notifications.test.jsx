@@ -25,12 +25,12 @@ describe('Icon', () => {
 
     it('should call removeNotification if button is clicked', () => {
         const removeNotification = jest.fn()
-        const component = shallow(
+        const component = shallow((
             <Notifications
                 notifications={notifications}
                 removeNotification={removeNotification}
             />
-        )
+        ))
         component.find('button').simulate('click')
         expect(removeNotification.mock.calls.length).toBe(1)
     })
