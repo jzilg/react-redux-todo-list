@@ -17,18 +17,3 @@ export function getDurationBetweenDates(startDate, endDate): number {
     const endDateMoment = moment(endDate)
     return startDateMoment.diff(endDateMoment, 'days')
 }
-
-function randomIntFromInterval(min: number, max: number): number {
-    const { random, floor } = Math
-    return floor(random() * (max - min + 1) + min)
-}
-
-/**
- * @returns {number} new id with 8 or 9 digits
- */
-export function createUniqueId(): number {
-    const date = new Date()
-    const time = date.getTime()
-    const randomNumber = randomIntFromInterval(10000, 99999)
-    return Math.floor(time / randomNumber)
-}

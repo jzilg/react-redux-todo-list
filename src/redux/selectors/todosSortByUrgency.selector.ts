@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import State from '../interfaces/state.interface'
 import Todo from '../../entities/todo.interface'
 import { TodosState } from '../reducers/todos.reducer'
-import { getTodaysDate, getDurationBetweenDates } from '../../utils/helper'
+import { getTodaysDate, getDurationBetweenDates } from '../../utils/date'
 
 const today: string = getTodaysDate()
 

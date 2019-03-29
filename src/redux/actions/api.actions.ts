@@ -1,6 +1,6 @@
 import Action from '../interfaces/action.interface'
 import { ApiRequestOptions } from '../middleware/api.middleware'
-import { createUniqueId } from '../../utils/helper'
+import createUniqueId from '../../utils/createUniqueId'
 
 export const API_REQUEST = '[API] REQUEST'
 export const API_SUCCESS = '[API] SUCCESS'

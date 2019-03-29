@@ -3,7 +3,7 @@ import equal from 'deep-equal'
 import Todo from '../../entities/todo.interface'
 import Icon from '../icon'
 import Urgency from '../urgency'
-import { getTodaysDate } from '../../utils/helper'
+import { getTodaysDate } from '../../utils/date'
 import style from './todo-list-item.scss'
 
 interface Props {

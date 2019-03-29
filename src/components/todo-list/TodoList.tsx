@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Todo from '../../entities/todo.interface'
-import { createUniqueId } from '../../utils/helper'
+import createUniqueId from '../../utils/createUniqueId'
 import TodoListItem from '../todo-list-item'
 import style from './todo-list.scss'
 

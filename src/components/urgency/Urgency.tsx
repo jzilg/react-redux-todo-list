@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { getDurationBetweenDates } from '../../utils/helper'
+import { getDurationBetweenDates } from '../../utils/date'
 
 interface Props {
     today: string

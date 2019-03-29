@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 import TodoListItem from '../../src/components/todo-list-item'
-import { getTodaysDate } from '../../src/utils/helper'
+import { getTodaysDate } from '../../src/utils/date'
 
 describe('TodoListItem', () => {
     const removeTodo = jest.fn()
