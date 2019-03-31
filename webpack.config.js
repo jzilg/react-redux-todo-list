@@ -147,5 +147,6 @@ module.exports = {
     },
     stats: {
         entrypoints: false,
+        modules: false,
     },
 }

@@ -4,7 +4,7 @@
   "description": "react / redux list for managing recurring todo's",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack -p --hide-modules",
+    "build": "webpack",
     "test": "jest",
     "test:watch": "jest --watch --coverage",
     "analyze": "webpack -p --config webpack.analyze.js",
