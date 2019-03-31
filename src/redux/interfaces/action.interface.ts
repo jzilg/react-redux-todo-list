@@ -1,13 +1,12 @@
 import { ApiRequestOptions } from '../middleware/api.middleware'
-import Notification from '../../entities/notification.interface'
+import { UiOptions } from '../middleware/ui.middleware'
 
 export default interface Action {
     type: string
     payload?: object
     meta?: {
         api?: ApiRequestOptions
-        showLoader?: boolean
+        ui?: UiOptions
         triggeredBy?: string
-        notification?: Notification
     }
 }

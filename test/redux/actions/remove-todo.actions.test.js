@@ -28,7 +28,9 @@ describe('removeTodo', () => {
                         method,
                         successAction,
                     },
-                    showLoader: true,
+                    ui: {
+                        showLoader: true,
+                    },
                 },
             },
         ]
@@ -47,13 +49,15 @@ describe('removeTodo', () => {
                     todo,
                 },
                 meta: {
-                    notification: {
-                        id: expect.any(Number),
-                        duration: 4000,
-                        message: 'Todo removed',
-                        type: 'success',
+                    ui: {
+                        showLoader: false,
+                        notification: {
+                            id: expect.any(Number),
+                            duration: 4000,
+                            message: 'Todo removed',
+                            type: 'success',
+                        },
                     },
-                    showLoader: false,
                 },
             },
         ]

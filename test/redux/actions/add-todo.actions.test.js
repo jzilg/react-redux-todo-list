@@ -30,7 +30,9 @@ describe('addEmptyTodo', () => {
                         body,
                         successAction,
                     },
-                    showLoader: true,
+                    ui: {
+                        showLoader: true,
+                    },
                 },
             },
         ]
@@ -49,7 +51,9 @@ describe('addEmptyTodo', () => {
                     todo,
                 },
                 meta: {
-                    showLoader: false,
+                    ui: {
+                        showLoader: false,
+                    },
                 },
             },
         ]

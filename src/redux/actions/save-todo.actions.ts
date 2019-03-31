@@ -12,12 +12,14 @@ export const saveTodoSuccess = (todo: Todo): Action => ({
         todo,
     },
     meta: {
-        showLoader: false,
-        notification: {
-            id: createUniqueId(),
-            type: 'success',
-            message: 'Todo saved',
-            duration: 4000,
+        ui: {
+            showLoader: false,
+            notification: {
+                id: createUniqueId(),
+                type: 'success',
+                message: 'Todo saved',
+                duration: 4000,
+            },
         },
     },
 })
@@ -33,7 +35,9 @@ export const saveTodo = (todo: Todo): Action => {
                 body: JSON.stringify(todo),
                 successAction: saveTodoSuccess,
             },
-            showLoader: true,
+            ui: {
+                showLoader: true,
+            },
         },
     }
 }

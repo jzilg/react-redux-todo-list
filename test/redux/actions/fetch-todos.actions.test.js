@@ -33,7 +33,9 @@ describe('fetchTodos', () => {
                         method,
                         successAction,
                     },
-                    showLoader: true,
+                    ui: {
+                        showLoader: true,
+                    },
                 },
             },
         ]
@@ -52,7 +54,9 @@ describe('fetchTodos', () => {
                     todos,
                 },
                 meta: {
-                    showLoader: false,
+                    ui: {
+                        showLoader: false,
+                    },
                 },
             },
         ]

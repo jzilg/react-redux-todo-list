@@ -12,12 +12,14 @@ export const removeTodoSuccess = (todo: Todo): Action => ({
         todo,
     },
     meta: {
-        showLoader: false,
-        notification: {
-            id: createUniqueId(),
-            type: 'success',
-            message: 'Todo removed',
-            duration: 4000,
+        ui: {
+            showLoader: false,
+            notification: {
+                id: createUniqueId(),
+                type: 'success',
+                message: 'Todo removed',
+                duration: 4000,
+            },
         },
     },
 })
@@ -33,7 +35,9 @@ export const removeTodo = (todo: Todo): Action => {
                 method: 'DELETE',
                 successAction: () => removeTodoSuccess(todo),
             },
-            showLoader: true,
+            ui: {
+                showLoader: true,
+            },
         },
     }
 }

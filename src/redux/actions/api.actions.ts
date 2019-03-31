@@ -32,11 +32,13 @@ export const apiError = (errorMsg: string, triggeredBy: string): Action => ({
     },
     meta: {
         triggeredBy,
-        showLoader: false,
-        notification: {
-            id: createUniqueId(),
-            type: 'error',
-            message: errorMsg,
+        ui: {
+            showLoader: false,
+            notification: {
+                id: createUniqueId(),
+                type: 'error',
+                message: errorMsg,
+            },
         },
     },
 })

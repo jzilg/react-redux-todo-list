@@ -22,7 +22,9 @@ describe('uiMiddleware', () => {
         const action = {
             type: 'SOME_ACTION',
             meta: {
-                showLoader: true,
+                ui: {
+                    showLoader: true,
+                },
             },
         }
 
@@ -36,7 +38,9 @@ describe('uiMiddleware', () => {
         const action = {
             type: 'SOME_ACTION',
             meta: {
-                notification: {},
+                ui: {
+                    notification: {},
+                },
             },
         }
 
@@ -51,8 +55,10 @@ describe('uiMiddleware', () => {
         const action = {
             type: 'SOME_ACTION',
             meta: {
-                notification: {
-                    duration,
+                ui: {
+                    notification: {
+                        duration,
+                    },
                 },
             },
         }

@@ -75,12 +75,14 @@ describe('api.actions', () => {
                 },
                 meta: {
                     triggeredBy,
-                    notification: {
-                        id: expect.any(Number),
-                        message: 'Error!',
-                        type: 'error',
+                    ui: {
+                        notification: {
+                            id: expect.any(Number),
+                            message: 'Error!',
+                            type: 'error',
+                        },
+                        showLoader: false,
                     },
-                    showLoader: false,
                 },
             },
         ]

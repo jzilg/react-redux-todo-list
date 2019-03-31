@@ -11,7 +11,9 @@ export const receiveTodos = (todos: Todo[]): Action => ({
         todos,
     },
     meta: {
-        showLoader: false,
+        ui: {
+            showLoader: false,
+        },
     },
 })
 
@@ -25,7 +27,9 @@ export const fetchTodos = (): Action => {
                 method: 'GET',
                 successAction: receiveTodos,
             },
-            showLoader: true,
+            ui: {
+                showLoader: true,
+            },
         },
     }
 }

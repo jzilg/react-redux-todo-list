@@ -11,7 +11,9 @@ export const addTodoSuccess = (todo: Todo): Action => ({
         todo,
     },
     meta: {
-        showLoader: false,
+        ui: {
+            showLoader: false,
+        },
     },
 })
 
@@ -26,7 +28,9 @@ export const addTodo = (todo: Todo): Action => {
                 body: JSON.stringify(todo),
                 successAction: addTodoSuccess,
             },
-            showLoader: true,
+            ui: {
+                showLoader: true,
+            },
         },
     }
 }
