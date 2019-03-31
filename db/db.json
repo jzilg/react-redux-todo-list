@@ -4,19 +4,19 @@
       "id": 1,
       "name": "Blumen gießen",
       "schedule": 5,
-      "lastEvent": "2018-10-28"
+      "lastEvent": "2019-03-31"
     },
     {
       "id": 2,
-      "name": "Tu es 2",
+      "name": "Wäsche waschen",
       "schedule": 1,
-      "lastEvent": "2018-10-28"
+      "lastEvent": "2019-03-31"
     },
     {
       "id": 3,
       "name": "",
       "schedule": 1,
-      "lastEvent": "2018-10-28"
+      "lastEvent": "2019-03-23"
     }
   ]
 }
