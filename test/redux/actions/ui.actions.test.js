@@ -42,7 +42,6 @@ describe('ui.actions', () => {
 
     it('should return correct action if setNotification is called', () => {
         const store = mockStore()
-        const value = true
         const triggeredBy = 'SOME_ACTION'
 
         const expectedActions = [
@@ -64,7 +63,6 @@ describe('ui.actions', () => {
 
     it('should return correct action if unsetNotification is called', () => {
         const store = mockStore()
-        const value = true
         const triggeredBy = 'SOME_ACTION'
 
         const expectedActions = [
