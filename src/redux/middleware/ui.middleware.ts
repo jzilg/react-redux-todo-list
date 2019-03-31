@@ -1,11 +1,18 @@
 import MiddlewareCreator from '../interfaces/middleware-creator.interface'
-import Notification from '../../entities/notification.interface'
+import { NotificationType, NotificationMessage, NotificationDuration } from '../../entities/notification.interface'
 import Action from '../interfaces/action.interface'
 import { setLoader, setNotification, unsetNotification } from '../actions/ui.actions'
+import createUniqueId from '../../utils/createUniqueId'
+
+interface NotificationOptions {
+    type: NotificationType
+    message: NotificationMessage
+    duration?: NotificationDuration
+}
 
 export interface UiOptions {
     showLoader?: boolean
-    notification?: Notification
+    notification?: NotificationOptions
 }
 
 const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Action) => {
@@ -20,9 +27,15 @@ const uiMiddleware = ({ dispatch }): MiddlewareCreator => next => (action: Actio
     }
 
     if (action.meta.ui.notification) {
-        dispatch(setNotification(action.meta.ui.notification, action.type))
+        const id = createUniqueId()
+        const notification = {
+            id,
+            ...action.meta.ui.notification,
+        }
 
-        const { id, duration } = action.meta.ui.notification
+        dispatch(setNotification(notification, action.type))
+
+        const { duration } = action.meta.ui.notification
         if (duration) {
             setTimeout(() => {
                 dispatch(unsetNotification(id, action.type))

@@ -77,7 +77,6 @@ describe('api.actions', () => {
                     triggeredBy,
                     ui: {
                         notification: {
-                            id: expect.any(Number),
                             message: 'Error!',
                             type: 'error',
                         },

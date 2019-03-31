@@ -53,7 +53,6 @@ describe('saveTodo', () => {
                 meta: {
                     ui: {
                         notification: {
-                            id: expect.any(Number),
                             duration: 4000,
                             message: 'Todo saved',
                             type: 'success',

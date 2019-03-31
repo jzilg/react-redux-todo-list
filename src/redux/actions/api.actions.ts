@@ -1,6 +1,5 @@
 import Action from '../interfaces/action.interface'
 import { ApiRequestOptions } from '../middleware/api.middleware'
-import createUniqueId from '../../utils/createUniqueId'
 
 export const API_REQUEST = '[API] REQUEST'
 export const API_SUCCESS = '[API] SUCCESS'
@@ -35,7 +34,6 @@ export const apiError = (errorMsg: string, triggeredBy: string): Action => ({
         ui: {
             showLoader: false,
             notification: {
-                id: createUniqueId(),
                 type: 'error',
                 message: errorMsg,
             },

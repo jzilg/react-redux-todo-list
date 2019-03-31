@@ -52,7 +52,6 @@ describe('removeTodo', () => {
                     ui: {
                         showLoader: false,
                         notification: {
-                            id: expect.any(Number),
                             duration: 4000,
                             message: 'Todo removed',
                             type: 'success',

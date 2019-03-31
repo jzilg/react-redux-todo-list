@@ -1,7 +1,6 @@
 import Action from '../interfaces/action.interface'
 import Todo from '../../entities/todo.interface'
 import BACKEND_URL from '../../constants/api'
-import createUniqueId from '../../utils/createUniqueId'
 
 export const REMOVE_TODO_REQUEST = 'REMOVE_TODO_REQUEST'
 export const REMOVE_TODO_SUCCESS = 'REMOVE_TODO_SUCCESS'
@@ -15,7 +14,6 @@ export const removeTodoSuccess = (todo: Todo): Action => ({
         ui: {
             showLoader: false,
             notification: {
-                id: createUniqueId(),
                 type: 'success',
                 message: 'Todo removed',
                 duration: 4000,
