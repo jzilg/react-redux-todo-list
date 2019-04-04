@@ -35,7 +35,7 @@ function TodoListItem(props: Props): ReactElement {
     }
 
     function todoHasChanged(): boolean {
-        const currentState = {
+        const currentState: Todo = {
             id: todo.id,
             name,
             schedule,
