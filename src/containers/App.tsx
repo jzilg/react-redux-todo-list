@@ -12,7 +12,7 @@ import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-t
 
 interface Props extends StateProps, DispatchProps {}
 
-function App(props: Props): ReactElement<Props> {
+function App(props: Props): ReactElement {
     const {
         isLoading,
         todos,

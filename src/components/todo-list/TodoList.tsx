@@ -12,13 +12,15 @@ interface Props {
     isLoading: boolean
 }
 
-const TodoList = ({
-    todos,
-    addEmptyTodo,
-    saveTodo,
-    removeTodo,
-    isLoading,
-}: Props): ReactElement<{}> => {
+function TodoList(props: Props): ReactElement<Props> {
+    const {
+        todos,
+        addEmptyTodo,
+        saveTodo,
+        removeTodo,
+        isLoading,
+    } = props
+
     const addNewTodo = (): void => {
         const id = createUniqueId()
         addEmptyTodo(id)
