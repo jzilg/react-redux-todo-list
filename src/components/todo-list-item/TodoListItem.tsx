@@ -13,7 +13,7 @@ interface Props {
     isLoading: boolean
 }
 
-function TodoListItem(props: Props): ReactElement<Props> {
+function TodoListItem(props: Props): ReactElement {
     const {
         todo,
         saveTodo,

@@ -8,12 +8,14 @@ interface Props {
     className?: string
 }
 
-const Icon = ({
-    name,
-    width,
-    height,
-    className,
-}: Props): ReactElement<{}> => {
+function Icon(props: Props): ReactElement {
+    const {
+        name,
+        width,
+        height,
+        className,
+    } = props
+
     const icons = {
         save: {
             width: 28,
