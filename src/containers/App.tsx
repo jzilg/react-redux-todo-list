@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactElement, useEffect } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../entities/todo.interface'
@@ -11,19 +11,25 @@ import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-t
 
 interface Props extends StateProps, DispatchProps {}
 
-class App extends React.Component<Props, {}> {
-    constructor(props) {
-        super(props)
-        this.addEmptyTodo = this.addEmptyTodo.bind(this)
-    }
+function useOnMounting(callback): void {
+    useEffect(() => {
+        callback()
+    }, [])
+}
 
-    componentDidMount(): void {
-        const { fetchTodos } = this.props
-        fetchTodos()
-    }
+function App(props: Props): ReactElement<Props> {
+    const {
+        isLoading,
+        todos,
+        saveTodo,
+        removeTodo,
+        fetchTodos,
+    } = props
 
-    addEmptyTodo(id: number): void {
-        const { addTodo } = this.props
+    useOnMounting(fetchTodos)
+
+    function addEmptyTodo(id: number): void {
+        const { addTodo } = props
         const emptyTodo = {
             id,
             name: '',
@@ -33,24 +39,15 @@ class App extends React.Component<Props, {}> {
         addTodo(emptyTodo)
     }
 
-    render(): ReactNode {
-        const {
-            isLoading,
-            todos,
-            saveTodo,
-            removeTodo,
-        } = this.props
-
-        return (
-            <TodoList
-                todos={todos}
-                addEmptyTodo={this.addEmptyTodo}
-                saveTodo={saveTodo}
-                removeTodo={removeTodo}
-                isLoading={isLoading}
-            />
-        )
-    }
+    return (
+        <TodoList
+            todos={todos}
+            addEmptyTodo={addEmptyTodo}
+            saveTodo={saveTodo}
+            removeTodo={removeTodo}
+            isLoading={isLoading}
+        />
+    )
 }
 
 interface StateProps {
