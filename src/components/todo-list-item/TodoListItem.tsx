@@ -34,14 +34,28 @@ function TodoListItem(props: Props): ReactElement {
         saveTodo()
     }
 
-    function todoHasChanged(): boolean {
-        const currentState: Todo = {
-            id: todo.id,
+    function getUpdatedTodo(): Todo {
+        return {
+            ...todo,
             name,
             schedule,
             lastEvent,
         }
-        return !equal(currentState, todo)
+    }
+
+    function todoHasChanged(): boolean {
+        const updatedTodo: Todo = getUpdatedTodo()
+        return !equal(todo, updatedTodo)
+    }
+
+    function saveButtonClickHandler(): void {
+        const updatedTodo: Todo = getUpdatedTodo()
+        saveTodo(updatedTodo)
+    }
+
+    function removeButtonClickHandler(): void {
+        const updatedTodo: Todo = getUpdatedTodo()
+        removeTodo(updatedTodo)
     }
 
     const saveBtnIsDisabled: boolean = !todoHasChanged() || isLoading
@@ -104,7 +118,7 @@ function TodoListItem(props: Props): ReactElement {
                     <button
                         type="button"
                         className={style['save-btn']}
-                        onClick={() => saveTodo()}
+                        onClick={saveButtonClickHandler}
                         disabled={saveBtnIsDisabled}
                         title={saveBtnTitle}
                     >
@@ -115,7 +129,7 @@ function TodoListItem(props: Props): ReactElement {
                     <button
                         type="button"
                         className={style['delete-btn']}
-                        onClick={() => removeTodo()}
+                        onClick={removeButtonClickHandler}
                         disabled={isLoading}
                         title="Remove Todo"
                     >
