@@ -1,8 +1,9 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../entities/todo.interface'
 import ReduxState from '../redux/interfaces/state.interface'
+import useOnMount from '../hooks/useOnMount'
 import TodoList from '../components/todo-list'
 import { fetchTodos as fetchTodosActionCreator } from '../redux/actions/fetch-todos.actions'
 import { addTodo as addTodoActionCreator } from '../redux/actions/add-todo.actions'
@@ -10,12 +11,6 @@ import { saveTodo as saveTodoActionCreator } from '../redux/actions/save-todo.ac
 import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-todo.actions'
 
 interface Props extends StateProps, DispatchProps {}
-
-function useOnMounting(callback): void {
-    useEffect(() => {
-        callback()
-    }, [])
-}
 
 function App(props: Props): ReactElement<Props> {
     const {
@@ -26,7 +21,7 @@ function App(props: Props): ReactElement<Props> {
         fetchTodos,
     } = props
 
-    useOnMounting(fetchTodos)
+    useOnMount(fetchTodos)
 
     function addEmptyTodo(id: number): void {
         const { addTodo } = props
