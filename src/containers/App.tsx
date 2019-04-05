@@ -4,6 +4,7 @@ import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.se
 import Todo from '../entities/todo.interface'
 import ReduxState from '../redux/interfaces/state.interface'
 import useOnMount from '../hooks/useOnMount'
+import createUniqueId from '../utils/createUniqueId'
 import TodoList from '../components/todo-list'
 import { fetchTodos as fetchTodosActionCreator } from '../redux/actions/fetch-todos.actions'
 import { addTodo as addTodoActionCreator } from '../redux/actions/add-todo.actions'
@@ -23,10 +24,10 @@ function App(props: Props): ReactElement {
 
     useOnMount(fetchTodos)
 
-    function addEmptyTodo(id: number): void {
+    function addEmptyTodo(): void {
         const { addTodo } = props
         const emptyTodo = {
-            id,
+            id: createUniqueId(),
             name: '',
             schedule: 1,
             lastEvent: '',
