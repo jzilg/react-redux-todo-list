@@ -45,9 +45,9 @@ function appReducer(state = defaultState, action: UiAction): UiState {
         }
         case UNSET_NOTIFICATION: {
             const notificationIdToRemove = action.payload.notificationId
-            const updatedNotifications = state.notifications.filter(
-                notification => notification.id !== notificationIdToRemove,
-            )
+            const updatedNotifications = state.notifications.filter(notification => (
+                notification.id !== notificationIdToRemove
+            ))
             return {
                 ...state,
                 notifications: updatedNotifications,
