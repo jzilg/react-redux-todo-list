@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import Todo from '../../entities/todo.interface'
-import createUniqueId from '../../utils/createUniqueId'
 import TodoListItem from '../todo-list-item'
 import style from './todo-list.scss'
 
@@ -12,17 +11,14 @@ interface Props {
     isLoading: boolean
 }
 
-const TodoList = ({
-    todos,
-    addEmptyTodo,
-    saveTodo,
-    removeTodo,
-    isLoading,
-}: Props): ReactElement<{}> => {
-    const addNewTodo = (): void => {
-        const id = createUniqueId()
-        addEmptyTodo(id)
-    }
+function TodoList(props: Props): ReactElement<Props> {
+    const {
+        todos,
+        addEmptyTodo,
+        saveTodo,
+        removeTodo,
+        isLoading,
+    } = props
 
     const todoElements = todos.map(todo => (
         <li key={todo.id} className={style['list-element']}>
@@ -47,7 +43,7 @@ const TodoList = ({
                 type="button"
                 className={style['add-todo-btn']}
                 title="Add Todo"
-                onClick={addNewTodo}
+                onClick={() => { addEmptyTodo() }}
                 disabled={isLoading}
             >
                 +

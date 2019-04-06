@@ -7,7 +7,9 @@ interface Props {
     schedule: number
 }
 
-const Urgency = ({ today, lastEvent, schedule }: Props): ReactElement<{}> => {
+function Urgency(props: Props): ReactElement {
+    const { today, lastEvent, schedule } = props
+
     if (!lastEvent || !schedule) {
         return (
             <span>

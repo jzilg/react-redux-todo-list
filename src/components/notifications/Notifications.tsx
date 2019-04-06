@@ -7,7 +7,9 @@ interface Props {
     removeNotification: Function
 }
 
-const Notifications = ({ notifications, removeNotification }: Props): ReactElement<{}> => {
+function Notifications(props: Props): ReactElement {
+    const { notifications, removeNotification } = props
+
     if (!notifications.length) {
         return null
     }

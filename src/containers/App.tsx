@@ -1,8 +1,11 @@
-import React, { ReactNode } from 'react'
+import React, { ReactElement } from 'react'
 import { connect } from 'react-redux'
 import todosSortByUrgencySelector from '../redux/selectors/todosSortByUrgency.selector'
 import Todo from '../entities/todo.interface'
 import ReduxState from '../redux/interfaces/state.interface'
+import useOnMount from '../hooks/useOnMount'
+import createUniqueId from '../utils/createUniqueId'
+import { getTodaysDate } from '../utils/date'
 import TodoList from '../components/todo-list'
 import { fetchTodos as fetchTodosActionCreator } from '../redux/actions/fetch-todos.actions'
 import { addTodo as addTodoActionCreator } from '../redux/actions/add-todo.actions'
@@ -11,46 +14,37 @@ import { removeTodo as removeTodoActionCreator } from '../redux/actions/remove-t
 
 interface Props extends StateProps, DispatchProps {}
 
-class App extends React.Component<Props, {}> {
-    constructor(props) {
-        super(props)
-        this.addEmptyTodo = this.addEmptyTodo.bind(this)
-    }
+function App(props: Props): ReactElement {
+    const {
+        isLoading,
+        todos,
+        saveTodo,
+        removeTodo,
+        fetchTodos,
+    } = props
 
-    componentDidMount(): void {
-        const { fetchTodos } = this.props
-        fetchTodos()
-    }
+    useOnMount(fetchTodos)
 
-    addEmptyTodo(id: number): void {
-        const { addTodo } = this.props
+    function addEmptyTodo(): void {
+        const { addTodo } = props
         const emptyTodo = {
-            id,
+            id: createUniqueId(),
             name: '',
             schedule: 1,
-            lastEvent: '',
+            lastEvent: getTodaysDate(),
         }
         addTodo(emptyTodo)
     }
 
-    render(): ReactNode {
-        const {
-            isLoading,
-            todos,
-            saveTodo,
-            removeTodo,
-        } = this.props
-
-        return (
-            <TodoList
-                todos={todos}
-                addEmptyTodo={this.addEmptyTodo}
-                saveTodo={saveTodo}
-                removeTodo={removeTodo}
-                isLoading={isLoading}
-            />
-        )
-    }
+    return (
+        <TodoList
+            todos={todos}
+            addEmptyTodo={addEmptyTodo}
+            saveTodo={saveTodo}
+            removeTodo={removeTodo}
+            isLoading={isLoading}
+        />
+    )
 }
 
 interface StateProps {
