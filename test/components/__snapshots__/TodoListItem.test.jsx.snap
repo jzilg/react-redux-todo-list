@@ -1,6 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TodoListItem should render correctly one todo 1`] = `
+exports[`TodoListItem should render correctly one todo if duration between lastEvent and schedule is == 1 1`] = `
+<form
+  title="Papa anrufen"
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    name="name"
+    onChange={[Function]}
+    placeholder="Name"
+    type="text"
+    value="Papa anrufen"
+  />
+  <div>
+    <span>
+      Every
+    </span>
+    <input
+      autoComplete="off"
+      min="1"
+      name="schedule"
+      onChange={[Function]}
+      type="number"
+      value={1}
+    />
+    <span>
+      Day
+    </span>
+  </div>
+  <div>
+    <span>
+      Last done on
+    </span>
+    <input
+      name="lastEvent"
+      onChange={[Function]}
+      type="date"
+      value="2018-12-03"
+    />
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Today
+    </button>
+  </div>
+  <Urgency
+    lastEvent="2018-12-03"
+    schedule={1}
+    today="2018-12-04"
+  />
+  <ul>
+    <li>
+      <button
+        disabled={true}
+        onClick={[Function]}
+        title=""
+        type="button"
+      >
+        <Icon
+          className=""
+          height="auto"
+          name="save"
+          width="1em"
+        />
+      </button>
+    </li>
+    <li>
+      <button
+        disabled={false}
+        onClick={[Function]}
+        title="Remove Todo"
+        type="button"
+      >
+        ✕
+      </button>
+    </li>
+  </ul>
+</form>
+`;
+
+exports[`TodoListItem should render correctly one todo if duration between lastEvent and schedule is > 1 1`] = `
 <form
   title="Papa anrufen"
 >
