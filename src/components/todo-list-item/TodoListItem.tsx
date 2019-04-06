@@ -24,7 +24,7 @@ function TodoListItem(props: Props): ReactElement {
     const today: string = getTodaysDate()
     const [name, setName] = useState(todo.name)
     const [schedule, setSchedule] = useState(todo.schedule)
-    const [lastEvent, setLastEvent] = useState(todo.lastEvent || today)
+    const [lastEvent, setLastEvent] = useState(todo.lastEvent)
 
     function setInputToday(): void {
         if (lastEvent === today) {
