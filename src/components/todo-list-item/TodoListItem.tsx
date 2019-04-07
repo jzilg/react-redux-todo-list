@@ -36,7 +36,7 @@ function TodoListItem(props: Props): ReactElement {
 
     function getUpdatedTodo(): Todo {
         return {
-            ...todo,
+            id: todo.id,
             name,
             schedule,
             lastEvent,
