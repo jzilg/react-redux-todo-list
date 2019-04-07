@@ -12,7 +12,7 @@ interface Props extends StateProps, DispatchProps {
     store: Store
 }
 
-const Root = (props: Props): ReactElement => {
+function Root(props: Props): ReactElement {
     const {
         store,
         isLoading,
