@@ -54,8 +54,7 @@ function TodoListItem(props: Props): ReactElement {
     }
 
     function removeButtonClickHandler(): void {
-        const updatedTodo: Todo = getUpdatedTodo()
-        removeTodo(updatedTodo)
+        removeTodo(todo)
     }
 
     const saveBtnIsDisabled: boolean = !todoHasChanged() || isLoading
