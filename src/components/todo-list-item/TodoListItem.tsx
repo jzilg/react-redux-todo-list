@@ -26,12 +26,15 @@ function TodoListItem(props: Props): ReactElement {
     const [schedule, setSchedule] = useState(todo.schedule)
     const [lastEvent, setLastEvent] = useState(todo.lastEvent)
 
-    function setInputToday(): void {
+    function setLastEventToToday(): void {
         if (lastEvent === today) {
             return
         }
         setLastEvent(today)
-        saveTodo()
+        saveTodo({
+            ...todo,
+            lastEvent: today,
+        })
     }
 
     function getUpdatedTodo(): Todo {
@@ -102,7 +105,7 @@ function TodoListItem(props: Props): ReactElement {
                 />
                 <button
                     type="button"
-                    onClick={setInputToday}
+                    onClick={setLastEventToToday}
                 >
                     Today
                 </button>
