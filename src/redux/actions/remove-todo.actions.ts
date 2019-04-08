@@ -31,7 +31,7 @@ export const removeTodo = (todo: Todo): Action => {
             api: {
                 url,
                 method: 'DELETE',
-                successAction: () => removeTodoSuccess(todo),
+                successAction: removeTodoSuccess.bind(this, todo),
             },
             ui: {
                 showLoader: true,
