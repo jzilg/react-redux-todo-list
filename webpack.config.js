@@ -144,6 +144,7 @@ module.exports = {
             children: false,
             modules: false,
         },
+        overlay: true,
     },
     stats: {
         entrypoints: false,
