@@ -1,6 +1,7 @@
 {
   "name": "react-redux-todo-list",
   "version": "1.0.0",
+  "private": true,
   "description": "react / redux list for managing recurring todo's",
   "scripts": {
     "start": "webpack-dev-server",
